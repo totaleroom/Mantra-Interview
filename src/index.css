@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 43 50% 93%;
+    --foreground: 240 24% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 24% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 24% 14%;
+
+    --primary: 240 24% 14%;
+    --primary-foreground: 43 50% 93%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 240 24% 14%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 84 100% 62%;
+    --accent-foreground: 240 24% 14%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 0%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 84 100% 62%;
+
+    --radius: 0px;
+
+    --neo-lime: 84 100% 62%;
+    --neo-pink: 340 100% 71%;
+    --neo-cyan: 195 100% 61%;
+    --neo-violet: 258 90% 66%;
+    --neo-black: 240 24% 14%;
+    --ivory: 43 50% 93%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 24% 14%;
+    --foreground: 43 50% 93%;
+    --card: 240 24% 14%;
+    --card-foreground: 43 50% 93%;
+    --popover: 240 24% 14%;
+    --popover-foreground: 43 50% 93%;
+    --primary: 84 100% 62%;
+    --primary-foreground: 240 24% 14%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 84 100% 62%;
+    --accent-foreground: 240 24% 14%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 84 100% 62%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  ::selection {
+    background-color: hsl(var(--neo-black));
+    color: hsl(var(--neo-lime));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Archivo Black', sans-serif;
+  }
+  .font-body {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .shadow-neo {
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  }
+  .shadow-neoSm {
+    box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+  }
+  .shadow-neoLg {
+    box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .dot-pattern {
+    background-image: radial-gradient(#e5e7eb 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+@keyframes blob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Module content styling */
+.module-content h3 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  margin: 1.5rem 0 0.75rem;
+}
+.module-content h4 {
+  font-family: 'Archivo Black', sans-serif;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  margin: 1rem 0 0.5rem;
+}
+.module-content p, .module-content li {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+.module-content ul, .module-content ol {
+  padding-left: 1.25rem;
+  margin-bottom: 1rem;
+}
+.module-content .concept-box {
+  background: hsl(var(--neo-cyan) / 0.15);
+  border: 2px solid hsl(var(--foreground));
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.module-content .warning-box {
+  background: hsl(var(--neo-pink) / 0.15);
+  border: 2px solid hsl(var(--foreground));
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.module-content .action-box {
+  background: hsl(var(--neo-lime) / 0.15);
+  border: 2px solid hsl(var(--foreground));
+  padding: 1rem;
+  margin: 1rem 0;
+}
+.module-content .stage-box {
+  border: 2px solid hsl(var(--foreground));
+  padding: 1rem;
+  margin: 0.75rem 0;
+}
+.module-content .stage-box .reality {
+  font-style: italic;
+  opacity: 0.7;
+  font-size: 0.8rem;
+}
+.module-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+.module-content table td {
+  border: 1px solid hsl(var(--foreground) / 0.3);
+  padding: 0.75rem;
+  font-size: 0.8rem;
+}
+
+/* Print styles for CV download */
+@media print {
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html, body {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 210mm;
+    height: auto;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .cv-preview-printable,
+  .cv-preview-printable * {
+    visibility: visible;
+  }
+
+  .cv-preview-printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 210mm;
+    min-height: auto;
+    margin: 0;
+    padding: 12mm 15mm;
+    border: none !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

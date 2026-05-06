@@ -1,0 +1,1 @@
+ALTER TABLE public.cv_data ADD COLUMN IF NOT EXISTS languages jsonb NOT NULL DEFAULT '[]'::jsonb;

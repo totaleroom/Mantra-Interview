@@ -1,0 +1,1 @@
+ALTER TABLE public.license_keys ALTER COLUMN validity_days SET DEFAULT 90;
