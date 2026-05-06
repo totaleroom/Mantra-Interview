@@ -1,4 +1,4 @@
-# MANTRA — Sistem Lamaran Kerja 7 Hari
+# MANTRA Interview — Sistem Lamaran Kerja 7 Hari
 
 > Platform e-learning + toolkit karier berbasis sprint 7 hari. Dari CV ATS-friendly sampai interview simulator — semua dalam satu platform.
 
@@ -9,7 +9,7 @@
 - **Frontend:** React 18, TypeScript, Vite, Tailwind CSS
 - **UI:** shadcn/ui (custom Neo-brutalist theme), Lucide Icons
 - **Backend:** Supabase (Auth, PostgreSQL, Edge Functions, RLS)
-- **AI:** Lovable AI Gateway (Gemini Flash, Gemini Flash Lite)
+- **AI:** (Gemini Flash, Gemini Flash Lite)
 - **Export:** docx.js (DOCX generation)
 - **State:** React Context + TanStack Query
 
@@ -55,11 +55,7 @@ npm run dev
 
 ## 🚢 Deployment
 
-**Lovable (Recommended):**
-Buka project di Lovable → Share → Publish.
 
-**Vercel / Netlify:**
-Connect repo → Build command: `npm run build` → Output dir: `dist`
 
 **VPS / Docker:**
 ```bash
