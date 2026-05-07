@@ -37,7 +37,8 @@ Landing Page → Buy License Key (external checkout) → Register (email + key)
 | UI Primitives | Radix UI | Various (1.x–2.x) |
 | Routing | react-router-dom | 6.30.1 |
 | Server State | @tanstack/react-query | 5.83.0 |
-| Backend | Supabase (Auth, PostgreSQL, Edge Functions, RLS) | supabase-js 2.95.3 |
+| Backend | Custom Node.js & Express API | — |
+| Database | JSON File Storage | — |
 | Charts | Recharts | 2.15.4 |
 | Forms | react-hook-form + zod | 7.61.1 / 3.25.76 |
 | Icons | lucide-react | 0.462.0 |
@@ -54,15 +55,15 @@ Landing Page → Buy License Key (external checkout) → Register (email + key)
 ┌─────────────────────────────────────────────────────┐
 │                    FRONTEND                          │
 │  React 18 + TypeScript + Vite 5 + Tailwind CSS 3    │
-│  State: AuthContext (user, profile, subscription)    │
+│  State: AuthContext (user, profile)                 │
 │  Guard: SubscriptionGuard (route) + useInactivity   │
 │  Lazy: All pages except Index + NotFound             │
 ├─────────────────────────────────────────────────────┤
-│                 BACKEND (Supabase Cloud)              │
-│  Auth: Email + Password (email verification ON)      │
-│  DB: 6 tables, all with RLS                          │
-│  Edge Functions: 7 Deno endpoints                    │
-│  AI: Lovable AI Gateway (Gemini models)              │
+│                 BACKEND (Node.js/Express)            │
+│  Auth: JWT & Bcrypt (Custom Logic)                   │
+│  DB: Local JSON Storage (database.json)              │
+│  API: RESTful Endpoints on port 5001                 │
+│  AI: Direct API requests to AI Gateway               │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -103,13 +104,13 @@ Landing Page → Buy License Key (external checkout) → Register (email + key)
 │   │   ├── seo/                  # SEOHead, ArticleLayout, SatellitePage
 │   │   └── ui/                   # 40+ shadcn/ui primitives
 │   ├── pages/                    # One component per route
-│   ├── data/                     # module-5-content, satellite-pages
-│   └── integrations/supabase/    # Auto-generated client + types
-├── supabase/
-│   ├── config.toml               # Project config
-│   ├── migrations/               # SQL migrations
-│   ├── templates/                # Email templates
-│   └── functions/                # 7 Deno edge functions + _shared/
+│   └── data/                     # module-5-content, satellite-pages
+├── server/
+│   ├── server.js                 # Express App Entrypoint
+│   ├── db.js                     # Local JSON database connector
+│   ├── database.json             # Actual database file
+│   ├── middleware/               # Custom Express middlewares (e.g., authMiddleware)
+│   └── routes/                   # API Route handlers (auth.js, profile.js)
 ```
 
 ---
