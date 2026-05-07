@@ -12,10 +12,6 @@ const faqs = [
   a: "Karena bagus menurut lo bukan berarti lolos sistem. Filter otomatis perusahaan besar buang CV tanpa keyword yang tepat, bahkan sebelum satu orang pun sempat baca. Di MantraSkill, lo belajar cara nulis CV yang ngomong bahasa yang dimengerti mesin sekaligus bikin HRD langsung tertarik waktu baca."
 },
 {
-  q: "Apa bedanya sama beli template CV di Tokopedia?",
-  a: "Template bikin CV lo cantik secara visual. Tapi cantik bukan berarti lolos ATS. MantraSkill bukan template, ini sistem. Lo belajar cara nulis konten CV yang powerful, cara optimasi LinkedIn yang bikin recruiter DM duluan, dan cara jawab interview yang bikin panel bilang 'ini yang kita cari'. Template tidak ngajarin semua itu."
-},
-{
   q: "Berapa lama sampai gue mulai dapet interview?",
   a: "Banyak alumni mulai dapet respon HRD dalam 1 sampai 2 minggu setelah selesai sprint. Ada yang lebih cepat, tergantung industri dan seberapa serius lo jalanin setiap step-nya. Yang pasti, kalau lo terus kirim CV dengan cara yang sama, hasilnya akan tetap sama. Sprint ini memutus siklus itu."
 },
@@ -25,7 +21,7 @@ const faqs = [
 },
 {
   q: "Kalau gue sama sekali gak ngerti AI gimana?",
-  a: "Semua prompt sudah disiapkan, tinggal copy, paste, sesuaikan. Gak perlu ngerti cara kerja AI. Gak perlu bayar tools mahal. Lo cuma butuh ChatGPT gratis dan kemauan untuk mulai. Sisanya, MantraSkill yang guide step by step."
+  a: "Semua prompt sudah disiapkan, tinggal copy, paste, sesuaikan. Gak perlu ngerti cara kerja AI. Lo cuma butuh ChatGPT gratis dan kemauan untuk mulai. Sisanya, MantraSkill yang guide step by step."
 },
 {
   q: "Apakah AI benar-benar bisa bantu cari kerja?",
@@ -34,6 +30,10 @@ const faqs = [
 {
   q: "MantraSkill vs nunggu janji lapangan kerja dari pemerintah?",
   a: "Mereka janji 19 juta lapangan kerja. Lo nunggu. Sementara itu, teman lo yang ambil kendali karirnya sendiri sudah mulai dapet panggilan interview. MantraSkill bukan solusi politis. Ini langkah pribadi. Lo gak perlu nunggu siapapun untuk mulai."
+},
+{
+  q: "Ini beneran gratis? Gak ada biaya tersembunyi?",
+  a: "100% gratis. Daftar akun, langsung akses semua modul, CV Builder, CV Checker, LinkedIn Optimizer, Cover Letter Generator, dan 55+ prompt AI. Gak ada paywall, gak ada langganan, gak ada kartu kredit. Misi kita sederhana: bantu sebanyak mungkin pencari kerja Indonesia punya CV yang bener dan mindset yang tepat."
 }];
 
 

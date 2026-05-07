@@ -2,14 +2,13 @@ import React from 'react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useNavigate, Link } from 'react-router-dom';
 import { ClipboardCheck } from 'lucide-react';
-import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 import { Header } from '@/components/landing/Header';
+
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 import {
-  LogOut, Play, FileText, CheckCircle, Lock, Clock, ArrowRight, Zap, Calendar, AlertTriangle, ShieldX, Linkedin, FileEdit, Sparkles, MessageCircle, CreditCard
+  LogOut, Play, FileText, CheckCircle, Lock, Clock, ArrowRight, Zap, Linkedin, FileEdit, Sparkles
 } from 'lucide-react';
-import { openCheckout, openWhatsApp } from '@/lib/links';
-import { Progress } from '@/components/ui/progress';
 
 const modules = [
   { id: '1', title: 'Audit Diri & Mindset Reset', type: 'text', duration: '30 menit', icon: FileText, color: 'bg-neoLime' },
@@ -20,7 +19,7 @@ const modules = [
 ];
 
 const Dashboard: React.FC = () => {
-  const { user, profile, loading, signOut, refreshProfile, isSubscriptionActive, daysRemaining } = useAuth();
+  const { user, profile, loading, signOut, refreshProfile } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -44,16 +43,7 @@ const Dashboard: React.FC = () => {
   const completedCount = Object.values(progress).filter(Boolean).length;
   const progressPercent = (completedCount / modules.length) * 100;
 
-  const daysColor = daysRemaining > 30
-    ? 'text-neoLime'
-    : daysRemaining > 7
-    ? 'text-yellow-400'
-    : daysRemaining > 0
-    ? 'text-red-400'
-    : 'text-destructive';
-
   const isModuleUnlocked = (moduleId: string): boolean => {
-    if (!isSubscriptionActive) return false;
     const idx = parseInt(moduleId);
     if (idx === 1) return true;
     return progress[String(idx - 1)] === true;
@@ -67,16 +57,22 @@ const Dashboard: React.FC = () => {
     if (!isModuleUnlocked(moduleId) || isModuleCompleted(moduleId)) return;
 
     const newProgress = { ...progress, [moduleId]: true };
-    const { error } = await supabase
-      .from('profiles')
-      .update({ module_progress: newProgress })
-      .eq('user_id', user.id);
-
-    if (error) {
-      toast({ title: 'Gagal update progress', description: error.message, variant: 'destructive' });
-    } else {
+    try {
+      const res = await fetch(`${API_URL}/profile/progress`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('mantra_token')}`
+        },
+        body: JSON.stringify({ module_progress: newProgress })
+      });
+      
+      if (!res.ok) throw new Error('Gagal update progress');
+      
       toast({ title: `Modul ${moduleId} selesai! 🎉` });
       await refreshProfile();
+    } catch (error: any) {
+      toast({ title: 'Gagal update progress', description: error.message, variant: 'destructive' });
     }
   };
 
@@ -85,67 +81,6 @@ const Dashboard: React.FC = () => {
       <Header />
 
       <div className="max-w-3xl mx-auto px-5 py-8">
-        {/* Expired Banner */}
-        {!isSubscriptionActive && (
-          <div className="bg-destructive/10 border-4 border-destructive p-4 mb-6 flex items-start gap-3 shadow-neo">
-            <ShieldX size={24} className="text-destructive shrink-0 mt-0.5" />
-            <div>
-              {!profile.license_key ? (
-                <>
-                  <h3 className="font-display text-sm uppercase text-destructive">Akun Belum Aktif</h3>
-                  <p className="font-body text-sm text-muted-foreground mt-1">Akun kamu sudah terdaftar. Silakan lakukan pembayaran dan hubungi admin untuk aktivasi akses.</p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    <button
-                      onClick={openCheckout}
-                      className="bg-neoLime border-2 border-foreground px-4 py-2 font-display text-xs uppercase shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2"
-                    >
-                      <CreditCard size={14} /> Bayar Sekarang (IDR 148k)
-                    </button>
-                    <button
-                      onClick={openWhatsApp}
-                      className="border-2 border-foreground px-4 py-2 font-display text-xs uppercase shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2"
-                      style={{ backgroundColor: '#25D366' }}
-                    >
-                      <MessageCircle size={14} className="text-white" /> <span className="text-white">Chat Admin</span>
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <h3 className="font-display text-sm uppercase text-destructive">Langganan Expired</h3>
-                  <p className="font-body text-sm text-muted-foreground mt-1">Masa langganan kamu sudah habis. Perpanjang untuk mengakses semua modul dan CV Builder.</p>
-                  <div className="flex flex-wrap gap-2 mt-3">
-                    <button
-                      onClick={openCheckout}
-                      className="bg-neoLime border-2 border-foreground px-4 py-2 font-display text-xs uppercase shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2"
-                    >
-                      <CreditCard size={14} /> Perpanjang Akses
-                    </button>
-                    <button
-                      onClick={openWhatsApp}
-                      className="border-2 border-foreground px-4 py-2 font-display text-xs uppercase shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center gap-2"
-                      style={{ backgroundColor: '#25D366' }}
-                    >
-                      <MessageCircle size={14} className="text-white" /> <span className="text-white">Chat Admin</span>
-                    </button>
-                  </div>
-                </>
-              )}
-            </div>
-          </div>
-        )}
-
-        {/* Warning Banner (< 7 days) */}
-        {isSubscriptionActive && daysRemaining <= 7 && (
-          <div className="bg-yellow-500/10 border-4 border-yellow-500 p-4 mb-6 flex items-start gap-3 shadow-neo">
-            <AlertTriangle size={24} className="text-yellow-600 shrink-0 mt-0.5" />
-            <div>
-              <h3 className="font-display text-sm uppercase text-yellow-700">Langganan Hampir Habis!</h3>
-              <p className="font-body text-sm text-muted-foreground mt-1">Sisa {daysRemaining} hari lagi. Perpanjang sekarang agar akses tidak terputus.</p>
-            </div>
-          </div>
-        )}
-
         {/* Welcome Header */}
         <div className="bg-neoBlack text-white border-4 border-foreground p-6 shadow-neoLg mb-8 relative overflow-hidden">
           <div className="absolute -right-8 -top-8 w-32 h-32 bg-neoLime rounded-full opacity-20 blur-2xl"></div>
@@ -155,10 +90,9 @@ const Dashboard: React.FC = () => {
                 <p className="font-body text-sm text-gray-400 uppercase tracking-widest mb-1">Welcome back,</p>
                 <h1 className="font-display text-2xl md:text-3xl uppercase text-neoLime">{profile.full_name || 'Member'}</h1>
               </div>
-              <div className={`flex items-center gap-2 bg-white/10 border border-white/20 px-3 py-2`}>
-                <Calendar size={14} className={daysColor} />
-                <span className={`font-body text-sm font-bold ${daysColor}`}>
-                  {daysRemaining > 0 ? `${daysRemaining} hari tersisa` : 'Expired'}
+              <div className="flex items-center gap-2 bg-neoLime/20 border border-neoLime/30 px-3 py-2">
+                <span className="font-body text-sm font-bold text-neoLime">
+                  Free Access ✓
                 </span>
               </div>
             </div>
@@ -180,149 +114,88 @@ const Dashboard: React.FC = () => {
         </div>
 
         {/* Prompt Library CTA */}
-        {isSubscriptionActive ? (
-          <Link
-            to="/dashboard/prompt-library"
-            className="block bg-neoViolet border-4 border-foreground p-5 shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all mb-4"
-          >
-            <div className="flex items-center gap-4">
-              <div className="bg-foreground text-background w-14 h-14 flex items-center justify-center border-2 border-foreground shadow-neoSm">
-                <Sparkles size={28} />
-              </div>
-              <div>
-                <h2 className="font-display text-lg uppercase text-white">Prompt AI Library</h2>
-                <p className="font-body text-sm text-white/80">55+ prompt AI siap copy-paste — dari riset perusahaan sampai nego gaji</p>
-              </div>
-              <ArrowRight size={24} className="ml-auto text-white" />
+        <Link
+          to="/dashboard/prompt-library"
+          className="block bg-neoViolet border-4 border-foreground p-5 shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all mb-4"
+        >
+          <div className="flex items-center gap-4">
+            <div className="bg-foreground text-background w-14 h-14 flex items-center justify-center border-2 border-foreground shadow-neoSm">
+              <Sparkles size={28} />
             </div>
-          </Link>
-        ) : (
-          <div className="block bg-muted border-4 border-foreground/40 p-5 mb-4 opacity-60">
-            <div className="flex items-center gap-4">
-              <div className="bg-foreground/40 text-background w-14 h-14 flex items-center justify-center border-2 border-foreground/40">
-                <Sparkles size={28} />
-              </div>
-              <div>
-                <h2 className="font-display text-lg uppercase">Prompt AI Library</h2>
-                <p className="font-body text-sm text-muted-foreground">Perpanjang langganan untuk mengakses fitur ini</p>
-              </div>
+            <div>
+              <h2 className="font-display text-lg uppercase text-white">Prompt AI Library</h2>
+              <p className="font-body text-sm text-white/80">55+ prompt AI siap copy-paste — dari riset perusahaan sampai nego gaji</p>
             </div>
+            <ArrowRight size={24} className="ml-auto text-white" />
           </div>
-        )}
+        </Link>
 
         {/* CV Builder CTA */}
-        {isSubscriptionActive ? (
-          <Link
-            to="/dashboard/cv-builder"
-            className="block bg-neoCyan border-4 border-foreground p-5 shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all mb-8"
-          >
-            <div className="flex items-center gap-4">
-              <div className="bg-foreground text-background w-14 h-14 flex items-center justify-center border-2 border-foreground shadow-neoSm">
-                <FileText size={28} />
-              </div>
-              <div>
-                <h2 className="font-display text-lg uppercase">ATS CV Builder</h2>
-                <p className="font-body text-sm">Bikin CV yang lolos ATS + AI scoring real-time. Bukan template asal-asalan.</p>
-              </div>
-              <ArrowRight size={24} className="ml-auto" />
+        <Link
+          to="/dashboard/cv-builder"
+          className="block bg-neoCyan border-4 border-foreground p-5 shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all mb-8"
+        >
+          <div className="flex items-center gap-4">
+            <div className="bg-foreground text-background w-14 h-14 flex items-center justify-center border-2 border-foreground shadow-neoSm">
+              <FileText size={28} />
             </div>
-          </Link>
-        ) : (
-          <div className="block bg-muted border-4 border-foreground/40 p-5 mb-8 opacity-60">
-            <div className="flex items-center gap-4">
-              <div className="bg-foreground/40 text-background w-14 h-14 flex items-center justify-center border-2 border-foreground/40">
-                <Lock size={28} />
-              </div>
-              <div>
-                <h2 className="font-display text-lg uppercase">ATS CV Builder</h2>
-                <p className="font-body text-sm text-muted-foreground">Perpanjang langganan untuk mengakses fitur ini</p>
-              </div>
+            <div>
+              <h2 className="font-display text-lg uppercase">ATS CV Builder</h2>
+              <p className="font-body text-sm">Bikin CV yang lolos ATS + AI scoring real-time. Bukan template asal-asalan.</p>
             </div>
+            <ArrowRight size={24} className="ml-auto" />
           </div>
-        )}
+        </Link>
 
         {/* CV Checker CTA */}
-        {isSubscriptionActive ? (
-          <Link
-            to="/dashboard/cv-checker"
-            className="block bg-neoViolet/20 border-4 border-foreground p-5 shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all mb-4"
-          >
-            <div className="flex items-center gap-4">
-              <div className="bg-neoViolet text-background w-14 h-14 flex items-center justify-center border-2 border-foreground shadow-neoSm">
-                <ClipboardCheck size={28} />
-              </div>
-              <div>
-                <h2 className="font-display text-lg uppercase">CV Checker Komprehensif</h2>
-                <p className="font-body text-sm">Upload CV & dapatkan analisis AI lengkap: skor 10 kategori + JD keyword match.</p>
-              </div>
-              <ArrowRight size={24} className="ml-auto" />
+        <Link
+          to="/dashboard/cv-checker"
+          className="block bg-neoViolet/20 border-4 border-foreground p-5 shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all mb-4"
+        >
+          <div className="flex items-center gap-4">
+            <div className="bg-neoViolet text-background w-14 h-14 flex items-center justify-center border-2 border-foreground shadow-neoSm">
+              <ClipboardCheck size={28} />
             </div>
-          </Link>
-        ) : (
-          <div className="block bg-muted border-4 border-foreground/40 p-5 mb-4 opacity-60">
-            <div className="flex items-center gap-4">
-              <div className="bg-foreground/40 text-background w-14 h-14 flex items-center justify-center border-2 border-foreground/40">
-                <ClipboardCheck size={28} />
-              </div>
-              <div>
-                <h2 className="font-display text-lg uppercase">CV Checker Komprehensif</h2>
-                <p className="font-body text-sm text-muted-foreground">Perpanjang langganan untuk mengakses fitur ini</p>
-              </div>
+            <div>
+              <h2 className="font-display text-lg uppercase">CV Checker Komprehensif</h2>
+              <p className="font-body text-sm">Upload CV & dapatkan analisis AI lengkap: skor 10 kategori + JD keyword match.</p>
             </div>
+            <ArrowRight size={24} className="ml-auto" />
           </div>
-        )}
+        </Link>
 
         {/* LinkedIn & Cover Letter CTAs */}
         <div className="grid md:grid-cols-2 gap-4 mb-8">
-          {isSubscriptionActive ? (
-            <>
-              <Link
-                to="/dashboard/linkedin-optimizer"
-                className="bg-neoCyan/20 border-4 border-foreground p-5 shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-neoCyan w-12 h-12 border-2 border-foreground flex items-center justify-center shadow-neoSm">
-                    <Linkedin size={24} />
-                  </div>
-                  <div>
-                    <h2 className="font-display text-sm uppercase">LinkedIn Optimizer</h2>
-                    <p className="font-body text-xs text-muted-foreground">Prompt AI biar profil lo dicari recruiter, bukan cuma pajangan</p>
-                  </div>
-                  <ArrowRight size={18} className="ml-auto" />
-                </div>
-              </Link>
-              <Link
-                to="/dashboard/cover-letter"
-                className="bg-neoPink/20 border-4 border-foreground p-5 shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="bg-neoPink w-12 h-12 border-2 border-foreground flex items-center justify-center shadow-neoSm">
-                    <FileEdit size={24} />
-                  </div>
-                  <div>
-                    <h2 className="font-display text-sm uppercase">Cover Letter Generator</h2>
-                    <p className="font-body text-xs text-muted-foreground">Generate cover letter personal per perusahaan. Anti copy-paste.</p>
-                  </div>
-                  <ArrowRight size={18} className="ml-auto" />
-                </div>
-              </Link>
-            </>
-          ) : (
-            <>
-              <div className="bg-muted border-4 border-foreground/40 p-5 opacity-60">
-                <div className="flex items-center gap-3">
-                  <div className="bg-muted w-12 h-12 border-2 border-foreground/40 flex items-center justify-center"><Lock size={24} /></div>
-                  <div><h2 className="font-display text-sm uppercase">LinkedIn Optimizer</h2><p className="font-body text-xs text-muted-foreground">Perpanjang langganan</p></div>
-                </div>
+          <Link
+            to="/dashboard/linkedin-optimizer"
+            className="bg-neoCyan/20 border-4 border-foreground p-5 shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <div className="bg-neoCyan w-12 h-12 border-2 border-foreground flex items-center justify-center shadow-neoSm">
+                <Linkedin size={24} />
               </div>
-              <div className="bg-muted border-4 border-foreground/40 p-5 opacity-60">
-                <div className="flex items-center gap-3">
-                  <div className="bg-muted w-12 h-12 border-2 border-foreground/40 flex items-center justify-center"><Lock size={24} /></div>
-                  <div><h2 className="font-display text-sm uppercase">Cover Letter Generator</h2><p className="font-body text-xs text-muted-foreground">Perpanjang langganan</p></div>
-                </div>
+              <div>
+                <h2 className="font-display text-sm uppercase">LinkedIn Optimizer</h2>
+                <p className="font-body text-xs text-muted-foreground">Prompt AI biar profil lo dicari recruiter, bukan cuma pajangan</p>
               </div>
-            </>
-          )}
+              <ArrowRight size={18} className="ml-auto" />
+            </div>
+          </Link>
+          <Link
+            to="/dashboard/cover-letter"
+            className="bg-neoPink/20 border-4 border-foreground p-5 shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <div className="bg-neoPink w-12 h-12 border-2 border-foreground flex items-center justify-center shadow-neoSm">
+                <FileEdit size={24} />
+              </div>
+              <div>
+                <h2 className="font-display text-sm uppercase">Cover Letter Generator</h2>
+                <p className="font-body text-xs text-muted-foreground">Generate cover letter personal per perusahaan. Anti copy-paste.</p>
+              </div>
+              <ArrowRight size={18} className="ml-auto" />
+            </div>
+          </Link>
         </div>
 
         {/* Modules */}

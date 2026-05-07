@@ -11,28 +11,9 @@ import { supabase } from '@/integrations/supabase/client';
 import ScoreCard from '@/components/cv-builder/ScoreCard';
 import type { AIAnalysis } from '@/components/cv-builder/types';
 
+import { useDocumentPipeline, type PipelineResult } from '@/lib/document-pipeline';
+
 const MAX_FILE_SIZE = 2 * 1024 * 1024;
-
-async function parsePDF(file: File): Promise<string> {
-  const pdfjsLib = await import('pdfjs-dist');
-  pdfjsLib.GlobalWorkerOptions.workerSrc = '';
-  const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-  const pages: string[] = [];
-  for (let i = 1; i <= pdf.numPages; i++) {
-    const page = await pdf.getPage(i);
-    const content = await page.getTextContent();
-    pages.push(content.items.map((item: any) => item.str).join(' '));
-  }
-  return pages.join('\n\n');
-}
-
-async function parseDOCX(file: File): Promise<string> {
-  const mammoth = await import('mammoth');
-  const arrayBuffer = await file.arrayBuffer();
-  const result = await mammoth.extractRawText({ arrayBuffer });
-  return result.value;
-}
 
 /* ── Regex Analysis ── */
 const ATS_SECTIONS = ['pengalaman', 'pendidikan', 'keahlian', 'skill', 'experience', 'education', 'summary', 'ringkasan', 'sertifikasi', 'certification'];
@@ -93,49 +74,28 @@ const StatusIcon: React.FC<{ status: string }> = ({ status }) => {
 
 /* ── File Upload Area ── */
 const FileUploadArea: React.FC<{
-  onTextExtracted: (text: string) => void;
+  onResult: (result: PipelineResult) => void;
   uploadedFile: { name: string; size: number } | null;
   setUploadedFile: (f: { name: string; size: number } | null) => void;
-}> = ({ onTextExtracted, uploadedFile, setUploadedFile }) => {
+}> = ({ onResult, uploadedFile, setUploadedFile }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [parsing, setParsing] = useState(false);
+  const { processDocument, isProcessing } = useDocumentPipeline();
   const [dragOver, setDragOver] = useState(false);
-  const { toast } = useToast();
 
-  const processFile = useCallback(async (file: File) => {
-    if (file.size > MAX_FILE_SIZE) {
-      toast({ title: 'File terlalu besar', description: 'Maksimal 2MB.', variant: 'destructive' });
-      return;
-    }
-    const ext = file.name.split('.').pop()?.toLowerCase();
-    if (!['pdf', 'docx'].includes(ext || '')) {
-      toast({ title: 'Format tidak didukung', description: 'Hanya PDF dan DOCX.', variant: 'destructive' });
-      return;
-    }
-    setParsing(true);
-    try {
-      const text = ext === 'pdf' ? await parsePDF(file) : await parseDOCX(file);
-      if (text.trim().length < 20) {
-        toast({ title: 'Gagal extract teks', description: 'File mungkin berupa scan/gambar.', variant: 'destructive' });
-        return;
-      }
-      onTextExtracted(text);
+  const handleFile = useCallback(async (file: File) => {
+    const result = await processDocument(file);
+    if (result) {
+      onResult(result);
       setUploadedFile({ name: file.name, size: file.size });
-      toast({ title: 'File berhasil diproses! ✅' });
-    } catch (err) {
-      console.error('Parse error:', err);
-      toast({ title: 'Gagal membaca file', description: 'Coba paste teks CV secara manual.', variant: 'destructive' });
-    } finally {
-      setParsing(false);
     }
-  }, [onTextExtracted, setUploadedFile, toast]);
+  }, [processDocument, onResult, setUploadedFile]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setDragOver(false);
     const file = e.dataTransfer.files[0];
-    if (file) processFile(file);
-  }, [processFile]);
+    if (file) handleFile(file);
+  }, [handleFile]);
 
   if (uploadedFile) {
     return (
@@ -156,10 +116,10 @@ const FileUploadArea: React.FC<{
       onDragLeave={() => setDragOver(false)}
       onDrop={handleDrop}
       onClick={() => inputRef.current?.click()}
-      className={`border-2 border-dashed border-foreground p-5 mb-3 text-center cursor-pointer transition-colors ${dragOver ? 'bg-neoLime/20' : 'hover:bg-muted/50'} ${parsing ? 'pointer-events-none opacity-60' : ''}`}
+      className={`border-2 border-dashed border-foreground p-5 mb-3 text-center cursor-pointer transition-colors ${dragOver ? 'bg-neoLime/20' : 'hover:bg-muted/50'} ${isProcessing ? 'pointer-events-none opacity-60' : ''}`}
     >
-      <input ref={inputRef} type="file" accept=".pdf,.docx" className="hidden" onChange={(e) => { const file = e.target.files?.[0]; if (file) processFile(file); e.target.value = ''; }} />
-      {parsing ? (
+      <input ref={inputRef} type="file" accept=".pdf,.docx,.txt" className="hidden" onChange={(e) => { const file = e.target.files?.[0]; if (file) handleFile(file); e.target.value = ''; }} />
+      {isProcessing ? (
         <div className="flex items-center justify-center gap-2">
           <Loader2 size={18} className="animate-spin" />
           <span className="font-display text-xs uppercase">Membaca file...</span>
@@ -224,7 +184,7 @@ const JDAnalysisResult: React.FC<{ jd: any }> = ({ jd }) => (
 const MemberCVChecker: React.FC = () => {
   const [cvText, setCvText] = useState('');
   const [uploadedFile, setUploadedFile] = useState<{ name: string; size: number } | null>(null);
-  const [regexResult, setRegexResult] = useState<CheckResult | null>(null);
+  const [pipelineResult, setPipelineResult] = useState<PipelineResult | null>(null);
   const [aiAnalysis, setAiAnalysis] = useState<AIAnalysis | null>(null);
   const [aiLoading, setAiLoading] = useState(false);
   const [jobDescription, setJobDescription] = useState('');
@@ -275,7 +235,7 @@ const MemberCVChecker: React.FC = () => {
   const handleReset = () => {
     setCvText('');
     setUploadedFile(null);
-    setRegexResult(null);
+    setPipelineResult(null);
     setAiAnalysis(null);
     setJdAnalysis(null);
     setJobDescription('');
@@ -307,9 +267,16 @@ const MemberCVChecker: React.FC = () => {
           </div>
 
           {/* Input Section */}
-          {!regexResult && (
+          {!pipelineResult && (
             <div className="border-4 border-foreground bg-card shadow-neoLg p-4 md:p-6 mb-8">
-              <FileUploadArea onTextExtracted={(text) => setCvText(text)} uploadedFile={uploadedFile} setUploadedFile={setUploadedFile} />
+              <FileUploadArea 
+                onResult={(res) => {
+                  setCvText(res.cleanText);
+                  setPipelineResult(res);
+                }} 
+                uploadedFile={uploadedFile} 
+                setUploadedFile={setUploadedFile} 
+              />
 
               <label className="font-display text-sm uppercase mb-2 block">Atau Paste Teks CV</label>
               <Textarea
@@ -361,7 +328,7 @@ const MemberCVChecker: React.FC = () => {
           )}
 
           {/* Results */}
-          {regexResult && !aiLoading && (
+          {pipelineResult && !aiLoading && (
             <div className="space-y-6">
               {/* Reset button */}
               <button onClick={handleReset} className="inline-flex items-center gap-2 font-display text-xs uppercase text-muted-foreground hover:text-foreground transition-colors">
@@ -371,13 +338,28 @@ const MemberCVChecker: React.FC = () => {
               {/* Quick Regex Score */}
               <div className="border-4 border-foreground bg-card shadow-neoLg p-4 md:p-6">
                 <h2 className="font-display text-sm uppercase mb-4 flex items-center gap-2">
-                  <FileText size={16} /> Quick Check (Regex)
+                  <FileText size={16} /> Pipeline Metadata
                 </h2>
-                <div className="text-center mb-4">
-                  <p className="font-display text-4xl">{regexResult.score}<span className="text-lg text-muted-foreground">/100</span></p>
+                <div className="grid grid-cols-2 gap-4 mb-4">
+                  <div className="border-2 border-foreground p-3 bg-neoLime/10">
+                    <p className="font-display text-[10px] uppercase text-muted-foreground">Word Count</p>
+                    <p className="font-display text-xl">{pipelineResult.metadata.wordCount}</p>
+                  </div>
+                  <div className="border-2 border-foreground p-3 bg-neoCyan/10">
+                    <p className="font-display text-[10px] uppercase text-muted-foreground">Sections Found</p>
+                    <p className="font-display text-xl">{pipelineResult.sections.length}</p>
+                  </div>
                 </div>
-                <div className="space-y-3">
-                  {regexResult.checks.map((check, i) => (
+                
+                <h3 className="font-display text-[10px] uppercase mb-2">Detected Sections:</h3>
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {pipelineResult.sections.map((s, i) => (
+                    <span key={i} className="bg-neoViolet/10 border border-neoViolet px-2 py-0.5 font-display text-[10px] uppercase">{s.title}</span>
+                  ))}
+                </div>
+
+                <div className="space-y-3 pt-4 border-t-2 border-foreground/10">
+                  {analyzeCV(pipelineResult.cleanText).checks.map((check, i) => (
                     <div key={i} className="flex items-start gap-3">
                       <StatusIcon status={check.status} />
                       <div>

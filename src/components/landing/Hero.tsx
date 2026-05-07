@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { ArrowRight, Users, UserPlus } from 'lucide-react';
-import { openCheckout } from '@/lib/links';
 import { useAuth } from '@/contexts/AuthContext';
 import { AuthModal } from '@/components/auth/AuthModal';
+import { useNavigate } from 'react-router-dom';
 
 export const Hero: React.FC = () => {
   const { user } = useAuth();
   const [authOpen, setAuthOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <section className="relative overflow-hidden bg-background border-b-4 border-foreground">
@@ -37,28 +38,29 @@ export const Hero: React.FC = () => {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-3">
-          <button
-            onClick={openCheckout}
-            className="bg-neoLime border-4 border-foreground px-8 py-4 font-display text-lg uppercase shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all flex items-center gap-2 text-foreground cursor-pointer">
-            
-            Mulai Sekarang
-            <ArrowRight size={20} />
-          </button>
-          {!user &&
-          <button
-            onClick={() => setAuthOpen(true)}
-            className="bg-neoCyan border-4 border-foreground px-8 py-4 font-display text-lg uppercase shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all flex items-center gap-2 text-foreground cursor-pointer">
-            
-              <UserPlus size={20} />
-              Daftar Gratis
+          {user ? (
+            <button
+              onClick={() => navigate('/dashboard')}
+              className="bg-neoLime border-4 border-foreground px-8 py-4 font-display text-lg uppercase shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all flex items-center gap-2 text-foreground cursor-pointer">
+              Buka Dashboard
+              <ArrowRight size={20} />
             </button>
-          }
+          ) : (
+            <>
+              <button
+                onClick={() => setAuthOpen(true)}
+                className="bg-neoLime border-4 border-foreground px-8 py-4 font-display text-lg uppercase shadow-neoLg hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all flex items-center gap-2 text-foreground cursor-pointer">
+                <UserPlus size={20} />
+                Daftar Gratis
+                <ArrowRight size={20} />
+              </button>
+            </>
+          )}
         </div>
-        
 
-        {/* Micro-copy urgency */}
+        {/* Micro-copy */}
         <p className="font-body text-xs text-muted-foreground mb-6 mt-3 italic">
-          850+ orang udah mulai. Lo kapan?
+          100% gratis. Tanpa kartu kredit. Langsung akses semua fitur.
         </p>
 
         {/* Social proof */}

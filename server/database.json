@@ -1,0 +1,19 @@
+{
+  "users": [
+    {
+      "id": "81e7937e-f8bc-4ff0-9395-15f020020d57",
+      "email": "testuser@example.com",
+      "password_hash": "$2a$10$gjMWsBWvC5F5FmDMFaljl.aMROLAWrxFtTogceml5iTslP3VA5tNa",
+      "created_at": "2026-05-07T16:12:01.317Z"
+    }
+  ],
+  "profiles": [
+    {
+      "id": "942dbf3c-74f6-4df2-88d5-ccb216151996",
+      "user_id": "81e7937e-f8bc-4ff0-9395-15f020020d57",
+      "full_name": "Test User",
+      "module_progress": "{}",
+      "created_at": "2026-05-07T16:12:01.317Z"
+    }
+  ]
+}

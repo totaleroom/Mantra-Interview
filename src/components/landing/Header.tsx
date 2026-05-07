@@ -74,7 +74,7 @@ export const Header: React.FC = () => {
               <>
                 <button onClick={() => scrollToOrNavigate('method')} className="hover:text-neoPink transition-colors">Metode</button>
                 <button onClick={() => scrollToOrNavigate('features')} className="hover:text-neoPink transition-colors">Fitur</button>
-                <button onClick={() => scrollToOrNavigate('value')} className="hover:text-neoPink transition-colors">Harga</button>
+
 
                 {/* Gratis Dropdown */}
                 <div ref={gratisRef} className="relative">
@@ -124,7 +124,7 @@ export const Header: React.FC = () => {
               </div>
             ) : (
               <button onClick={handleAuthClick} className="bg-foreground text-background px-4 py-2 font-display text-xs shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all">
-                Member Login
+                Login / Daftar
               </button>
             )}
           </nav>
@@ -146,7 +146,7 @@ export const Header: React.FC = () => {
               <>
                 <button onClick={() => scrollToOrNavigate('method')} className="block w-full text-left font-display text-sm uppercase py-2">Metode</button>
                 <button onClick={() => scrollToOrNavigate('features')} className="block w-full text-left font-display text-sm uppercase py-2">Fitur</button>
-                <button onClick={() => scrollToOrNavigate('value')} className="block w-full text-left font-display text-sm uppercase py-2">Harga</button>
+
 
                 {/* Mobile Gratis Section */}
                 <div className="border-t-2 border-foreground pt-3 mt-3">
@@ -180,7 +180,7 @@ export const Header: React.FC = () => {
               </>
             ) : (
               <button onClick={handleAuthClick} className="w-full bg-foreground text-background py-3 font-display text-sm uppercase shadow-neoSm">
-                Member Login
+                Login / Daftar
               </button>
             )}
           </div>

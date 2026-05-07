@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from '@
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/contexts/AuthContext';
-import { Eye, EyeOff, ArrowRight, Loader2, Mail, Lock, User, X, Phone, CheckCircle, FileSearch, BookOpen, Lightbulb } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight, Loader2, Mail, Lock, User, X, CheckCircle, LayoutDashboard } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,7 +20,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange, defaul
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
   const [honeypot, setHoneypot] = useState('');
   
   const [showPassword, setShowPassword] = useState(false);
@@ -40,7 +39,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange, defaul
     setEmail('');
     setPassword('');
     setFullName('');
-    setPhone('');
     setHoneypot('');
     setShowPassword(false);
   };
@@ -81,10 +79,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange, defaul
       return;
     }
     setLoading(true);
-    const { error } = await signUp(email, password, fullName, phone || undefined);
+    const { error, session } = await signUp(email, password, fullName);
     setLoading(false);
     if (error) {
       toast({ title: 'Registrasi gagal', description: error, variant: 'destructive' });
+    } else if (session) {
+      toast({ title: 'Akun berhasil dibuat!' });
+      onOpenChange(false);
+      navigate('/dashboard');
     } else {
       setView('success');
     }
@@ -138,13 +140,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange, defaul
             <div className="p-6">
               <DialogHeader className="mb-6">
                 <DialogTitle className="font-display text-2xl uppercase">
-                  {view === 'login' && 'Member Login'}
-                  {view === 'register' && 'Daftar Akun'}
+                  {view === 'login' && 'Login'}
+                  {view === 'register' && 'Daftar Akun Gratis'}
                   {view === 'forgot' && 'Reset Password'}
                 </DialogTitle>
                 {view === 'register' && (
                   <p className="font-body text-xs text-muted-foreground mt-1">
-                    Daftar gratis, lalu hubungi admin untuk aktivasi setelah pembayaran.
+                    Daftar gratis, langsung akses semua fitur. Tanpa aktivasi.
                   </p>
                 )}
               </DialogHeader>
@@ -194,13 +196,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange, defaul
                   </div>
                   <div>
                     <Label className="font-display text-xs uppercase flex items-center gap-2 mb-2">
-                      <Phone size={14} /> No. WhatsApp
-                    </Label>
-                    <Input type="tel" required value={phone} onChange={(e) => setPhone(e.target.value)} className="border-2 border-foreground bg-card font-body shadow-neoSm focus:shadow-none focus:translate-x-[2px] focus:translate-y-[2px] transition-all" placeholder="08xxxxxxxxxx" />
-                    <p className="text-[10px] font-body text-muted-foreground mt-1">Untuk verifikasi akun & info penting</p>
-                  </div>
-                  <div>
-                    <Label className="font-display text-xs uppercase flex items-center gap-2 mb-2">
                       <Lock size={14} /> Password
                     </Label>
                     <div className="relative">
@@ -211,8 +206,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange, defaul
                     </div>
                     <p className="text-[10px] font-body text-muted-foreground mt-1">Min 8 karakter, 1 huruf besar, 1 angka</p>
                   </div>
-                  <button type="submit" disabled={loading} className="w-full bg-neoPink border-4 border-foreground py-3 font-display uppercase shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all disabled:opacity-50 flex items-center justify-center gap-2">
-                    {loading ? <Loader2 size={18} className="animate-spin" /> : <><span>Daftar Sekarang</span><ArrowRight size={18} /></>}
+                  <button type="submit" disabled={loading} className="w-full bg-neoLime border-4 border-foreground py-3 font-display uppercase shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all disabled:opacity-50 flex items-center justify-center gap-2">
+                    {loading ? <Loader2 size={18} className="animate-spin" /> : <><span>Daftar Gratis</span><ArrowRight size={18} /></>}
                   </button>
                   <p className="text-center text-xs font-body text-muted-foreground mt-3">
                     Sudah punya akun?{' '}
@@ -248,12 +243,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({ open, onOpenChange, defaul
 
 /* ─── Post-Register Success Screen ─── */
 const SuccessScreen: React.FC<{ onNavigate: (path: string) => void; onClose: () => void }> = ({ onNavigate, onClose }) => {
-  const freeTools = [
-    { label: 'Cek Skor CV Gratis', path: '/gratis/cek-cv', icon: FileSearch, color: 'bg-neoLime' },
-    { label: 'Baca Tips Cover Letter', path: '/tips/cover-letter', icon: BookOpen, color: 'bg-neoCyan' },
-    { label: 'Baca Tips CV ATS', path: '/tips/cv-ats-friendly', icon: Lightbulb, color: 'bg-neoPink' },
-  ];
-
   return (
     <div className="p-6 text-center">
       <div className="inline-flex items-center justify-center w-16 h-16 bg-neoLime border-4 border-foreground mb-4">
@@ -261,20 +250,23 @@ const SuccessScreen: React.FC<{ onNavigate: (path: string) => void; onClose: () 
       </div>
       <h2 className="font-display text-2xl uppercase mb-2">Akun Berhasil Dibuat!</h2>
       <p className="font-body text-sm text-muted-foreground mb-6">
-        Cek email kamu untuk verifikasi.<br />
-        Sementara itu, coba fitur gratis ini:
+        Akun kamu sudah siap.<br />
+        Silakan login untuk mengakses semua fitur secara gratis!
       </p>
       <div className="space-y-3 mb-6">
-        {freeTools.map((tool) => (
-          <button
-            key={tool.path}
-            onClick={() => onNavigate(tool.path)}
-            className={`w-full ${tool.color} border-4 border-foreground py-3 px-4 font-display text-sm uppercase shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center justify-center gap-2`}
-          >
-            <tool.icon size={16} />
-            {tool.label}
-          </button>
-        ))}
+        <button
+          onClick={() => onNavigate('/dashboard')}
+          className="w-full bg-neoLime border-4 border-foreground py-3 px-4 font-display text-sm uppercase shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center justify-center gap-2"
+        >
+          <LayoutDashboard size={16} />
+          Buka Dashboard
+        </button>
+        <button
+          onClick={() => onNavigate('/gratis/cek-cv')}
+          className="w-full bg-neoCyan border-4 border-foreground py-3 px-4 font-display text-sm uppercase shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all flex items-center justify-center gap-2"
+        >
+          Cek Skor CV Gratis
+        </button>
       </div>
       <button onClick={onClose} className="font-body text-xs text-muted-foreground underline hover:text-foreground transition-colors">
         Tutup

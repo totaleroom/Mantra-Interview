@@ -16,21 +16,6 @@ const reviews = [
   highlight: "Lolos User Interview"
 },
 {
-  name: "Fajar, 26",
-  role: "Sales Otomotif",
-  text: "Iseng beli karena murah. Ternyata trik 'Deep Research' perusahaan pake AI-nya daging banget. Gue jadi tau pain point perusahaan sebelum ngelamar. Ini cheat code sih.",
-  highlight: "Riset 5 Menit Beres"
-},
-{
-  name: "Sisi, 23",
-  role: "Fresh Grad Hukum",
-  text: "Sempet skeptis, kirain isinya cuma prompt ChatGPT biasa. Ternyata strukturnya rapi banget day-by-day. Ga pusing mikir mau mulai darimana. Worth every rupiah.",
-  highlight: "Struktur Jelas"
-}];
-
-
-const blurredReviews = [
-{
   name: "Aldi, 25",
   role: "Fresh Grad Teknik",
   text: "Gue fresh grad yang ngelamar udah 3 bulan ga ada panggilan. Setelah revisi CV pake AI scoring dan improve bullet points, langsung dipanggil 4 perusahaan dalam 2 minggu.",
@@ -41,7 +26,10 @@ const blurredReviews = [
   role: "CS -> Marketing",
   text: "Dari customer service mau pindah ke marketing. Pake prompt LinkedIn optimizer, profil gue langsung dilirik recruiter. Dapet role marketing dengan gaji naik 40%.",
   highlight: "Gaji Naik 40%"
-},
+}];
+
+
+const blurredReviews = [
 {
   name: "Rizky, 23",
   role: "Bootcamp Graduate",
@@ -53,6 +41,18 @@ const blurredReviews = [
   role: "Gap Year 1 Tahun",
   text: "Setahun gap year bikin gue minder. Modul mindset reset-nya ngebantu banget framing pengalaman gap year jadi positif di interview. Sekarang udah balik ke track.",
   highlight: "Balik ke Track"
+},
+{
+  name: "Arif, 26",
+  role: "Mechanical Engineer",
+  text: "CV gue udah rapi tapi ga pernah lolos ATS. Setelah pake CV Checker dan ikutin rekomendasi AI-nya, akhirnya dapet panggilan interview pertama dalam 2 tahun.",
+  highlight: "Interview Pertama"
+},
+{
+  name: "Luna, 23",
+  role: "Fresh Grad Komunikasi",
+  text: "Interview simulator-nya bikin gue latihan jawab pertanyaan yang ternyata beneran keluar pas interview. Confidence naik drastis karena udah prepared banget.",
+  highlight: "Confidence Naik"
 }];
 
 
@@ -62,7 +62,7 @@ const ReviewCard = ({ r, i, className = '' }: {r: typeof reviews[0];i: number;cl
       <div className="flex gap-0.5 text-neoPink">
         {[...Array(5)].map((_, j) => <Star key={j} size={18} fill="currentColor" strokeWidth={2} className="text-foreground" />)}
       </div>
-      <div className="bg-gray-100 px-2 py-1 rounded border border-foreground text-[10px] font-bold uppercase tracking-wide">Verified Buyer</div>
+      <div className="bg-neoLime/20 px-2 py-1 rounded border border-foreground text-[10px] font-bold uppercase tracking-wide">Verified User</div>
     </div>
     
     <p className="font-body font-medium text-lg mb-6 leading-relaxed">"{r.text}"</p>
@@ -130,7 +130,7 @@ export const Testimonials: React.FC = () => {
           {/* Badge */}
           <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 pointer-events-auto">
             <span className="bg-foreground text-background font-display text-xs md:text-sm uppercase px-4 py-2 border-2 border-foreground shadow-neoSm">
-              Dan 800+ review lainnya...
+              Dan 800+ user lainnya...
             </span>
           </div>
         </div>

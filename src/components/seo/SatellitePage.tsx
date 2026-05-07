@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Lock, Minus, Crown, User, Clock } from 'lucide-react';
-import { openCheckout } from '@/lib/links';
+
 import { Header } from '@/components/landing/Header';
 import { Footer } from '@/components/landing/Footer';
 import { SEOHead } from './SEOHead';
@@ -34,13 +34,13 @@ const FreeVsMemberComparison: React.FC<{ items: { free: string; member: string }
       </div>
     ))}
     <div className="p-4 bg-foreground text-center">
-      <p className="font-body text-xs text-primary-foreground/60 mb-2">🔥 1.247 orang sudah upgrade bulan ini</p>
-      <button
-        onClick={openCheckout}
+      <p className="font-body text-xs text-primary-foreground/60 mb-2">🔥 1.247 orang sudah pakai MantraSkill</p>
+      <Link
+        to="/dashboard"
         className="inline-flex items-center gap-2 bg-neoLime text-foreground font-display text-xs uppercase px-5 py-2.5 border-2 border-foreground shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
       >
-        Upgrade sekarang — mulai IDR 148K <ArrowRight size={14} />
-      </button>
+        Daftar Gratis — Akses Semua Fitur <ArrowRight size={14} />
+      </Link>
     </div>
   </div>
 );
@@ -185,12 +185,12 @@ const SatellitePage: React.FC<SatellitePageProps> = ({ data }) => {
                 ))}
               </div>
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-card via-card/95 to-transparent flex flex-col items-center justify-end pb-5">
-                <button
-                  onClick={openCheckout}
+                <Link
+                  to="/dashboard"
                   className="inline-flex items-center gap-2 bg-foreground text-primary-foreground font-display text-xs uppercase px-5 py-2.5 border-2 border-foreground shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
                 >
-                  Buka dengan MantraSkill Member <ArrowRight size={14} />
-                </button>
+                  Daftar Gratis untuk Akses Semua Resource <ArrowRight size={14} />
+                </Link>
               </div>
             </div>
           )}
@@ -204,12 +204,12 @@ const SatellitePage: React.FC<SatellitePageProps> = ({ data }) => {
               Jangan cuma baca tips — gunakan AI tools MantraSkill untuk langsung membuat CV, latihan interview, dan optimasi LinkedIn kamu.
             </p>
             <div className="flex flex-wrap gap-3">
-              <button
-                onClick={openCheckout}
+              <Link
+                to="/dashboard"
                 className="inline-flex items-center gap-2 bg-neoLime text-foreground font-display text-sm uppercase px-6 py-3 border-2 border-foreground shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
               >
-                Mulai Sekarang <ArrowRight size={16} />
-              </button>
+                Daftar Gratis <ArrowRight size={16} />
+              </Link>
               <Link
                 to="/gratis/cek-cv"
                 className="inline-flex items-center gap-2 bg-card text-foreground font-display text-sm uppercase px-6 py-3 border-2 border-foreground shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"

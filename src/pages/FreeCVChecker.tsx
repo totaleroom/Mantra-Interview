@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, AlertTriangle, XCircle, FileText, Lock, Brain, Search, Sparkles, Minus, Crown, Upload, X, Loader2 } from 'lucide-react';
-import { openCheckout } from '@/lib/links';
+import { useAuth } from '@/contexts/AuthContext';
 import { Header } from '@/components/landing/Header';
 import { Footer } from '@/components/landing/Footer';
 import { SEOHead } from '@/components/seo/SEOHead';
@@ -11,76 +11,34 @@ import { Progress } from '@/components/ui/progress';
 import { useToast } from '@/hooks/use-toast';
 import { supabase } from '@/integrations/supabase/client';
 
+import { useDocumentPipeline, type PipelineResult } from '@/lib/document-pipeline';
+
 const MAX_FILE_SIZE = 2 * 1024 * 1024; // 2MB
-
-/* ── File Parser Helpers ── */
-async function parsePDF(file: File): Promise<string> {
-  const pdfjsLib = await import('pdfjs-dist');
-  pdfjsLib.GlobalWorkerOptions.workerSrc = '';
-  const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
-  const pages: string[] = [];
-  for (let i = 1; i <= pdf.numPages; i++) {
-    const page = await pdf.getPage(i);
-    const content = await page.getTextContent();
-    pages.push(content.items.map((item: any) => item.str).join(' '));
-  }
-  return pages.join('\n\n');
-}
-
-async function parseDOCX(file: File): Promise<string> {
-  const mammoth = await import('mammoth');
-  const arrayBuffer = await file.arrayBuffer();
-  const result = await mammoth.extractRawText({ arrayBuffer });
-  return result.value;
-}
 
 /* ── Upload Area Component ── */
 const FileUploadArea: React.FC<{
-  onTextExtracted: (text: string) => void;
+  onResult: (result: PipelineResult) => void;
   uploadedFile: { name: string; size: number } | null;
   setUploadedFile: (f: { name: string; size: number } | null) => void;
-}> = ({ onTextExtracted, uploadedFile, setUploadedFile }) => {
+}> = ({ onResult, uploadedFile, setUploadedFile }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [parsing, setParsing] = useState(false);
+  const { processDocument, isProcessing } = useDocumentPipeline();
   const [dragOver, setDragOver] = useState(false);
-  const { toast } = useToast();
 
-  const processFile = useCallback(async (file: File) => {
-    if (file.size > MAX_FILE_SIZE) {
-      toast({ title: 'File terlalu besar', description: 'Maksimal 2MB. Coba kompres dulu.', variant: 'destructive' });
-      return;
-    }
-    const ext = file.name.split('.').pop()?.toLowerCase();
-    if (!['pdf', 'docx'].includes(ext || '')) {
-      toast({ title: 'Format tidak didukung', description: 'Hanya PDF dan DOCX yang bisa diproses.', variant: 'destructive' });
-      return;
-    }
-
-    setParsing(true);
-    try {
-      const text = ext === 'pdf' ? await parsePDF(file) : await parseDOCX(file);
-      if (text.trim().length < 20) {
-        toast({ title: 'Gagal extract teks', description: 'File mungkin berupa scan/gambar. Coba paste manual.', variant: 'destructive' });
-        return;
-      }
-      onTextExtracted(text);
+  const handleFile = useCallback(async (file: File) => {
+    const result = await processDocument(file);
+    if (result) {
+      onResult(result);
       setUploadedFile({ name: file.name, size: file.size });
-      toast({ title: 'File berhasil diproses! ✅' });
-    } catch (err) {
-      console.error('Parse error:', err);
-      toast({ title: 'Gagal membaca file', description: 'Coba paste teks CV secara manual.', variant: 'destructive' });
-    } finally {
-      setParsing(false);
     }
-  }, [onTextExtracted, setUploadedFile, toast]);
+  }, [processDocument, onResult, setUploadedFile]);
 
   const handleDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();
     setDragOver(false);
     const file = e.dataTransfer.files[0];
-    if (file) processFile(file);
-  }, [processFile]);
+    if (file) handleFile(file);
+  }, [handleFile]);
 
   if (uploadedFile) {
     return (
@@ -105,20 +63,20 @@ const FileUploadArea: React.FC<{
       onClick={() => inputRef.current?.click()}
       className={`border-2 border-dashed border-foreground p-5 mb-3 text-center cursor-pointer transition-colors ${
         dragOver ? 'bg-neoLime/20' : 'hover:bg-muted/50'
-      } ${parsing ? 'pointer-events-none opacity-60' : ''}`}
+      } ${isProcessing ? 'pointer-events-none opacity-60' : ''}`}
     >
       <input
         ref={inputRef}
         type="file"
-        accept=".pdf,.docx"
+        accept=".pdf,.docx,.txt"
         className="hidden"
         onChange={(e) => {
           const file = e.target.files?.[0];
-          if (file) processFile(file);
+          if (file) handleFile(file);
           e.target.value = '';
         }}
       />
-      {parsing ? (
+      {isProcessing ? (
         <div className="flex items-center justify-center gap-2">
           <Loader2 size={18} className="animate-spin" />
           <span className="font-display text-xs uppercase">Membaca file...</span>
@@ -126,7 +84,7 @@ const FileUploadArea: React.FC<{
       ) : (
         <>
           <Upload size={22} className="mx-auto mb-2 text-muted-foreground" />
-          <p className="font-display text-xs uppercase">Upload CV (PDF / DOCX)</p>
+          <p className="font-display text-xs uppercase">Upload CV (PDF / DOCX / TXT)</p>
           <p className="font-body text-[10px] text-muted-foreground mt-1">Drag & drop atau klik · Max 2MB · File tidak di-upload ke server</p>
         </>
       )}
@@ -147,10 +105,9 @@ const AIInsightCard: React.FC<{ insight: string; title: string; icon: React.Reac
         <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-card via-card/90 to-transparent flex flex-col items-center justify-end pb-4">
           <Lock size={20} className="text-muted-foreground mb-2" />
           <button
-            onClick={openCheckout}
             className="inline-flex items-center gap-2 bg-foreground text-primary-foreground font-display text-[10px] uppercase px-4 py-2 border-2 border-foreground shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
           >
-            Buka dengan MantraSkill <ArrowRight size={12} />
+            <Link to="/dashboard/cv-checker">Daftar Gratis untuk Analisis Lengkap <ArrowRight size={12} /></Link>
           </button>
         </div>
       </>
@@ -175,10 +132,9 @@ const BlurredInsight: React.FC<{ title: string; teaserLine: string; icon: React.
     <div className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-card via-card/90 to-transparent flex flex-col items-center justify-end pb-4">
       <Lock size={20} className="text-muted-foreground mb-2" />
       <button
-        onClick={openCheckout}
         className="inline-flex items-center gap-2 bg-foreground text-primary-foreground font-display text-[10px] uppercase px-4 py-2 border-2 border-foreground shadow-neoSm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px] transition-all"
       >
-        Buka dengan MantraSkill <ArrowRight size={12} />
+        <Link to="/dashboard/cv-checker">Daftar Gratis untuk Analisis Lengkap <ArrowRight size={12} /></Link>
       </button>
     </div>
   </div>
@@ -367,7 +323,7 @@ const FreeCVChecker = () => {
           <div className="border-4 border-foreground bg-card shadow-neoLg p-4 md:p-6 mb-8">
             {/* File Upload Area */}
             <FileUploadArea
-              onTextExtracted={(text) => setCvText(text)}
+              onResult={(res) => setCvText(res.cleanText)}
               uploadedFile={uploadedFile}
               setUploadedFile={setUploadedFile}
             />
@@ -453,13 +409,12 @@ const FreeCVChecker = () => {
                   </div>
                 ))}
                 <div className="p-4 bg-foreground text-center">
-                  <p className="font-body text-xs text-primary-foreground/60 mb-2">🔥 850+ orang udah upgrade bulan ini</p>
+                  <p className="font-body text-xs text-primary-foreground/60 mb-2">🔥 850+ orang udah pakai MantraSkill</p>
                   <Link
-                    to="/"
-                    onClick={(e) => { e.preventDefault(); openCheckout(); }}
+                    to="/dashboard/cv-checker"
                     className="inline-flex items-center gap-2 bg-neoLime text-foreground font-display text-xs uppercase px-5 py-2.5 border-2 border-foreground shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
                   >
-                    Upgrade — mulai IDR 148K <ArrowRight size={14} />
+                    Daftar Gratis — Akses Semua Fitur <ArrowRight size={14} />
                   </Link>
                 </div>
               </div>
@@ -523,14 +478,14 @@ const FreeCVChecker = () => {
                   MantraSkill punya AI CV Builder yang otomatis membuat CV ATS-friendly dengan skor 90+. Plus LinkedIn optimizer, cover letter generator, dan simulasi interview AI.
                 </p>
                 <p className="font-body text-xs text-neoLime/70 mb-4">
-                  🔥 850+ orang udah upgrade bulan ini
+                  🔥 850+ orang udah pakai MantraSkill
                 </p>
-                <button
-                  onClick={openCheckout}
+                <Link
+                  to="/dashboard/cv-checker"
                   className="inline-flex items-center gap-2 bg-neoLime text-foreground font-display text-sm uppercase px-6 py-3 border-2 border-foreground shadow-neo hover:shadow-none hover:translate-x-[4px] hover:translate-y-[4px] transition-all"
                 >
-                  Coba MantraSkill — Mulai IDR 148K <ArrowRight size={16} />
-                </button>
+                  Daftar Gratis — Akses Semua Fitur <ArrowRight size={16} />
+                </Link>
               </div>
             </div>
           )}

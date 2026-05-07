@@ -49,8 +49,7 @@ npm run dev
 
 | File | Audience | Isi |
 |------|----------|-----|
-| [`PRD.md`](./PRD.md) | Product Owner, Stakeholder | Spesifikasi fitur, user journey, design system |
-| [`RAG.md`](./RAG.md) | Developer, AI Agent | Arsitektur teknis, DB schema, edge functions, setup guide |
+| [`DOCS.md`](./DOCS.md) | Developer, AI Agent, Stakeholder | Product spec, arsitektur, DB schema, edge functions, design system, extension cookbook |
 | [`ADMIN_GUIDE.md`](./ADMIN_GUIDE.md) | Admin | Cara jadi admin, bulk generate key, monitoring user, satellite pages |
 
 ## 🚢 Deployment
