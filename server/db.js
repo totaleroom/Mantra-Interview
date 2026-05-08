@@ -1,30 +1,49 @@
-const fs = require('fs').promises;
-const path = require('path');
+const { Pool } = require('pg');
+require('dotenv').config();
 
-const DB_FILE = path.join(__dirname, 'database.json');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+});
 
-async function getDbData() {
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
+});
+
+async function initDb() {
+  const client = await pool.connect();
   try {
-    const data = await fs.readFile(DB_FILE, 'utf8');
-    return JSON.parse(data);
-  } catch (err) {
-    if (err.code === 'ENOENT') {
-      const initialData = { users: [], profiles: [] };
-      await saveDbData(initialData);
-      return initialData;
-    }
-    throw err;
+    await client.query(`
+      CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+      CREATE TABLE IF NOT EXISTS users (
+          id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+          email VARCHAR(255) UNIQUE NOT NULL,
+          password_hash VARCHAR(255) NOT NULL,
+          created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+      );
+
+      CREATE TABLE IF NOT EXISTS profiles (
+          id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+          user_id UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+          full_name VARCHAR(255),
+          module_progress JSONB DEFAULT '{}'::jsonb,
+          created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+          UNIQUE(user_id)
+      );
+
+      CREATE INDEX IF NOT EXISTS idx_profiles_user_id ON profiles(user_id);
+    `);
+    console.log('Database schema initialized.');
+  } catch (error) {
+    console.error('Failed to initialize schema', error);
+  } finally {
+    client.release();
   }
 }
 
-async function saveDbData(data) {
-  await fs.writeFile(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
-}
-
-// Ensure it's created
-getDbData().catch(err => console.error(err));
+initDb();
 
 module.exports = {
-  getDbData,
-  saveDbData
+  query: (text, params) => pool.query(text, params),
 };

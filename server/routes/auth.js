@@ -1,8 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { v4: uuidv4 } = require('uuid');
-const { getDbData, saveDbData } = require('../db');
+const db = require('../db');
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_key';
@@ -12,11 +11,9 @@ router.post('/register', async (req, res) => {
   const { email, password, full_name } = req.body;
   
   try {
-    const db = await getDbData();
-    
     // Check if user exists
-    const existingUser = db.users.find(u => u.email === email);
-    if (existingUser) {
+    const existingUser = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+    if (existingUser.rows.length > 0) {
       return res.status(400).json({ error: 'Email sudah terdaftar' });
     }
 
@@ -24,33 +21,24 @@ router.post('/register', async (req, res) => {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    const userId = uuidv4();
-    const profileId = uuidv4();
-
     // Insert user
-    db.users.push({
-      id: userId,
-      email,
-      password_hash: hashedPassword,
-      created_at: new Date().toISOString()
-    });
+    const userResult = await db.query(
+      'INSERT INTO users (email, password_hash) VALUES ($1, $2) RETURNING id, email',
+      [email, hashedPassword]
+    );
+    const user = userResult.rows[0];
 
     // Create profile
-    db.profiles.push({
-      id: profileId,
-      user_id: userId,
-      full_name,
-      module_progress: '{}',
-      created_at: new Date().toISOString()
-    });
-
-    await saveDbData(db);
+    await db.query(
+      'INSERT INTO profiles (user_id, full_name, module_progress) VALUES ($1, $2, $3)',
+      [user.id, full_name, '{}']
+    );
 
     // Generate token
-    const token = jwt.sign({ id: userId, email: email }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
 
     res.status(201).json({ 
-      user: { id: userId, email: email }, 
+      user: { id: user.id, email: user.email }, 
       token 
     });
   } catch (err) {
@@ -64,8 +52,8 @@ router.post('/login', async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const db = await getDbData();
-    const user = db.users.find(u => u.email === email);
+    const userResult = await db.query('SELECT * FROM users WHERE email = $1', [email]);
+    const user = userResult.rows[0];
 
     if (!user) {
       return res.status(400).json({ error: 'Email atau password salah' });

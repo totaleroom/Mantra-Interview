@@ -1,29 +1,37 @@
-# ── Stage 1: Build ──
-FROM node:20-alpine AS builder
+# Stage 1: Build the React Application
+FROM node:20-alpine AS build
+
 WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci
+# Copy root package files
+COPY package.json package-lock.json* ./
+RUN npm install
 
+# Copy source code and build frontend
 COPY . .
-
-# Build args are injected at build time via --build-arg
-ARG VITE_SUPABASE_URL
-ARG VITE_SUPABASE_PUBLISHABLE_KEY
-ARG VITE_SUPABASE_PROJECT_ID
-
 RUN npm run build
 
-# ── Stage 2: Serve ──
-FROM nginx:1.27-alpine
+# Stage 2: Setup Express Backend & Serve Frontend
+FROM node:20-alpine
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+WORKDIR /app
 
-# Copy built assets
-COPY --from=builder /app/dist /usr/share/nginx/html
+# Copy backend files
+COPY server/package.json server/package-lock.json* ./server/
+RUN cd server && npm install --production
 
-# Cloud Run requires the container to listen on $PORT (default 8080)
+# Copy backend source
+COPY server/ ./server/
+
+# Copy built frontend static files from stage 1
+COPY --from=build /app/dist ./server/public
+
+# Configure environment
+ENV NODE_ENV=production
+ENV PORT=8080
+
+# Expose port (Google Cloud Run expects traffic on port 8080 by default)
 EXPOSE 8080
 
-CMD ["nginx", "-g", "daemon off;"]
+# Start the Express server
+CMD ["node", "server/server.js"]
