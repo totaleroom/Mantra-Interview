@@ -419,6 +419,391 @@
       "category": "Research & Riset",
       "prompt_text": "Berikan saya panduan mendalam tentang best practice terbaru untuk [TOPIK SPESIFIK] dalam konteks Research & Riset.",
       "sort_order": 59
+    },
+    {
+      "id": "6f7f1aaa-e3ae-4ef5-b3e3-edaccfeed565",
+      "category": "Foto & Visual",
+      "title": "Headshot Profesional (LinkedIn-style)",
+      "prompt_text": "Ubah foto ini menjadi foto headshot profesional bergaya LinkedIn. Pastikan: pencahayaan merata dari depan, background blur halus atau polos, ekspresi percaya diri namun ramah, warna kulit natural, baju terlihat rapi dan profesional. Hasil akhir harus terlihat seperti foto yang diambil fotografer profesional di studio.",
+      "sort_order": 1
+    },
+    {
+      "id": "0e3804ee-5922-4c17-9402-dd6503a687d1",
+      "category": "Foto & Visual",
+      "title": "Ganti Background Warna Solid",
+      "prompt_text": "Hapus background foto ini dan ganti dengan warna solid [tulis warnamu, misal: putih bersih / abu-abu muda / biru navy]. Pastikan tepi subjek terpotong dengan bersih tanpa artefak atau batas yang kasar. Pertahankan pencahayaan dan warna kulit subjek secara natural.",
+      "sort_order": 2
+    },
+    {
+      "id": "1c61586d-5902-4629-91a8-17ddd96b7b74",
+      "category": "Foto & Visual",
+      "title": "Background Kantor Modern",
+      "prompt_text": "Edit foto ini agar subjek tampak berada di depan latar belakang kantor modern yang bersih — bisa berupa ruang kerja minimalis, dinding brick putih, atau jendela besar dengan cahaya alami. Blurkan background (bokeh) agar subjek tetap menjadi fokus utama. Hasilnya harus terlihat natural, bukan composite yang dipaksakan.",
+      "sort_order": 3
+    },
+    {
+      "id": "a1175aef-24c5-4b2b-a549-67f686008638",
+      "category": "Foto & Visual",
+      "title": "Upgrade Pakaian ke Formal",
+      "prompt_text": "Edit pakaian pada foto ini agar terlihat mengenakan [pilih: jas hitam profesional / kemeja putih formal / blazer navy] yang rapi. Pertahankan wajah, pose, dan background asli. Pastikan tekstur dan lipatan pakaian terlihat natural, bukan seperti kolase.",
+      "sort_order": 4
+    },
+    {
+      "id": "b57a3de9-85f3-473b-8f35-848709c514d5",
+      "category": "Foto & Visual",
+      "title": "Background Gradient Elegan",
+      "prompt_text": "Hapus background foto ini dan ganti dengan gradient elegan: [pilih kombinasi warna, misal: biru tua ke biru muda / putih ke abu-abu / hitam ke abu-abu tua]. Buat gradient mengalir dari sudut atas ke bawah. Pastikan lighting pada wajah konsisten dengan background baru.",
+      "sort_order": 5
+    },
+    {
+      "id": "4b4b7c57-9a80-458d-a863-d80c1027d3f5",
+      "category": "Foto & Visual",
+      "title": "Foto Corporate untuk Website",
+      "prompt_text": "Transform foto ini menjadi foto profil bergaya corporate yang cocok untuk website perusahaan atau halaman Tim Kami. Gaya: formal, bersih, profesional. Background: warna solid atau gradient perusahaan. Pencahayaan: studio lighting yang merata. Ekspresi: profesional dan approachable.",
+      "sort_order": 6
+    },
+    {
+      "id": "007a4c8d-220b-4489-9bc7-53c109e000e3",
+      "category": "Foto & Visual",
+      "title": "Perbaikan Pencahayaan Profesional",
+      "prompt_text": "Edit foto ini dengan koreksi pencahayaan profesional: hilangkan bayangan di wajah, ratakan eksposur, tambahkan soft fill light dari sisi, dan tingkatkan ketajaman mata agar lebih hidup. Pertahankan warna kulit natural — jangan terlalu terang atau putih. Hasil akhir harus tampak seperti foto diambil dengan lighting profesional.",
+      "sort_order": 7
+    },
+    {
+      "id": "da417170-b37c-4a91-8d29-9c73086e46c3",
+      "category": "Foto & Visual",
+      "title": "Variasi Foto untuk Multi-Platform",
+      "prompt_text": "Berdasarkan foto ini, buat panduan editing untuk 3 variasi foto profil yang berbeda: (1) LinkedIn — formal, background biru/abu/putih, cropping kepala hingga bahu; (2) CV — lebih ketat, background putih bersih, ekspresi sangat profesional; (3) Email signature — square crop, background warna brand. Berikan instruksi editing spesifik untuk masing-masing.",
+      "sort_order": 8
+    },
+    {
+      "id": "8ba04d4e-3e15-4127-8511-116a56d4fe89",
+      "category": "Psikotes",
+      "title": "Latihan Soal Logika Verbal (20 Soal)",
+      "prompt_text": "Buat 20 soal latihan tes logika verbal setara TIKI atau tes psikologi kerja di Indonesia. Variasikan tipe soal: analogi kata, sinonim, antonim, dan pemahaman paragraf. Sertakan kunci jawaban dan penjelasan singkat untuk setiap soal. Tingkat kesulitan: menengah ke atas.",
+      "sort_order": 9
+    },
+    {
+      "id": "5ea04df8-326e-4b26-b614-c2bd6815ca7e",
+      "category": "Psikotes",
+      "title": "Strategi Tes Pauli/Kraepelin",
+      "prompt_text": "Jelaskan secara detail cara mengerjakan Tes Pauli (Kraepelin) dengan strategi terbaik untuk mendapat skor tinggi. Sertakan: (1) teknik ritme pengerjaan yang optimal, (2) cara menjaga konsistensi tanpa error, (3) strategi mengatur napas dan fokus, (4) tips menghadapi kelelahan di pertengahan tes, dan (5) contoh latihan yang bisa dilakukan sendiri.",
+      "sort_order": 10
+    },
+    {
+      "id": "4fb19c79-8d86-4e50-9a7a-7850a821d743",
+      "category": "Psikotes",
+      "title": "Latihan Deret Angka & Huruf",
+      "prompt_text": "Buat 30 soal latihan deret angka dan deret huruf untuk persiapan tes psikologi kerja. Variasikan pola: deret aritmatika, geometri, fibonacci, deret dengan pola ganda, dan deret huruf dengan pola lompat. Urutkan dari mudah ke sulit. Sertakan jawaban dan penjelasan pola untuk setiap soal.",
+      "sort_order": 11
+    },
+    {
+      "id": "a7443532-88c5-4271-bfa7-0881aad26e02",
+      "category": "Psikotes",
+      "title": "Simulasi Tes DISC + Analisis",
+      "prompt_text": "Simulasikan tes DISC dengan 28 set pertanyaan pilihan ganda (setiap set pilih 1 kata yang paling menggambarkan diri dan 1 yang paling tidak). Setelah aku menjawab, hitung skor D, I, S, C dan berikan: (1) profil kepribadian dominan saya, (2) kekuatan dan kelemahan dalam pekerjaan, (3) cara terbaik bekerja dalam tim, (4) pekerjaan yang cocok untuk profil ini.",
+      "sort_order": 12
+    },
+    {
+      "id": "70bc26e1-267d-4447-9c2c-fdc50867b7fa",
+      "category": "Psikotes",
+      "title": "Latihan Tes Numerik Cepat",
+      "prompt_text": "Buat 25 soal latihan tes kemampuan numerik untuk psikotes kerja: campuran hitung cepat, persentase, rasio, proporsi, dan soal cerita singkat. Time constraint: maksimal 30 detik per soal. Sertakan strategi shortcut untuk menghitung cepat di setiap tipe soal. Urutkan dari yang paling sering muncul di psikotes perusahaan Indonesia.",
+      "sort_order": 13
+    },
+    {
+      "id": "f443b88f-6a29-4389-9f8f-2083aa5e6a4a",
+      "category": "Psikotes",
+      "title": "Panduan Menjawab TAT",
+      "prompt_text": "Jelaskan cara menjawab Thematic Apperception Test (TAT) dengan baik dalam konteks seleksi kerja. Berikan: (1) struktur cerita yang ideal (awal-tengah-akhir), (2) tema-tema yang positif dan disukai HRD, (3) panjang cerita yang optimal, (4) kata kunci yang menunjukkan motivasi, problem-solving, dan achievement, (5) contoh narasi lengkap untuk 3 gambar TAT yang umum.",
+      "sort_order": 14
+    },
+    {
+      "id": "ed4344c5-63c4-4383-9cfe-335f4d76ee44",
+      "category": "Psikotes",
+      "title": "Simulasi Wawancara Psikologis",
+      "prompt_text": "Simulasikan wawancara psikologis HRD dengan aku. Tanyakan 15 pertanyaan umum yang biasa muncul seperti: ceritakan tentang dirimu, apa kelemahan terbesarmu, bagaimana kamu menghadapi konflik di tempat kerja, di mana kamu melihat dirimu 5 tahun ke depan, dll. Setelah aku menjawab setiap pertanyaan, berikan feedback: apa yang bagus dari jawaban saya dan apa yang perlu diperbaiki.",
+      "sort_order": 15
+    },
+    {
+      "id": "2f141d20-9432-4d08-9feb-5dab7e39a997",
+      "category": "Psikotes",
+      "title": "Strategi MBTI/Big Five yang Strategis",
+      "prompt_text": "Bantu aku mempersiapkan diri untuk tes kepribadian MBTI dan Big Five dalam seleksi kerja untuk posisi [tuliskan posisi yang kamu lamar]. Jelaskan: (1) profil kepribadian yang biasanya dicari untuk posisi ini, (2) cara menjawab secara jujur namun strategis tanpa berbohong, (3) pertanyaan-pertanyaan jebakan yang perlu diwaspadai, (4) konsistensi jawaban yang harus dijaga.",
+      "sort_order": 16
+    },
+    {
+      "id": "36b8d050-a3fa-4ba4-bde9-555a2ee633d5",
+      "category": "Job Search",
+      "title": "Email Lamaran yang Tidak Template",
+      "prompt_text": "Tulis email lamaran kerja ke [nama perusahaan] untuk posisi [nama jabatan]. Background saya: [tuliskan 2-3 poin pengalaman/skill relevan]. Buat email yang: (1) tidak terasa template atau copy-paste, (2) hook pembuka yang langsung menarik perhatian HRD, (3) tunjukkan riset nyata tentang perusahaan, (4) nilai spesifik yang bisa aku berikan, (5) closing yang confident. Panjang: maksimal 200 kata.",
+      "sort_order": 17
+    },
+    {
+      "id": "09ed638e-e6cc-4bb2-b6b3-8d594d6172b0",
+      "category": "Job Search",
+      "title": "Research Perusahaan Pre-Interview",
+      "prompt_text": "Bantu aku riset [nama perusahaan] sebelum interview besok. Aku butuh: (1) bisnis model dan produk/layanan utama mereka, (2) berita terbaru (6 bulan terakhir), (3) kompetitor utama dan posisi mereka di pasar, (4) kultur dan values perusahaan, (5) pertanyaan interview yang mungkin spesifik tentang industri ini, (6) angle cerita tentang kenapa aku mau kerja di sini yang spesifik.",
+      "sort_order": 18
+    },
+    {
+      "id": "576acb80-3278-4df2-a014-08f2a7567390",
+      "category": "Job Search",
+      "title": "10 Pertanyaan Cerdas untuk Interviewer",
+      "prompt_text": "Buat 10 pertanyaan cerdas yang bisa aku tanyakan ke interviewer di akhir sesi interview untuk posisi [nama jabatan] di [nama perusahaan/industri]. Pertanyaan harus: (1) menunjukkan riset mendalam tentang perusahaan, (2) menampilkan ambisi dan orientasi growth, (3) tidak menanyakan hal yang sudah ada di job description, (4) beberapa pertanyaan yang membuat interviewer berpikir.",
+      "sort_order": 19
+    },
+    {
+      "id": "edb24b52-2b88-464e-9eda-f0afa98083d4",
+      "category": "Job Search",
+      "title": "Follow-up Email Post-Interview",
+      "prompt_text": "Tulis follow-up email yang akan aku kirim 24 jam setelah interview untuk posisi [nama jabatan] di [nama perusahaan]. Email harus: (1) berterima kasih tanpa terdengar memelas, (2) reference satu hal spesifik yang dibahas saat interview, (3) reinforce satu nilai unik yang bisa aku berikan, (4) buat CTA yang jelas tapi tidak agresif. Tone: profesional dan confident.",
+      "sort_order": 20
+    },
+    {
+      "id": "db025dd6-8011-42c1-8e3e-f28334dd7c77",
+      "category": "Job Search",
+      "title": "Cold Message ke HRD/Recruiter LinkedIn",
+      "prompt_text": "Tulis cold message LinkedIn ke HRD atau recruiter di [nama perusahaan] untuk menanyakan peluang posisi [nama jabatan]. Buat 3 variasi: (1) jika ada lowongan yang sedang buka, (2) untuk speculative application (tidak ada lowongan terpublikasi), (3) untuk meminta informational interview. Setiap versi maksimal 150 karakter agar tidak terpotong di notifikasi.",
+      "sort_order": 21
+    },
+    {
+      "id": "c3a3b6b5-36fb-49ad-bfa9-7a7d78ee2896",
+      "category": "Job Search",
+      "title": "Script Negosiasi Gaji",
+      "prompt_text": "Aku menerima tawaran gaji [angka tawaran] untuk posisi [nama jabatan]. Target saya adalah [angka target]. Bantu aku dengan: (1) skrip percakapan lengkap untuk counter offer via telepon, (2) argumen berbasis data (market rate, pengalaman, value) yang bisa aku gunakan, (3) cara merespons jika mereka bilang tidak bisa lebih, (4) non-salary benefits yang bisa aku negosiasikan sebagai alternatif.",
+      "sort_order": 22
+    },
+    {
+      "id": "93455dfa-c42a-4a6c-9a18-fc85f34747f3",
+      "category": "Job Search",
+      "title": "Email Penolakan Tawaran yang Sopan",
+      "prompt_text": "Tulis email untuk menolak tawaran kerja dari [nama perusahaan] untuk posisi [nama jabatan] dengan alasan [tuliskan alasanmu: gaji, lokasi, culture fit, dll]. Email harus: (1) sopan dan tetap menghargai waktu interviewer, (2) tidak menutup pintu untuk peluang di masa depan, (3) tidak terlalu detail menjelaskan alasan, (4) menjaga hubungan profesional. Panjang: maksimal 100 kata.",
+      "sort_order": 23
+    },
+    {
+      "id": "e9db4b38-df22-47ba-b35d-3d0a242b0e4c",
+      "category": "Job Search",
+      "title": "LinkedIn Connection Request ke Senior",
+      "prompt_text": "Tulis connection request message LinkedIn ke [senior/mentor/leader] di industri [nama industri] yang belum aku kenal sebelumnya. Variasikan untuk 3 situasi: (1) setelah melihat konten mereka yang menginspirasi, (2) setelah bertemu di event/webinar, (3) cold outreach murni. Setiap pesan maksimal 300 karakter, spesifik, dan tidak terasa spam.",
+      "sort_order": 24
+    },
+    {
+      "id": "c1c89d8d-eefd-4fa1-8a1e-7de47570da6c",
+      "category": "Skill Development",
+      "title": "Roadmap Belajar Skill Baru 3 Bulan",
+      "prompt_text": "Buat roadmap belajar [nama skill/teknologi, misal: Excel lanjutan / Python untuk data / Figma] dari nol sampai level job-ready dalam 3 bulan. Format: minggu per minggu. Sertakan: (1) resources belajar spesifik (nama kursus, channel YouTube, buku), (2) project mini yang bisa jadi portofolio, (3) milestone yang bisa diukur per bulan, (4) cara membuktikan skill ini ke employer.",
+      "sort_order": 25
+    },
+    {
+      "id": "5bab9a81-4cfb-4aac-9651-77f62e52ace2",
+      "category": "Skill Development",
+      "title": "Ide Portofolio Project untuk CV",
+      "prompt_text": "Aku melamar posisi [nama jabatan] di industri [nama industri]. Bantu aku buat 5 ide portofolio project yang: (1) relevan dengan kebutuhan industri saat ini, (2) bisa diselesaikan dalam [1 minggu / 1 bulan], (3) cukup impressive untuk dicantumkan di CV, (4) menunjukkan problem-solving skill nyata. Untuk setiap ide, berikan: judul project, tools yang digunakan, dan cara mempresentasikannya.",
+      "sort_order": 26
+    },
+    {
+      "id": "662fd57e-bbc5-4b7d-9ba6-8afc0ea3c261",
+      "category": "Skill Development",
+      "title": "5 Sertifikasi Paling Bernilai",
+      "prompt_text": "Rekomendasikan 5 sertifikasi profesional yang paling bernilai dan paling dicari employer untuk karier di bidang [nama industri/bidang]. Untuk setiap sertifikasi berikan: (1) nama sertifikasi dan lembaga penerbit, (2) estimasi biaya dan waktu persiapan, (3) tingkat kesulitan (1-5), (4) seberapa sering muncul di job posting, (5) apakah ada versi gratis atau murah untuk belajarnya.",
+      "sort_order": 27
+    },
+    {
+      "id": "5aedbd8d-6fbc-4b57-b7c3-21f36a5fd8c4",
+      "category": "Skill Development",
+      "title": "Latihan Public Speaking 5 Menit",
+      "prompt_text": "Bantu aku mempersiapkan presentasi public speaking 5 menit tentang topik [tuliskan topikmu]. Buat: (1) outline presentasi dengan pembagian waktu (hook 30 detik, isi 3,5 menit, closing 1 menit), (2) skrip lengkap yang bisa aku latih, (3) 3 teknik delivery (eye contact, pace, gesture) yang perlu aku perhatikan, (4) tips mengatasi nervous sebelum tampil, (5) cara membuka yang langsung menarik perhatian.",
+      "sort_order": 28
+    },
+    {
+      "id": "b3c05728-675c-4ee9-af1a-e1f0e5f2e7cb",
+      "category": "Skill Development",
+      "title": "Kurikulum Excel/Sheets untuk Data Analyst",
+      "prompt_text": "Buat kurikulum belajar Excel dan Google Sheets secara komprehensif dari level basic hingga advance untuk persiapan karier sebagai Data Analyst. Bagi menjadi 4 level: (1) Basic — formula dasar, formatting; (2) Intermediate — VLOOKUP, pivot table, conditional formatting; (3) Advanced — macro, power query, data modeling; (4) Expert — dashboard interaktif, automation. Sertakan exercise untuk setiap level.",
+      "sort_order": 29
+    },
+    {
+      "id": "e63b84aa-1d68-4b6a-897a-078860e57645",
+      "category": "Skill Development",
+      "title": "Belajar Programming dengan Project Mini",
+      "prompt_text": "Aku ingin mempelajari [nama bahasa pemrograman: Python/JavaScript/SQL] mulai dari nol. Buat kurikulum 4 minggu dengan pendekatan project-based learning. Setiap minggu ada 1 project mini yang relevan dengan industri kerja nyata. Week 1: konsep dasar. Week 2-3: core concepts dengan project. Week 4: project final yang bisa masuk portofolio. Berikan resources belajar gratis yang spesifik.",
+      "sort_order": 30
+    },
+    {
+      "id": "83a11425-7981-4063-a306-351e7898ce37",
+      "category": "Skill Development",
+      "title": "30 Hari Latihan Business Email Inggris",
+      "prompt_text": "Buat program 30 hari latihan menulis business email formal dalam Bahasa Inggris. Setiap hari ada 1 skenario email yang harus ditulis (dengan konteks yang diberikan). Skenario mencakup: permintaan meeting, follow-up, complaint handling, thank you note, proposal, rejection letter, dll. Untuk setiap hari, berikan juga 1 vocabulary/phrase profesional baru dan tips tata bahasa yang sering salah.",
+      "sort_order": 31
+    },
+    {
+      "id": "63c837ed-b27f-4efa-8f14-b95a9ddf59ab",
+      "category": "Skill Development",
+      "title": "Framework Problem Solving McKinsey/BCG",
+      "prompt_text": "Ajarkan aku teknik problem solving yang digunakan konsultan McKinsey dan BCG, khususnya framework MECE (Mutually Exclusive, Collectively Exhaustive). Sertakan: (1) penjelasan MECE dengan contoh nyata, (2) issue tree / logic tree untuk membreak down masalah kompleks, (3) hypothesis-driven approach dalam analisis, (4) cara membuat executive summary yang clear, (5) latihan kasus dengan soal dan pembahasan.",
+      "sort_order": 32
+    },
+    {
+      "id": "921b2208-d3dd-462c-bc1b-a21f2b3a7513",
+      "category": "Onboarding",
+      "title": "Rencana 30-60-90 Hari Pertama",
+      "prompt_text": "Buat rencana kerja 30-60-90 hari pertama untuk posisi baru saya sebagai [nama jabatan] di [nama perusahaan/industri]. Rencana harus mencakup: Bulan 1 (Learn) — memahami kultur, sistem, dan stakeholder; Bulan 2 (Contribute) — mulai deliver nilai nyata; Bulan 3 (Lead) — inisiatif dan ownership. Berikan target spesifik yang bisa diukur untuk setiap fase.",
+      "sort_order": 33
+    },
+    {
+      "id": "37735a5c-ac1d-4f83-b697-3c21a549598a",
+      "category": "Onboarding",
+      "title": "Email Perkenalan ke Tim Baru",
+      "prompt_text": "Tulis email perkenalan diri ke seluruh tim/departemen di hari pertama kerja saya sebagai [nama jabatan]. Email harus: (1) hangat dan autentik, bukan kaku template, (2) ceritakan sedikit background profesional yang relevan, (3) tunjukkan antusias tapi tidak berlebihan, (4) ajak kolaborasi secara natural, (5) tutup dengan cara yang membuka percakapan lanjutan. Panjang: 150-200 kata.",
+      "sort_order": 34
+    },
+    {
+      "id": "e85279fd-3bad-4c86-8487-ce6e77c57132",
+      "category": "Onboarding",
+      "title": "Panduan Membaca Kontrak Kerja",
+      "prompt_text": "Bantu aku memahami kontrak kerja yang akan aku tanda tangani. Jelaskan poin-poin kritis yang harus aku perhatikan: (1) klausul non-compete dan dampaknya, (2) ketentuan probation dan apa yang terjadi jika gagal, (3) skema bonus dan kondisinya, (4) jam kerja vs overtime, (5) klausul PHK dan uang pesangon, (6) intellectual property atas karya yang dibuat selama bekerja, (7) red flags yang menunjukkan kontrak tidak adil.",
+      "sort_order": 35
+    },
+    {
+      "id": "d1ba156a-b28d-4e2c-b156-b163dc595541",
+      "category": "Onboarding",
+      "title": "Pertanyaan yang Wajib Ditanyakan di Minggu Pertama",
+      "prompt_text": "Buat daftar 20 pertanyaan yang wajib aku tanyakan di minggu pertama kerja sebagai [nama jabatan]. Kategorikan berdasarkan: (1) pertanyaan ke atasan langsung tentang ekspektasi dan prioritas, (2) pertanyaan ke rekan tim tentang workflow dan tools, (3) pertanyaan ke HRD tentang benefit dan prosedur, (4) pertanyaan ke diri sendiri (reflection checklist). Untuk setiap pertanyaan, jelaskan kenapa penting ditanyakan.",
+      "sort_order": 36
+    },
+    {
+      "id": "dca4ea35-e31c-4e3d-a2de-3af6e0b7e3a0",
+      "category": "Onboarding",
+      "title": "Laporan Progress Minggu Pertama",
+      "prompt_text": "Bantu aku menulis laporan progress minggu pertama kerja untuk atasan langsung saya. Aku perlu menyampaikan: [tuliskan apa saja yang sudah kamu lakukan, pelajari, dan temukan di minggu pertama]. Format laporan: (1) ringkasan apa yang sudah dipelajari, (2) progress onboarding, (3) pertanyaan/klarifikasi yang masih dibutuhkan, (4) rencana minggu depan. Tone: proaktif dan organized.",
+      "sort_order": 37
+    },
+    {
+      "id": "58ab6a21-adc6-461f-aa15-0efc454056ab",
+      "category": "Onboarding",
+      "title": "Membangun Kredibilitas dalam 90 Hari",
+      "prompt_text": "Jelaskan strategi membangun credibility dan trust di lingkungan kerja baru dalam 90 hari pertama untuk posisi [nama jabatan]. Sertakan: (1) quick wins yang bisa dilakukan di 30 hari pertama tanpa stepping on toes, (2) cara membangun relationships dengan stakeholder kunci, (3) bagaimana menunjukkan value tanpa terlihat show-off, (4) cara handle jika membuat kesalahan di awal, (5) tanda-tanda kalau kamu sudah diterima oleh tim.",
+      "sort_order": 38
+    },
+    {
+      "id": "bfd8a289-3b6f-4b34-82df-0bad8acdfb22",
+      "category": "Onboarding",
+      "title": "Script Networking di Hari Pertama Kantor",
+      "prompt_text": "Buat script percakapan untuk kenalan dan networking di hari pertama masuk kantor. Skenario: (1) perkenalan ke rekan sebelahan meja, (2) perkenalan saat makan siang dengan tim, (3) perkenalan ke orang senior yang baru pertama bertemu di lift/koridor, (4) percakapan ringan di pantry/dapur kantor. Untuk setiap skenario, berikan: opening line, pertanyaan follow-up yang natural, dan cara menutup percakapan dengan kesan baik.",
+      "sort_order": 39
+    },
+    {
+      "id": "2c1e8f5a-3fa8-41a9-8bd7-97e7137fd80b",
+      "category": "Digital Marketing",
+      "title": "Strategi Konten 30 Hari",
+      "prompt_text": "Buat strategi konten media sosial lengkap selama 30 hari untuk brand [nama brand] di industri [nama industri]. Target audience: [deskripsikan target audiensmu]. Sertakan: (1) content pillars (3-5 tema utama), (2) mix format konten (carousel, video, story, dll) dengan persentase, (3) frekuensi posting per platform, (4) tone of voice yang konsisten, (5) calendar publishing lengkap 30 hari dengan topik spesifik per hari.",
+      "sort_order": 40
+    },
+    {
+      "id": "d9b21013-9967-4cd6-ab75-2d603c2c311d",
+      "category": "Digital Marketing",
+      "title": "5 Variasi Caption Instagram Engaging",
+      "prompt_text": "Tulis 5 variasi caption Instagram yang engaging untuk [deskripsikan produk/konten yang akan diposting]. Setiap variasi harus berbeda pendekatan: (1) storytelling personal, (2) educational/tips, (3) question-based untuk boost comment, (4) social proof/testimonial style, (5) humor atau relatable. Sertakan CTA yang natural di setiap caption dan rekomendasi 10 hashtag yang relevan.",
+      "sort_order": 41
+    },
+    {
+      "id": "88d35b8a-26c1-4a1f-ae9a-23bc47fff626",
+      "category": "Digital Marketing",
+      "title": "Copy Iklan Meta Ads dengan Hook Kuat",
+      "prompt_text": "Buat copy iklan Meta Ads (Facebook/Instagram) untuk [produk/jasa: deskripsikan singkat]. Target audience: [tuliskan demographi dan pain point]. Buat 3 variasi ad copy dengan hook yang berbeda: (1) pain-point hook, (2) curiosity hook, (3) social proof hook. Setiap variasi: primary text (125 karakter), headline (40 karakter), description (30 karakter). Sertakan juga CTA yang paling sesuai.",
+      "sort_order": 42
+    },
+    {
+      "id": "502ef5f0-9ce8-4e84-a08e-a7e476c485b2",
+      "category": "Digital Marketing",
+      "title": "Optimasi Kampanye Facebook Ads yang Tidak Perform",
+      "prompt_text": "Bantu aku menganalisis dan mengoptimasi kampanye Facebook Ads yang tidak perform. Data kampanye saya: [masukkan: CTR, CPC, CPM, ROAS, audience size, budget, dan creative yang digunakan]. Berikan: (1) diagnosis masalah berdasarkan data, (2) prioritas optimasi dari yang paling impactful, (3) testing strategy untuk creative baru, (4) audience refinement yang disarankan, (5) red flags yang harus segera diatasi.",
+      "sort_order": 43
+    },
+    {
+      "id": "6362f664-7aff-4eea-96ef-de24948c0961",
+      "category": "Digital Marketing",
+      "title": "Email Marketing Campaign + A/B Test Subject Line",
+      "prompt_text": "Buat email marketing campaign untuk peluncuran produk baru: [deskripsikan produkmu]. Campaign terdiri dari 3 email: (1) Teaser email 3 hari sebelum launch, (2) Launch email di hari H, (3) Last chance email 2 hari setelah launch. Untuk setiap email: subject line dengan 3 variasi A/B test, preview text, struktur body email, dan CTA. Sertakan estimasi benchmark open rate yang realistis.",
+      "sort_order": 44
+    },
+    {
+      "id": "5b98ea85-5b49-4502-9d0f-9060d0788541",
+      "category": "Digital Marketing",
+      "title": "Script Video TikTok 60 Detik",
+      "prompt_text": "Tulis script video TikTok 60 detik untuk promosi [produk/jasa: deskripsikan singkat] menggunakan teknik storytelling. Struktur: hook 3 detik pertama yang super kuat, masalah yang relatable (10 detik), solusi/produk (30 detik), social proof singkat (10 detik), CTA yang clear (7 detik). Sertakan juga: rekomendasi visual/shot untuk setiap bagian, sound suggestion, dan caption dengan hashtag.",
+      "sort_order": 45
+    },
+    {
+      "id": "a0e4081f-12b1-4d3d-872d-49480201b998",
+      "category": "Digital Marketing",
+      "title": "Content Pillar & Editorial Calendar LinkedIn",
+      "prompt_text": "Bantu aku membangun content pillar dan editorial calendar untuk personal branding di LinkedIn sebagai [tuliskan profesi/expertise kamu]. Tentukan: (1) 4-5 content pillars yang memposisikan aku sebagai expert, (2) mix konten: thought leadership, tips praktis, behind the scenes, engagement post, (3) template posting schedule (berapa kali seminggu, jam berapa), (4) 10 ide konten spesifik untuk bulan pertama yang siap ditulis.",
+      "sort_order": 46
+    },
+    {
+      "id": "6faee7d4-08ea-4d87-a9fd-2d4fda5bc301",
+      "category": "Digital Marketing",
+      "title": "Analisis Kompetitor & Strategi Diferensiasi",
+      "prompt_text": "Analisis strategi konten media sosial kompetitor [nama brand atau deskripsikan kompetitormu] dan rekomendasikan strategi diferensiasi untuk brand-ku [deskripsikan brand-mu]. Analisis kompetitor: (1) tipe konten yang mereka buat, (2) engagement rate rata-rata, (3) tone of voice, (4) kelemahan konten mereka. Rekomendasi diferensiasi: (1) angle unik yang belum digarap kompetitor, (2) format konten yang bisa jadi signature, (3) positioning messaging yang distinctive.",
+      "sort_order": 47
+    },
+    {
+      "id": "04a414c2-5ae2-4d5d-810b-ce8a76ae7914",
+      "category": "Research & Riset",
+      "title": "Riset Industri Komprehensif Indonesia 2025",
+      "prompt_text": "Buat laporan riset komprehensif tentang industri [nama industri] di Indonesia tahun 2025. Cakupan: (1) ukuran pasar dan proyeksi pertumbuhan, (2) pemain utama dan market share, (3) tren teknologi yang mengubah industri, (4) regulasi pemerintah terbaru yang relevan, (5) peluang dan ancaman terbesar (SWOT), (6) skills yang paling dibutuhkan dalam industri ini sekarang, (7) prediksi 3-5 tahun ke depan.",
+      "sort_order": 48
+    },
+    {
+      "id": "e0cefc6f-9eac-489f-9742-7a2693f9236b",
+      "category": "Research & Riset",
+      "title": "Analisis Job Description & Keyword ATS",
+      "prompt_text": "Analisis job description berikut dan identifikasi semua keyword ATS yang wajib ada di CV saya: [paste job description di sini]. Berikan: (1) daftar hard skills yang disebutkan (urutkan dari yang paling sering disebut), (2) soft skills yang tersirat, (3) tools/software spesifik yang dicantumkan, (4) keyword phrase yang harus muncul verbatim di CV, (5) rekomendasi bagian CV mana yang harus dioptimasi untuk JD ini.",
+      "sort_order": 49
+    },
+    {
+      "id": "31368da3-405e-447b-a4d0-7043937b8afd",
+      "category": "Research & Riset",
+      "title": "Riset Gaji Pasar untuk Negosiasi",
+      "prompt_text": "Bantu aku riset gaji pasar untuk posisi [nama jabatan] di [kota] untuk perusahaan skala [startup/SME/korporat/MNC]. Sertakan: (1) range gaji berdasarkan level (fresh grad, 2-3 tahun, 5+ tahun pengalaman), (2) benefit non-gaji yang umum di industri ini, (3) faktor yang bisa meningkatkan nilai tawarku (sertifikasi, pengalaman spesifik), (4) cara memvalidasi angka yang diberikan HRD, (5) data source yang bisa aku cross-check sendiri.",
+      "sort_order": 50
+    },
+    {
+      "id": "ebe39586-47a7-4220-8df5-70bf57e8b083",
+      "category": "Research & Riset",
+      "title": "Deep Dive Kultur Perusahaan",
+      "prompt_text": "Bantu aku riset kultur perusahaan [nama perusahaan] secara mendalam sebelum interview. Panduan riset: (1) hal yang perlu dicari di Glassdoor (dan cara membaca ulasan dengan kritis), (2) sinyal kultur dari LinkedIn company page dan postingan karyawannya, (3) cara membaca berita perusahaan untuk mendeteksi red flags, (4) pertanyaan yang bisa ditanyakan ke karyawan yang sudah resign, (5) cara menilai kultur dari cara mereka melakukan interview.",
+      "sort_order": 51
+    },
+    {
+      "id": "a6fa9695-b033-4a9b-a527-c6ecbcfd2cdd",
+      "category": "Research & Riset",
+      "title": "Perbandingan Dua Perusahaan",
+      "prompt_text": "Buat perbandingan komprehensif antara [Perusahaan A] dan [Perusahaan B] dari perspektif calon karyawan. Bandingkan: (1) kultur dan work-life balance berdasarkan ulasan publik, (2) kompensasi dan benefit (jika ada data publik), (3) peluang growth dan career path, (4) stabilitas perusahaan (finansial, pertumbuhan headcount), (5) reputasi di industri, (6) rekomendasi: mana yang lebih cocok jika prioritasku adalah [tuliskan prioritasmu].",
+      "sort_order": 52
+    },
+    {
+      "id": "0c23d40f-837b-4ccd-aae1-49f971b692a8",
+      "category": "Research & Riset",
+      "title": "Analisis Skill Gap dari Job Description",
+      "prompt_text": "Identifikasi skill gap antara profil saya dan job description ini. Profil saya: [tuliskan pengalaman dan skill yang kamu miliki]. Job description: [paste JD]. Berikan: (1) tabel skill yang match vs skill yang kurang, (2) prioritas skill gap yang perlu segera diisi (berdasarkan seberapa kritis di JD), (3) estimasi waktu untuk mengisi setiap gap, (4) cara menyampaikan skill gap ini secara jujur namun positif saat interview.",
+      "sort_order": 53
+    },
+    {
+      "id": "87809a1b-42a5-4116-9da6-757a6f0e02c4",
+      "category": "Research & Riset",
+      "title": "Riset Industri untuk Kenapa Mau Kerja di Sini",
+      "prompt_text": "Bantu aku riset industri [nama industri] dan perusahaan [nama perusahaan] untuk mempersiapkan jawaban interview kenapa kamu mau kerja di sini? dan kenapa industri ini?. Berikan: (1) 3 fakta menarik tentang industri yang bisa aku sebutkan, (2) 2-3 hal spesifik tentang perusahaan yang menunjukkan risetku mendalam, (3) cara menghubungkan passion/tujuan karierku dengan misi perusahaan, (4) template jawaban 90 detik yang bisa aku personalisasi.",
+      "sort_order": 54
+    },
+    {
+      "id": "ef532ce3-0bc5-4922-bfc0-5abe5b16930d",
+      "category": "Research & Riset",
+      "title": "Pertanyaan Riset Pre-Interview Startup",
+      "prompt_text": "Buat daftar pertanyaan riset mendalam yang harus aku jawab sebelum interview di startup tahap [seed / series A / series B / pre-IPO]. Pertanyaan mencakup: (1) health finansial perusahaan (runway, investor, last funding round), (2) traction dan growth metrics yang bisa dilihat publik, (3) tim founding dan track record mereka, (4) kompetitor dan differentiasi produk, (5) red flags yang perlu diwaspadai di setiap stage funding, (6) pertanyaan yang layak ditanyakan ke interviewer tentang bisnis model.",
+      "sort_order": 55
     }
   ]
 }

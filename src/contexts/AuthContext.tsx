@@ -57,14 +57,19 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     try {
       const res = await fetch(`${API_URL}/profile`, { headers: getAuthHeaders() });
       if (res.ok) {
-        const data = await res.json();
-        setProfile(data);
+        const profileData = await res.json();
+        if (profileData) {
+          setProfile(profileData);
+          setIsAdmin(profileData.role === 'admin');
+        }
       } else {
         setProfile(null);
+        setIsAdmin(false);
       }
     } catch (err) {
       console.error(err);
       setProfile(null);
+      setIsAdmin(false);
     }
   }, []);
 

@@ -8,10 +8,10 @@ import { Shield, Users, Key, Plus, ArrowLeft, ShieldX, Copy, Download, Zap, User
 import { Input } from '@/components/ui/input';
 
 const Admin: React.FC = () => {
-  const { user, loading } = useAuth();
+  const { user, loading, isAdmin } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
+  
   const [profiles, setProfiles] = useState<any[]>([]);
   const [licenseKeys, setLicenseKeys] = useState<any[]>([]);
   const [newKey, setNewKey] = useState('');
@@ -26,21 +26,6 @@ const Admin: React.FC = () => {
   useEffect(() => {
     if (!loading && !user) navigate('/');
   }, [user, loading, navigate]);
-
-  // Check admin role
-  useEffect(() => {
-    if (!user) return;
-    const check = async () => {
-      const { data } = await supabase
-        .from('user_roles')
-        .select('role')
-        .eq('user_id', user.id)
-        .eq('role', 'admin')
-        .maybeSingle();
-      setIsAdmin(!!data);
-    };
-    check();
-  }, [user]);
 
   // Load data when confirmed admin
   useEffect(() => {

@@ -50,13 +50,66 @@ export const supabase = {
       }
     }
   },
-  from: (table: string) => ({
-    select: () => ({
-      order: () => ({ data: [] }),
-      eq: () => ({ single: () => ({ data: null }) }),
-    }),
-    insert: () => ({ select: () => ({ single: () => ({ data: null, error: null }), error: null }), error: null }),
-    update: () => ({ eq: () => ({ error: null }) }),
-    delete: () => ({ eq: () => ({ error: null }) })
-  })
+  from: (table: string) => {
+    // Quick in-memory / localStorage DB for cv_data to support drafts without a real DB table
+    const getLocalDB = () => JSON.parse(localStorage.getItem('mock_db_' + table) || '[]');
+    const saveLocalDB = (data: any) => localStorage.setItem('mock_db_' + table, JSON.stringify(data));
+    
+    let currentData = getLocalDB();
+    let isCountOnly = false;
+    
+    const queryBuilder = {
+      select: (fields?: string, options?: any) => {
+        if (options?.head) isCountOnly = true;
+        return queryBuilder;
+      },
+      eq: (column: string, value: any) => {
+        currentData = currentData.filter((row: any) => row[column] === value);
+        return queryBuilder;
+      },
+      order: (column: string, options?: any) => {
+        currentData.sort((a: any, b: any) => {
+          if (a[column] < b[column]) return options?.ascending ? -1 : 1;
+          if (a[column] > b[column]) return options?.ascending ? 1 : -1;
+          return 0;
+        });
+        return { data: isCountOnly ? null : currentData, count: isCountOnly ? currentData.length : null, error: null };
+      },
+      single: () => {
+        return { data: currentData[0] || null, error: currentData[0] ? null : { message: 'Row not found' } };
+      },
+      insert: (payload: any) => {
+        const id = crypto.randomUUID();
+        const newRow = { ...payload, id, created_at: new Date().toISOString(), updated_at: new Date().toISOString() };
+        const db = getLocalDB();
+        db.push(newRow);
+        saveLocalDB(db);
+        currentData = [newRow];
+        return queryBuilder;
+      },
+      update: (payload: any) => {
+        let db = getLocalDB();
+        return {
+          eq: (column: string, value: any) => {
+            db = db.map((row: any) => row[column] === value ? { ...row, ...payload, updated_at: new Date().toISOString() } : row);
+            saveLocalDB(db);
+            return { error: null };
+          }
+        };
+      },
+      delete: () => {
+        return {
+          eq: (column: string, value: any) => {
+            let db = getLocalDB();
+            db = db.filter((row: any) => row[column] !== value);
+            saveLocalDB(db);
+            return { error: null };
+          }
+        };
+      },
+      then: (resolve: any) => resolve({ data: isCountOnly ? null : currentData, count: isCountOnly ? currentData.length : null, error: null })
+    };
+    
+    return queryBuilder as any;
+  }
 };

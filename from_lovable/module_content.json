@@ -1,0 +1,638 @@
+[
+  {
+    "module_id": "1",
+    "title": "Audit Diri & Mindset Reset",
+    "thesis": "Kebanyakan modul \"mindset\" isinya: \"percaya diri!\", \"jangan menyerah!\" — itu BUKAN mindset reset. Itu copium. Mindset reset yang sebenarnya adalah: JUJUR mengakui posisi kamu sekarang, MEMAHAMI kenapa kamu stuck, dan MEMBANGUN sistem berpikir yang bikin kamu BERGERAK.",
+    "sections": [
+      {
+        "id": "1.1",
+        "quiz": [
+          {
+            "options": [
+              "Orang yang skill rendah overestimate kemampuannya",
+              "Orang yang skill tinggi selalu dapat kerja lebih cepat",
+              "Semua orang punya kemampuan yang sama"
+            ],
+            "question": "Apa yang dimaksud Dunning-Kruger Effect dalam konteks job hunting?",
+            "correctIndex": 0
+          },
+          {
+            "options": [
+              "Skill yang kamu tau tapi orang lain tidak tau",
+              "Skill yang orang lain lihat tapi kamu tidak sadar",
+              "Skill yang belum kamu pelajari"
+            ],
+            "question": "Menurut Johari Window, 'Blind Spot' adalah...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Ikut tes IQ online",
+              "Tanya 5 orang tentang kelebihan yang kamu tidak sadar",
+              "Membaca buku self-help"
+            ],
+            "question": "Cara menggali Blind Spot yang disarankan adalah...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Inventory Brutal — Audit Diri yang Jujur",
+        "content": "<h3>🔴 The Dunning-Kruger Trap in Job Hunting</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> Dunning-Kruger Effect = orang yang skill-nya rendah OVERESTIMATE kemampuannya, orang yang skill-nya tinggi UNDERESTIMATE.\n</div>\n\n<h4>Aplikasi ke Job Hunting:</h4>\n<ul>\n<li>Fresh grad yang merasa \"udah siap kerja\" tapi CV-nya isinya cuma daftar mata kuliah → <strong>overestimate</strong></li>\n<li>Orang berpengalaman yang merasa \"ah gue mah biasa aja\" tapi punya achievement yang belum pernah ditulis → <strong>underestimate</strong></li>\n</ul>\n\n<h4>Yang Jarang Dibahas:</h4>\n<p>Kebanyakan pencari kerja ada di <strong>SISI KIRI</strong> kurva Dunning-Kruger (merasa sudah cukup, padahal belum tau apa yang nggak mereka tau).</p>\n\n<div class=\"warning-box\">\n<strong>Tanda-tandanya:</strong>\n<ul>\n<li>\"CV gue udah bagus kok\" (tapi belum pernah lolos ATS)</li>\n<li>\"Gue nggak perlu template, gue bikin sendiri\" (tapi formatnya chaos)</li>\n<li>\"Interview kan tinggal ngomong aja\" (tapi nge-blank tiap ditanya)</li>\n</ul>\n</div>\n\n<p><strong>SOLUSI:</strong> Bukan \"rendah hati\" — tapi <strong>MENGUKUR</strong>. Assessment bukan untuk merendahkan, tapi untuk tau EXACT GAP antara posisi kamu dan posisi yang kamu incar.</p>\n\n<h3>🔴 Johari Window untuk Career Audit</h3>\n<div class=\"concept-box\">\n<strong>KONSEP (Joseph Luft & Harrington Ingham, 1955):</strong>\n<table>\n<tr><td><strong>OPEN AREA</strong><br/>(kamu tau, orang tau)</td><td><strong>BLIND SPOT</strong><br/>(orang lain tau, kamu nggak tau)</td></tr>\n<tr><td><strong>HIDDEN AREA</strong><br/>(kamu tau, orang nggak)</td><td><strong>UNKNOWN AREA</strong><br/>(nggak ada yang tau)</td></tr>\n</table>\n</div>\n\n<h4>Aplikasi:</h4>\n<ol>\n<li><strong>OPEN:</strong> Skill yang kamu tau dan orang tau → ini yang masuk CV</li>\n<li><strong>BLIND SPOT:</strong> Skill/kebiasaan yang ORANG LAIN lihat tapi KAMU nggak sadar\n<ul>\n<li>INILAH yang paling berharga dan jarang digali</li>\n<li>Cara gali: tanya 5 orang (teman, dosen, mantan atasan): <em>\"Menurut kamu, apa yang gue lakuin LEBIH BAIK dari rata-rata orang, yang mungkin gue sendiri nggak sadar?\"</em></li>\n<li>Jawaban mereka = achievement tersembunyi yang belum masuk CV</li>\n</ul>\n</li>\n<li><strong>HIDDEN:</strong> Hal yang kamu bisa tapi nggak pernah kamu tunjukkan\n<ul>\n<li>Contoh: bisa desain → nggak pernah dimasukin CV karena \"bukan jurusan desain\"</li>\n<li><strong>SALAH. Masukkan.</strong></li>\n</ul>\n</li>\n<li><strong>UNKNOWN:</strong> Potensi yang belum kamu explore</li>\n</ol>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Kirim pesan ke 5 orang: \"Boleh minta tolong? Sebutin 3 hal yang menurut kamu gue lakuin lebih baik dari kebanyakan orang.\"</p>\n<p>Compile jawaban → ini jadi \"hidden achievement\" untuk CV</p>\n</div>"
+      },
+      {
+        "id": "1.2",
+        "quiz": [
+          {
+            "options": [
+              "Outcome goal fokus pada hasil yang tidak bisa dikontrol, identity goal fokus pada perilaku harian",
+              "Keduanya sama saja",
+              "Outcome goal lebih efektif"
+            ],
+            "question": "Apa perbedaan outcome goal vs identity goal?",
+            "correctIndex": 0
+          },
+          {
+            "options": [
+              "Otak belajar bahwa usaha sia-sia setelah gagal berulang kali",
+              "Memang tidak ada lowongan",
+              "Kurang doa"
+            ],
+            "question": "Learned helplessness dalam job hunting terjadi karena...",
+            "correctIndex": 0
+          }
+        ],
+        "title": "Pola Berpikir — Mental Model yang Bikin Gerak",
+        "content": "<h3>🔴 The Identity-Behavior Gap (James Clear Framework, Recontextualized)</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> Kebanyakan orang set goal: \"Gue mau dapat kerja.\" Itu OUTCOME goal — kamu nggak bisa kontrol hasilnya.\n<br/><br/>\nYang bisa kamu kontrol: <strong>IDENTITY + BEHAVIOR.</strong>\n</div>\n\n<p>INSTEAD OF: \"Gue mau dapat kerja\"</p>\n<p>REFRAME TO: <em>\"Gue adalah orang yang SETIAP HARI mengeksekusi 1 langkah menuju pekerjaan yang gue incar\"</em></p>\n\n<h4>Bedanya:</h4>\n<ul>\n<li><strong>Outcome goal:</strong> \"dapat kerja\" → binary, bikin cemas, kalau gagal = patah semangat</li>\n<li><strong>Identity goal:</strong> \"gue orang yang eksekusi\" → daily, kalau 1 hari skip = besok lanjut, bukan gagal total</li>\n</ul>\n\n<h4>Aplikasi Praktis:</h4>\n<div class=\"warning-box\">\n<p>Bukan: \"Hari ini gue HARUS dapat kerja\"</p>\n<p>Tapi: <strong>\"Hari ini gue customize 2 cover letter\"</strong></p>\n<br/>\n<p>Bukan: \"Kenapa gue belum dipanggil?\"</p>\n<p>Tapi: <strong>\"Sudah berapa lamaran yang gue kirim minggu ini dengan cover letter yang customized?\"</strong></p>\n<br/>\n<p><strong>INI BUKAN MOTIVASI. INI SISTEM.</strong></p>\n</div>\n\n<h3>🔴 Learned Helplessness (Martin Seligman, 1967) — Kenapa Kamu \"Males\"</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> Seligman eksperimen: anjing yang berulang kali diberi kejutan listrik TANPA bisa menghindar, akhirnya BERHENTI MENCOBA — bahkan saat pintunya dibuka.\n</div>\n\n<h4>Aplikasi ke Job Hunting:</h4>\n<p>Kamu apply 50x → sepi → apply lagi → sepi → akhirnya:</p>\n<ul>\n<li>\"Kayaknya emang nggak ada gunanya\"</li>\n<li>\"Gue emang nggak cocok kerja kantoran\"</li>\n<li>\"Mungkin emang nasib gue\"</li>\n</ul>\n\n<div class=\"action-box\">\n<strong>ITU BUKAN FAKTA. Itu learned helplessness.</strong>\n<p>Otakmu sudah \"belajar\" bahwa usaha = sia-sia. Padahal yang salah bukan USAHA-nya. Yang salah: <strong>CARA-nya.</strong></p>\n</div>\n\n<h4>Breaking The Cycle:</h4>\n<ol>\n<li>Ganti input, bukan cuma tambah volume (jangan apply lebih banyak dengan cara yang sama)</li>\n<li>Ukur yang bisa dikontrol:\n<ul>\n<li>Berapa lamaran yang CV-nya customized?</li>\n<li>Berapa yang cover letter-nya spesifik?</li>\n<li>Berapa yang di-follow-up?</li>\n</ul>\n</li>\n<li>Satu \"small win\" bisa break the loop:\n<ul>\n<li>1 balasan email = bukti bahwa sistem baru KERJA</li>\n<li>1 panggilan tes = bukti bahwa CV baru KEBACA</li>\n</ul>\n</li>\n</ol>"
+      },
+      {
+        "id": "1.3",
+        "quiz": [
+          {
+            "options": [
+              "Sisa perhatian dari task sebelumnya yang mengganggu fokus",
+              "Teknik meditasi untuk fokus",
+              "Aplikasi untuk cari kerja"
+            ],
+            "question": "Attention residue adalah...",
+            "correctIndex": 0
+          },
+          {
+            "options": [
+              "90 menit fokus pada 1 aktivitas tanpa gangguan",
+              "Mengerjakan banyak hal sekaligus selama 90 menit",
+              "Istirahat selama 90 menit"
+            ],
+            "question": "Teknik 'single-task block' yang disarankan adalah...",
+            "correctIndex": 0
+          }
+        ],
+        "title": "Fokus & Niat — Bukan Spiritual, Tapi Kognitif",
+        "content": "<h3>🔴 Attention Residue (Sophie Leroy, 2009)</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> Saat kamu multitask (apply kerja sambil scroll TikTok sambil chat sambil overthinking), otakmu nggak pernah \"fully present\" di satu tugas. Sisanya \"nempel\" di task sebelumnya = <strong>attention residue</strong>.\n</div>\n\n<h4>Dampak ke Job Hunting:</h4>\n<p>Kamu buka Jobstreet → lihat lowongan → pikiran: \"ah gue nggak qualified\" → buka IG → scroll 30 menit → balik → \"tadi mau ngapain ya?\"</p>\n<p><strong>Itu bukan malas. Itu attention residue + context switching.</strong></p>\n\n<h4>Solusi Praktis:</h4>\n<ol>\n<li><strong>\"Single-task block\":</strong> 90 menit khusus 1 aktivitas (misal: 90 menit = customize 3 cover letter, NOTHING ELSE)</li>\n<li><strong>Matikan notifikasi</strong> (bukan silent — MATIKAN)</li>\n<li><strong>Tulis TO-DO malam sebelumnya</strong> (bukan pagi hari) → otak sudah \"pre-load\" saat bangun</li>\n<li><strong>Gunakan \"parking lot note\":</strong> kalau ada pikiran lain muncul saat fokus, TULIS di sticky note → balik fokus → urus nanti</li>\n</ol>\n\n<h3>🟡 Mindful ≠ Meditasi — Ini Tentang \"Sadar Sedang Ngapain\"</h3>\n<div class=\"concept-box\">\n<p><strong>YANG ORANG KIRA:</strong> mindfulness = duduk diam, mata tertutup, \"ommm\", pakai app Headspace</p>\n<p><strong>YANG SEBENARNYA:</strong> mindfulness = SADAR bahwa kamu sedang melakukan sesuatu, DAN KENAPA.</p>\n</div>\n\n<h4>Aplikasi:</h4>\n<p>Sebelum buka laptop, tanya: <em>\"Hari ini gue mau ngapain?\"</em></p>\n<p>Jawab SPESIFIK:</p>\n<div class=\"warning-box\">\n<p>✗ \"Cari kerja\" (terlalu luas, bakal muter-muter)</p>\n<p>✓ <strong>\"Customize cover letter untuk 2 lowongan di Glints, lalu follow-up email ke PT X yang apply minggu lalu\"</strong></p>\n</div>\n\n<div class=\"action-box\">\n<strong>🎯 KENAPA INI PENTING:</strong>\n<p>Orang yang \"cari kerja\" tanpa niat spesifik = scrolling Jobstreet 4 jam, apply 0.</p>\n<p>Orang yang punya niat spesifik = selesai dalam 2 jam, output jelas.</p>\n</div>"
+      },
+      {
+        "id": "1.4",
+        "quiz": [
+          {
+            "options": [
+              "Blame External",
+              "Confidence tanpa dasar",
+              "Avoidance"
+            ],
+            "question": "Stage 1 dari Job Seeker Denial adalah...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Kamu sudah siap melamar",
+              "Kamu masih di Stage 1-3 denial",
+              "CV kamu sudah bagus"
+            ],
+            "question": "Jika lebih dari 3 item di Denial Detector Checklist jawabannya 'belum pernah', artinya...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Framework Anti-Denial",
+        "content": "<h3>🔴 The 5 Stages of Job Seeker Denial</h3>\n\n<div class=\"stage-box stage-1\">\n<strong>Stage 1: CONFIDENCE TANPA DASAR</strong>\n<p>\"CV gue udah bagus, tinggal nunggu dipanggil\"</p>\n<p class=\"reality\">→ Reality: belum pernah cek ATS compatibility</p>\n</div>\n\n<div class=\"stage-box stage-2\">\n<strong>Stage 2: BLAME EXTERNAL</strong>\n<p>\"Perusahaan cuma cari orang dalam\" / \"Lowongan fiktif semua\"</p>\n<p class=\"reality\">→ Reality: sebagian benar, tapi BUKAN alasan untuk nggak improve</p>\n</div>\n\n<div class=\"stage-box stage-3\">\n<strong>Stage 3: AVOIDANCE</strong>\n<p>\"Nanti aja apply-nya, minggu depan\" / \"Gue mau istirahat dulu\"</p>\n<p class=\"reality\">→ Reality: istirahat valid, tapi kalau sudah 3 bulan = avoidance</p>\n</div>\n\n<div class=\"stage-box stage-4\">\n<strong>Stage 4: BARGAINING</strong>\n<p>\"Kalau gue belajar skill X baru, nanti pasti dapat\"</p>\n<p class=\"reality\">→ Reality: belajar tanpa apply = hiding behind preparation</p>\n</div>\n\n<div class=\"stage-box stage-5\">\n<strong>Stage 5: ACCEPTANCE (target)</strong>\n<p>\"CV gue perlu diperbaiki. Cara apply gue perlu diubah. Gue perlu sistem, bukan semangat.\"</p>\n<p class=\"reality\">→ <strong>Ini starting point yang sebenarnya.</strong></p>\n</div>\n\n<h3>🔧 TOOL: \"Denial Detector Checklist\"</h3>\n<div class=\"action-box\">\n<p>Jawab jujur setiap pertanyaan berikut:</p>\n<ul>\n<li>☐ Kapan terakhir kali kamu UBAH isi CV? (bukan desain — ISI)</li>\n<li>☐ Berapa lamaran terakhir yang cover letter-nya CUSTOMIZED?</li>\n<li>☐ Kapan terakhir kamu LATIHAN jawab interview out loud?</li>\n<li>☐ Apakah kamu bisa sebut 5 KEYWORD ATS untuk role target?</li>\n<li>☐ Apakah kamu tau NAMA HR/recruiter di perusahaan yang kamu lamar?</li>\n</ul>\n<p><strong>Kalau jawaban > 3 = \"belum pernah\" → kamu masih di Stage 1-3.</strong></p>\n</div>"
+      }
+    ]
+  },
+  {
+    "module_id": "2",
+    "title": "CV ATS-Friendly — Bukan Sekadar Template",
+    "thesis": "ATS (Applicant Tracking System) bukan musuh — tapi filter. 75% CV ditolak SEBELUM dibaca manusia. Modul ini mengajarkan CARA KERJA ATS, bagaimana melewatinya, dan bagaimana menulis CV yang \"bicara\" ke mesin DAN manusia.",
+    "sections": [
+      {
+        "id": "2.1",
+        "quiz": [
+          {
+            "options": [
+              "25%",
+              "50%",
+              "75%"
+            ],
+            "question": "Berapa persen CV yang ditolak oleh ATS sebelum dibaca manusia?",
+            "correctIndex": 2
+          },
+          {
+            "options": [
+              "Karena kurang estetik",
+              "Karena ATS tidak bisa membaca gambar/grafik",
+              "Karena HR tidak suka grafik"
+            ],
+            "question": "Mengapa grafik skill level (bar chart) tidak efektif di CV?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              ".jpg",
+              ".pdf",
+              ".docx"
+            ],
+            "question": "Format file yang paling aman untuk ATS adalah...",
+            "correctIndex": 2
+          }
+        ],
+        "title": "Cara Kerja ATS — Musuh yang Harus Kamu Pahami",
+        "content": "<h3>🔴 Apa itu ATS dan Kenapa 75% CV Kamu Ditolak?</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> ATS (Applicant Tracking System) adalah software yang digunakan 98% perusahaan menengah-besar untuk menyaring CV secara otomatis. ATS membaca CV kamu SEBELUM manusia melihatnya.\n</div>\n\n<h4>Fakta Penting:</h4>\n<ul>\n<li><strong>75% CV</strong> ditolak oleh ATS sebelum sampai ke HR</li>\n<li>ATS TIDAK membaca gambar, grafik, tabel, atau formatting kompleks</li>\n<li>ATS bekerja dengan <strong>keyword matching</strong></li>\n<li>Setiap perusahaan bisa menggunakan ATS yang berbeda (Workday, Lever, Greenhouse, Taleo, dll.)</li>\n</ul>\n\n<h4>Bagaimana ATS Membaca CV Kamu:</h4>\n<div class=\"warning-box\">\n<strong>Step 1:</strong> ATS mem-parse CV kamu menjadi data terstruktur<br/>\n<strong>Step 2:</strong> Mencocokkan keyword dengan job description<br/>\n<strong>Step 3:</strong> Memberi skor relevansi (biasanya 0-100%)<br/>\n<strong>Step 4:</strong> CV dengan skor di bawah threshold → langsung ditolak\n</div>\n\n<h3>🔴 Yang Membuat CV Gagal di ATS</h3>\n<h4>Format yang SALAH:</h4>\n<ul>\n<li><strong>Header/Footer:</strong> ATS sering SKIP konten di header/footer</li>\n<li><strong>Tabel & Kolom:</strong> ATS membaca dari kiri ke kanan, baris per baris</li>\n<li><strong>Grafik skill level:</strong> \"Bar chart\" skill 80% → ATS baca: NOTHING</li>\n<li><strong>Format file:</strong> .pdf kadang bermasalah, .docx paling aman</li>\n<li><strong>Font fancy:</strong> Font dekoratif bisa ter-render sebagai karakter aneh</li>\n</ul>\n\n<h4>Konten yang SALAH:</h4>\n<ul>\n<li><strong>\"Bertanggung jawab atas...\"</strong> → terlalu umum</li>\n<li><strong>Singkatan tanpa full form</strong></li>\n<li><strong>Tidak ada angka</strong></li>\n</ul>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Buka CV kamu sekarang. Cek apakah ada salah satu kesalahan di atas. Kalau ada 3+ → CV kamu hampir pasti tidak lolos ATS.</p>\n</div>"
+      },
+      {
+        "id": "2.2",
+        "quiz": [
+          {
+            "options": [
+              "Apa yang bisa kamu berikan ke perusahaan",
+              "Achievement terbesar dengan angka",
+              "\"Saya ingin bekerja di perusahaan yang berkembang\""
+            ],
+            "question": "Professional Summary yang benar BUKAN tentang...",
+            "correctIndex": 2
+          },
+          {
+            "options": [
+              "1 halaman",
+              "2 halaman",
+              "3 halaman"
+            ],
+            "question": "Untuk pencari kerja dengan pengalaman < 10 tahun, berapa halaman ideal CV?",
+            "correctIndex": 0
+          },
+          {
+            "options": [
+              "Python, SQL, Tableau",
+              "Kerja keras, teamwork, komunikasi",
+              "Google Analytics, A/B Testing"
+            ],
+            "question": "Skill mana yang TIDAK efektif di CV untuk ATS?",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Anatomi CV ATS-Friendly — Section by Section",
+        "content": "<h3>🔴 Struktur CV yang Optimal untuk ATS + Manusia</h3>\n<div class=\"concept-box\">\n<strong>PRINSIP:</strong> CV ATS-friendly BUKAN CV yang boring. CV ATS-friendly adalah CV yang <strong>terstruktur dengan benar</strong> sehingga mesin bisa membacanya DAN manusia tertarik membacanya.\n</div>\n\n<h4>Urutan Section yang Benar:</h4>\n<ol>\n<li><strong>HEADER:</strong> Nama lengkap, Professional Tagline, Email, No. HP, LinkedIn URL, Kota</li>\n<li><strong>PROFESSIONAL SUMMARY:</strong> 3-4 kalimat yang menjual kamu</li>\n<li><strong>PENGALAMAN KERJA:</strong> Paling penting, taruh sebelum pendidikan</li>\n<li><strong>PENDIDIKAN:</strong> Universitas, jurusan, tahun lulus</li>\n<li><strong>SKILLS:</strong> Hard skills spesifik, bukan soft skills generik</li>\n<li><strong>SERTIFIKASI & BAHASA:</strong> Opsional tapi powerful</li>\n</ol>\n\n<div class=\"warning-box\">\n<strong>ATURAN EMAS:</strong> 1 halaman untuk pengalaman &lt; 10 tahun. 2 halaman HANYA jika pengalaman &gt; 10 tahun dan SETIAP baris punya nilai.\n</div>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Bandingkan struktur CV kamu dengan urutan di atas. Apakah section-nya sudah benar?</p>\n</div>"
+      },
+      {
+        "id": "2.3",
+        "quiz": [
+          {
+            "options": [
+              "Membaca desain dan layout CV",
+              "Mencari kata kunci spesifik dari job description di dalam CV",
+              "Menilai foto profil pelamar"
+            ],
+            "question": "ATS mencocokkan keyword dengan cara...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Parafrasekan dengan kata-kata sendiri agar unik",
+              "Gunakan exact wording yang sama persis dengan job description",
+              "Tulis dalam bahasa Inggris semua meskipun JD dalam bahasa Indonesia"
+            ],
+            "question": "Saat menulis keyword di CV, yang BENAR adalah...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Deskripsi tugas sehari-hari yang umum",
+              "Action + Context + Result (dengan angka)",
+              "Daftar soft skill yang relevan"
+            ],
+            "question": "Formula bullet point yang efektif adalah...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Keyword Strategy — Seni Mencocokkan CV dengan Job Description",
+        "content": "<h3>🔴 Keyword Matching: Inti dari ATS Optimization</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> ATS bekerja seperti \"Ctrl+F\" canggih. Dia mencari KATA KUNCI spesifik dari job description di dalam CV kamu.\n</div>\n\n<h4>3 Jenis Keyword yang Harus Ada:</h4>\n<ol>\n<li><strong>Hard Skills:</strong> Teknologi, tools, metodologi</li>\n<li><strong>Industry Terms:</strong> Istilah spesifik industri</li>\n<li><strong>Action Verbs:</strong> Kata kerja yang menunjukkan achievement</li>\n</ol>\n\n<h3>🔴 Teknik Reverse-Engineer Job Description</h3>\n<div class=\"warning-box\">\n<strong>STEP-BY-STEP:</strong>\n<ol>\n<li>Buka job description target</li>\n<li>Highlight SEMUA hard skill, tools, dan kualifikasi</li>\n<li>Hitung frekuensi → yang paling sering = PALING PENTING</li>\n<li>Masukkan keyword tersebut ke CV</li>\n<li>Gunakan EXACT WORDING — jangan parafrase</li>\n</ol>\n</div>\n\n<h3>🔴 Formula STAR untuk Bullet Points</h3>\n<div class=\"concept-box\">\n<strong>STAR = Situation, Task, Action, Result</strong>\n<p>Untuk CV: <strong>Action + Context + Result (dengan angka)</strong></p>\n</div>\n\n<h4>Contoh Transformasi:</h4>\n<div class=\"action-box\">\n<p><strong>SEBELUM:</strong> \"Bertanggung jawab atas media sosial perusahaan\"</p>\n<p><strong>SESUDAH:</strong> \"Mengelola 4 akun media sosial dan meningkatkan engagement rate sebesar 45% dalam 3 bulan\"</p>\n</div>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Ambil 1 job description yang kamu minati. Highlight semua keyword. Rewrite 3 bullet point pengalaman kamu menggunakan formula Action + Context + Result.</p>\n</div>"
+      },
+      {
+        "id": "2.4",
+        "quiz": [
+          {
+            "options": [
+              "CV_2024_final_v3.docx",
+              "NamaLengkap_Posisi_CV.docx",
+              "document1.pdf"
+            ],
+            "question": "Nama file CV yang benar adalah...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Karena terlalu panjang",
+              "Karena skor ATS rendah akibat tidak ada personalisasi keyword",
+              "Karena desainnya membosankan"
+            ],
+            "question": "Kenapa CV \"universal\" (1 CV untuk semua lamaran) tidak efektif?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "LinkedIn URL yang sudah di-custom",
+              "Professional Summary",
+              "Hobi, agama, status pernikahan"
+            ],
+            "question": "Informasi mana yang sebaiknya TIDAK dicantumkan di CV?",
+            "correctIndex": 2
+          }
+        ],
+        "title": "Kesalahan Fatal & Checklist Final CV",
+        "content": "<h3>🔴 10 Kesalahan Fatal yang Bikin CV Langsung Ditolak</h3>\n\n<div class=\"stage-box stage-1\">\n<strong>1. Typo dan Grammar Error</strong>\n<p>1 typo = sinyal \"tidak teliti\".</p>\n</div>\n\n<div class=\"stage-box stage-2\">\n<strong>2. Email Tidak Profesional</strong>\n<p>❌ coolguy2003@gmail.com → ✅ nama.lengkap@gmail.com</p>\n</div>\n\n<div class=\"stage-box stage-3\">\n<strong>3. Foto (di Indonesia: opsional, di luar negeri: JANGAN)</strong>\n</div>\n\n<div class=\"stage-box stage-4\">\n<strong>4. Informasi Tidak Relevan</strong>\n<p>Hobi, agama, status pernikahan → BUANG</p>\n</div>\n\n<div class=\"stage-box stage-5\">\n<strong>5. Menggunakan \"Saya\" di Setiap Kalimat</strong>\n</div>\n\n<div class=\"stage-box stage-1\">\n<strong>6. Tidak Ada Quantifiable Achievement</strong>\n</div>\n\n<div class=\"stage-box stage-2\">\n<strong>7. Desain Terlalu \"Kreatif\"</strong>\n<p>Infographic CV = sampah di ATS.</p>\n</div>\n\n<div class=\"stage-box stage-3\">\n<strong>8. CV \"Universal\" untuk Semua Lamaran</strong>\n</div>\n\n<div class=\"stage-box stage-4\">\n<strong>9. Mencantumkan SEMUA Pengalaman</strong>\n</div>\n\n<div class=\"stage-box stage-5\">\n<strong>10. Tidak Punya Professional Summary</strong>\n</div>\n\n<h3>🔧 CHECKLIST FINAL CV</h3>\n<div class=\"action-box\">\n<p>Sebelum mengirim CV, pastikan:</p>\n<ul>\n<li>☐ Format .docx</li>\n<li>☐ Nama file: NamaLengkap_Posisi_CV.docx</li>\n<li>☐ Tidak ada header/footer berisi konten penting</li>\n<li>☐ Professional Summary ada di atas</li>\n<li>☐ Setiap bullet dimulai dengan action verb</li>\n<li>☐ Minimal 1 angka/metrik di setiap pengalaman</li>\n<li>☐ Keyword dari job description sudah masuk</li>\n<li>☐ Tidak ada typo</li>\n<li>☐ 1 halaman</li>\n<li>☐ Email profesional</li>\n<li>☐ LinkedIn URL yang sudah di-custom</li>\n<li>☐ Skill section berisi HARD SKILLS spesifik</li>\n</ul>\n</div>"
+      },
+      {
+        "id": "2.5",
+        "quiz": [
+          {
+            "options": [
+              "Langsung tunggu email balasan",
+              "Melengkapi form manual dan screening questions hingga selesai",
+              "Mengirim email ke HRD secara terpisah"
+            ],
+            "question": "Setelah upload CV di Workday, apa yang WAJIB dilakukan kandidat?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "1-2 minggu",
+              "1-3 bulan",
+              "2-5 bulan"
+            ],
+            "question": "Berapa lama estimasi total proses rekrutmen di perusahaan FMCG besar melalui Workday?",
+            "correctIndex": 2
+          },
+          {
+            "options": [
+              "1-2 hari setelah submit",
+              "7-10 hari setelah submit",
+              "30 hari setelah submit"
+            ],
+            "question": "Kapan waktu yang tepat untuk mengirim follow up ke-2 setelah submit lamaran?",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Portal ATS Perusahaan Besar — Yang Terjadi Setelah Kamu Klik Submit",
+        "content": "<h3>🔴 Mengapa Submit CV Saja Tidak Cukup?</h3>\n<div class=\"concept-box\">\n<strong>FAKTA MENGEJUTKAN:</strong> Di banyak portal ATS perusahaan besar, <strong>upload CV hanya langkah pertama</strong>. Ada 3-5 langkah tambahan yang wajib kamu selesaikan.\n</div>\n\n<h3>🏢 WORKDAY — Portal ATS Unilever, P&G, Mondelez, Nestlé, Shell</h3>\n<div class=\"warning-box\">\n<strong>Cara kerja Workday setelah kamu upload CV:</strong>\n<ol>\n<li><strong>Upload CV</strong> → auto-parse ke form</li>\n<li><strong>Form Manual Wajib Diisi</strong> → periksa dan lengkapi setiap field</li>\n<li><strong>Screening Questions</strong> → 5-15 pertanyaan wajib</li>\n<li><strong>Voluntary Disclosure</strong></li>\n<li><strong>Submit Final</strong> → BARU dikirim ke HRD</li>\n</ol>\n</div>\n\n<div class=\"action-box\">\n<strong>⚠️ KESALAHAN PALING UMUM DI WORKDAY:</strong>\n<ul>\n<li>Mengisi form dengan terburu-buru</li>\n<li>Tidak mengisi \"Why do you want to work here?\" dengan serius</li>\n<li>Skip bagian skills manual</li>\n<li>Tidak screenshot halaman konfirmasi</li>\n</ul>\n</div>\n\n<h3>🌱 GREENHOUSE & LEVER — Portal ATS Startup & Tech</h3>\n<div class=\"concept-box\">\n<strong>Greenhouse dan Lever lebih modern dari Workday</strong> — menggunakan NLP yang lebih canggih.\n</div>\n\n<h3>⚡ LINKEDIN EASY APPLY</h3>\n<div class=\"stage-box stage-2\">\n<strong>Kelebihan:</strong> 1-3 klik, CV langsung terkirim<br/><br/>\n<strong>Jebakan:</strong> Profile LinkedIn = CV kamu. Banyak HRD tidak serius merespons karena volume tinggi.\n</div>\n\n<h3>📅 Timeline Ekspektasi Realistis</h3>\n<div class=\"concept-box\">\n<p>FMCG Besar: 2-5 bulan | Tech Startup: 3-6 minggu | BUMN: 3-8 bulan | Konsultan: 2-4 bulan | SME: 1-3 minggu</p>\n</div>\n\n<h3>📬 Kapan dan Bagaimana Follow Up</h3>\n<div class=\"action-box\">\n<strong>TIMELINE FOLLOW UP:</strong>\n<ul>\n<li><strong>Hari 1:</strong> Kirim connection request ke HRD di LinkedIn</li>\n<li><strong>Hari 7-10:</strong> 1 follow-up email</li>\n<li><strong>Hari 21+:</strong> Move on</li>\n</ul>\n</div>"
+      }
+    ]
+  },
+  {
+    "module_id": "3",
+    "title": "LinkedIn & Cover Letter Mastery",
+    "thesis": "LinkedIn bukan \"CV online\". Cover letter bukan \"surat pengantar\". Keduanya adalah SENJATA AKTIF yang 90% pencari kerja salah gunakan. Modul ini mengajarkan cara mengubah LinkedIn menjadi MAGNET recruiter dan cover letter menjadi SENJATA PEMBEDA.",
+    "sections": [
+      {
+        "id": "3.1",
+        "quiz": [
+          {
+            "options": [
+              "50%",
+              "87%",
+              "65%"
+            ],
+            "question": "Berapa persen recruiter yang menggunakan LinkedIn sebagai sumber pencarian kandidat?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Cold calling — kamu yang menghubungi perusahaan",
+              "Inbound marketing — recruiter yang menemukan kamu",
+              "Iklan TV — semua orang melihat tapi tidak bisa berinteraksi"
+            ],
+            "question": "LinkedIn lebih tepat dianalogikan sebagai...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Profil dengan followers terbanyak",
+              "Profil yang lengkap (foto, headline, about, experience, skills, recommendations)",
+              "Profil dengan koneksi lebih dari 10.000"
+            ],
+            "question": "Apa yang dimaksud \"All-Star Profile\" di LinkedIn?",
+            "correctIndex": 1
+          }
+        ],
+        "title": "LinkedIn ≠ CV Online — Mindset Shift",
+        "content": "<h3>🔴 Kenapa 87% Recruiter Cek LinkedIn Kamu</h3>\n<div class=\"concept-box\">\n<strong>FAKTA:</strong> Menurut data Jobvite, 87% recruiter menggunakan LinkedIn sebagai sumber utama pencarian kandidat. Artinya, LinkedIn kamu LEBIH SERING dilihat daripada CV kamu.\n</div>\n\n<h4>Perbedaan Fundamental: CV vs LinkedIn</h4>\n<table class=\"comparison-table\">\n<tr><th>CV</th><th>LinkedIn</th></tr>\n<tr><td>Dokumen statis</td><td>Platform dinamis & hidup</td></tr>\n<tr><td>Dikirim saat melamar</td><td>Ditemukan 24/7 oleh recruiter</td></tr>\n<tr><td>Formal & ringkas</td><td>Boleh lebih personal & storytelling</td></tr>\n<tr><td>1-2 halaman</td><td>Tidak ada batas karakter utama</td></tr>\n<tr><td>Customized per lamaran</td><td>1 profil, optimized untuk SEO</td></tr>\n</table>\n\n<h4>LinkedIn sebagai \"Inbound Marketing\" untuk Karir</h4>\n<div class=\"warning-box\">\n<strong>ANALOGI:</strong>\n<ul>\n<li><strong>CV = Cold Calling</strong> — kamu yang menghubungi perusahaan</li>\n<li><strong>LinkedIn = Inbound Marketing</strong> — recruiter yang MENEMUKAN kamu</li>\n</ul>\n<p>Pertanyaannya: apakah profil LinkedIn kamu sudah cukup \"menarik\" untuk ditemukan DAN diklik?</p>\n</div>\n\n<h4>Algorithm LinkedIn: Bagaimana Profil Kamu \"Muncul\"</h4>\n<ul>\n<li><strong>Keyword di Headline & About:</strong> LinkedIn search = keyword-based. Headline \"Fresh Graduate\" = invisible.</li>\n<li><strong>All-Star Profile:</strong> LinkedIn memberikan ranking lebih tinggi untuk profil yang lengkap (foto, headline, about, experience, skills, recommendations)</li>\n<li><strong>Aktivitas:</strong> Posting, comment, engage → profil lebih sering muncul di search</li>\n<li><strong>Connections:</strong> 500+ connections = sinyal kredibilitas</li>\n</ul>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Buka LinkedIn kamu. Apakah profile strength-nya \"All-Star\"? Kalau belum, catat bagian mana yang masih kosong.</p>\n</div>"
+      },
+      {
+        "id": "3.2",
+        "quiz": [
+          {
+            "options": [
+              "Nama Universitas + Jurusan",
+              "[Role Target] | [Skill Utama] | [Value Proposition]",
+              "Looking for Opportunities"
+            ],
+            "question": "Formula headline LinkedIn yang efektif adalah...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Introduction - Body - Conclusion",
+              "Hook - Story - Offer",
+              "Problem - Solution - Pricing"
+            ],
+            "question": "Struktur About section yang powerful menggunakan framework...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "10",
+              "25",
+              "50"
+            ],
+            "question": "Berapa maksimal jumlah skills yang bisa ditambahkan di LinkedIn?",
+            "correctIndex": 2
+          }
+        ],
+        "title": "Optimasi Profil LinkedIn — Section by Section",
+        "content": "<h3>🔴 Headline: 120 Karakter Paling Penting di Karirmu</h3>\n<div class=\"concept-box\">\n<strong>PRINSIP:</strong> Headline adalah hal PERTAMA yang dilihat setelah nama. Ini adalah \"iklan\" 120 karakter tentang VALUE kamu. Headline \"Student at Universitas X\" = INVISIBLE di search.\n</div>\n\n<h4>Formula Headline yang Efektif:</h4>\n<div class=\"warning-box\">\n<p><strong>Formula:</strong> [Role Target] | [Skill Utama] | [Value Proposition]</p>\n<br/>\n<p>❌ \"Fresh Graduate | Looking for Opportunities\"</p>\n<p>✅ <strong>\"Digital Marketing Specialist | SEO & Content Strategy | Helped Brands Grow 200% Organic Traffic\"</strong></p>\n<br/>\n<p>❌ \"Mahasiswa Teknik Informatika\"</p>\n<p>✅ <strong>\"Aspiring Software Engineer | Python & React | Building Data-Driven Web Applications\"</strong></p>\n</div>\n\n<h3>🔴 About Section: Storytelling yang Menjual</h3>\n<p>About section = BUKAN copy-paste summary dari CV. Ini tempat untuk BERCERITA.</p>\n\n<h4>Struktur About yang Powerful (The Hook-Story-Offer Framework):</h4>\n<ol>\n<li><strong>HOOK (2 kalimat pertama):</strong> Harus langsung menarik perhatian\n<ul>\n<li>\"Tahun lalu, saya membantu startup e-commerce meningkatkan conversion rate 3x lipat — hanya dengan mengubah 5 halaman landing page.\"</li>\n</ul>\n</li>\n<li><strong>STORY (paragraf tengah):</strong> Perjalanan profesional singkat\n<ul>\n<li>Background, passion, expertise, 1-2 achievement terbesar</li>\n</ul>\n</li>\n<li><strong>OFFER (paragraf akhir):</strong> Apa yang kamu bisa BERIKAN\n<ul>\n<li>\"Saat ini saya terbuka untuk peluang di bidang [X]. Saya bisa membantu tim kamu dalam [Y]. Let's connect!\"</li>\n</ul>\n</li>\n</ol>\n\n<h3>🔴 Experience Section: Lebih dari Sekadar Copy-Paste CV</h3>\n<h4>Tips:</h4>\n<ul>\n<li>Gunakan <strong>media:</strong> upload slide presentasi, link ke portfolio, screenshot project</li>\n<li><strong>Rich text:</strong> LinkedIn mendukung bullet points dan formatting — gunakan!</li>\n<li><strong>Tag perusahaan:</strong> Mention @perusahaan di description → muncul di feed mereka</li>\n</ul>\n\n<h3>🔴 Skills & Endorsements: Game of Numbers</h3>\n<div class=\"action-box\">\n<strong>🎯 STRATEGY:</strong>\n<ol>\n<li>Tambahkan 50 skills (LinkedIn mengizinkan hingga 50)</li>\n<li>PIN 3 skill teratas yang paling relevan dengan role target</li>\n<li>Minta endorse dari 10+ orang yang relevan (mutual endorsement OK)</li>\n<li>Skill Assessment: ambil quiz LinkedIn → badge \"Verified\" = +30% profile views</li>\n</ol>\n</div>\n\n<h3>🔴 Recommendations: Social Proof Terkuat</h3>\n<div class=\"concept-box\">\n<p><strong>Cara Minta Rekomendasi yang Efektif:</strong></p>\n<p>Jangan kirim: <em>\"Bisa kasih rekomendasi?\"</em></p>\n<p>Kirim: <em>\"Hai [Nama], aku sedang aktif mencari peluang di bidang [X]. Apakah kamu berkenan memberikan recommendation di LinkedIn tentang pengalaman kita bersama di [project/perusahaan]? Khususnya tentang kontribusiku dalam [achievement spesifik]. Ini akan sangat membantu.\"</em></p>\n</div>"
+      },
+      {
+        "id": "3.3",
+        "quiz": [
+          {
+            "options": [
+              "Kenapa posisi ini?",
+              "Berapa gaji yang diharapkan?",
+              "Kenapa kamu?"
+            ],
+            "question": "Cover letter yang baik menjawab 3 pertanyaan. Yang BUKAN termasuk adalah...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "\"Dengan hormat, saya bermaksud melamar...\"",
+              "Langsung connect dengan kalimat spesifik dari job description",
+              "Menceritakan riwayat hidup dari kecil"
+            ],
+            "question": "Paragraf pembuka (hook) cover letter yang efektif sebaiknya...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Menceritakan hobby dan minat pribadi",
+              "Menghubungkan achievement dengan kebutuhan spesifik perusahaan",
+              "Menjelaskan alasan resign dari perusahaan sebelumnya"
+            ],
+            "question": "Paragraf \"The Connection\" bertujuan untuk...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Cover Letter — Senjata yang 90% Orang Salah Gunakan",
+        "content": "<h3>🔴 Cover Letter BUKAN Ringkasan CV</h3>\n<div class=\"concept-box\">\n<strong>KESALAHAN TERBESAR:</strong> Kebanyakan cover letter isinya: \"Saya menulis surat ini untuk melamar posisi X. Saya lulusan Y dengan IPK Z. Terlampir CV saya.\"\n<br/><br/>\n<strong>ITU BUKAN COVER LETTER. Itu surat pengantar yang tidak berguna.</strong>\n</div>\n\n<h4>Cover Letter = Jawaban atas 3 Pertanyaan:</h4>\n<ol>\n<li><strong>\"Kenapa posisi INI?\"</strong> — bukan \"kenapa perusahaan ini\" (terlalu umum)</li>\n<li><strong>\"Kenapa KAMU?\"</strong> — apa yang membuat kamu LEBIH COCOK dari 200 pelamar lain</li>\n<li><strong>\"Kenapa SEKARANG?\"</strong> — apa yang membuatmu terdorong melamar saat ini</li>\n</ol>\n\n<h3>🔴 Anatomy of a Killer Cover Letter</h3>\n\n<h4>PARAGRAF 1: The Hook (3 kalimat)</h4>\n<div class=\"warning-box\">\n<p>❌ \"Dengan hormat, saya bermaksud melamar posisi...\"</p>\n<p>✅ <strong>\"Saat membaca job posting untuk posisi Digital Marketing Manager di [Perusahaan], satu kalimat langsung menarik perhatian saya: 'Kami mencari seseorang yang bisa membangun strategi content dari nol.' Itu persis yang saya lakukan untuk 3 brand selama 2 tahun terakhir — dan hasilnya bisa diukur.\"</strong></p>\n</div>\n\n<h4>PARAGRAF 2: The Evidence (4-5 kalimat)</h4>\n<p>Pilih 1-2 achievement PALING relevan dengan job description. Ceritakan SINGKAT dengan angka.</p>\n<div class=\"action-box\">\n<p><strong>Contoh:</strong> \"Di [Perusahaan sebelumnya], saya merancang content strategy yang meningkatkan organic traffic sebesar 180% dalam 6 bulan. Ini melibatkan keyword research, editorial calendar, dan koordinasi dengan tim desain untuk menghasilkan 40+ artikel dan 15 infographic. Hasilnya: lead generation naik 45% tanpa tambahan budget iklan.\"</p>\n</div>\n\n<h4>PARAGRAF 3: The Connection (3 kalimat)</h4>\n<p>Hubungkan achievement kamu dengan KEBUTUHAN SPESIFIK perusahaan (bukan generik).</p>\n<div class=\"warning-box\">\n<p>❌ \"Saya yakin pengalaman saya cocok dengan kebutuhan perusahaan\"</p>\n<p>✅ <strong>\"Berdasarkan riset saya, [Perusahaan] sedang meluncurkan ekspansi ke pasar Southeast Asia. Pengalaman saya mengelola campaign bilingual (ID-EN) dan memahami behavior konsumen regional bisa langsung memberikan dampak pada fase ini.\"</strong></p>\n</div>\n\n<h4>PARAGRAF 4: The Close (2 kalimat)</h4>\n<p>Call to action yang spesifik dan confident:</p>\n<p><em>\"Saya sangat antusias untuk mendiskusikan bagaimana saya bisa berkontribusi pada tim [Nama tim/departemen]. Saya available untuk interview kapan saja minggu ini dan bisa dihubungi di [email/telp].\"</em></p>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Pilih 1 lowongan yang kamu minati. Tulis cover letter menggunakan struktur 4 paragraf di atas. Batasi maksimal 300 kata.</p>\n</div>"
+      },
+      {
+        "id": "3.4",
+        "quiz": [
+          {
+            "options": [
+              "30%",
+              "50%",
+              "80%"
+            ],
+            "question": "Berapa persen lowongan yang TIDAK dipublikasikan (hidden job market)?",
+            "correctIndex": 2
+          },
+          {
+            "options": [
+              "Langsung kirim pesan minta kerja",
+              "Like + comment postingan mereka 3-5x agar mereka \"kenal\" kamu",
+              "Kirim CV via DM"
+            ],
+            "question": "Langkah PERTAMA sebelum mengirim connection request ke seseorang adalah...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Teks panjang tanpa paragraf",
+              "Link ke artikel eksternal",
+              "Carousel posts (slide deck pendek)"
+            ],
+            "question": "Jenis konten LinkedIn yang paling viral formatnya adalah...",
+            "correctIndex": 2
+          }
+        ],
+        "title": "LinkedIn Content Strategy & Networking",
+        "content": "<h3>🔴 Posting di LinkedIn: Dari \"Cringe\" Jadi Powerful</h3>\n<div class=\"concept-box\">\n<strong>MITOS:</strong> \"Posting di LinkedIn itu cringe / lebay / nggak ada yang baca.\"\n<br/>\n<strong>FAKTA:</strong> Orang yang aktif posting di LinkedIn mendapat 5x lebih banyak profile views dan 3x lebih banyak message dari recruiter dibanding yang pasif.\n</div>\n\n<h4>Jenis Konten yang Efektif (Bukan Humble Bragging):</h4>\n<ol>\n<li><strong>Insight dari Pengalaman:</strong> \"3 hal yang saya pelajari dari magang 6 bulan di startup...\"</li>\n<li><strong>Data/Fakta + Opini:</strong> \"Menurut data [sumber], 75% CV ditolak ATS. Ini yang saya lakukan berbeda...\"</li>\n<li><strong>Behind the Scenes:</strong> \"Proses saya membuat dashboard analytics dari nol (thread 🧵)\"</li>\n<li><strong>Lessons from Failure:</strong> \"Bulan lalu saya ditolak 15 perusahaan. Ini yang saya ubah...\"</li>\n<li><strong>Industry Commentary:</strong> \"Tren hiring 2024 berubah. Ini yang perlu kamu tau sebagai job seeker...\"</li>\n</ol>\n\n<h4>Format yang Mendapat Engagement Tinggi:</h4>\n<div class=\"warning-box\">\n<ul>\n<li><strong>Hook di baris pertama</strong> — baris pertama menentukan apakah orang klik \"See more\"</li>\n<li><strong>Short paragraphs</strong> — 1-2 kalimat per paragraf, banyak white space</li>\n<li><strong>Bullet points / numbered lists</strong> — mudah di-scan</li>\n<li><strong>End with question</strong> — memicu komentar</li>\n<li><strong>Carousel posts</strong> — slide deck pendek (bisa pakai Canva) → format yang paling viral</li>\n</ul>\n</div>\n\n<h3>🔴 Networking: Bukan \"Minta Kerja\", Tapi \"Bangun Relasi\"</h3>\n<div class=\"concept-box\">\n<strong>80% lowongan TIDAK dipublikasikan.</strong> Ini disebut \"hidden job market\". Cara mengaksesnya: NETWORKING.\n</div>\n\n<h4>Cara Networking yang BENAR di LinkedIn:</h4>\n<ol>\n<li><strong>Connect dengan Personalized Note:</strong>\n<div class=\"action-box\">\n<p>❌ \"Hi, let's connect!\"</p>\n<p>✅ <em>\"Hi [Nama], saya sangat tertarik dengan postingan Anda tentang [topik]. Saya sedang mendalami bidang [X] dan ingin belajar dari perspektif Anda. Boleh saya connect?\"</em></p>\n</div>\n</li>\n<li><strong>Engage SEBELUM Connect:</strong> Like + comment postingan mereka 3-5x sebelum kirim connection request → mereka sudah \"kenal\" kamu</li>\n<li><strong>Informational Interview:</strong> Minta 15 menit bicara tentang KARIR mereka (bukan minta kerja)\n<ul>\n<li>\"Saya tertarik dengan career path Anda dari [A] ke [B]. Apakah bisa meluangkan 15 menit untuk sharing? Ini akan sangat berarti untuk career planning saya.\"</li>\n<li>70% orang akan bilang YA jika diminta dengan sopan dan spesifik</li>\n</ul>\n</li>\n<li><strong>Follow Up:</strong> Setelah connect/chat, kirim thank you message + BERIKAN VALUE (share artikel relevan, insight, atau resource)</li>\n</ol>\n\n<h3>🔧 Weekly LinkedIn Action Plan</h3>\n<div class=\"action-box\">\n<strong>Jadwal Mingguan (total ~3 jam/minggu):</strong>\n<ul>\n<li><strong>Senin:</strong> Posting 1 konten (15 menit persiapan)</li>\n<li><strong>Selasa-Kamis:</strong> Comment 5 postingan/hari dari orang di industri target (15 menit/hari)</li>\n<li><strong>Rabu:</strong> Kirim 5 connection requests dengan personalized note</li>\n<li><strong>Jumat:</strong> Kirim 2 informational interview requests</li>\n<li><strong>Weekend:</strong> Tulis draft postingan untuk minggu depan</li>\n</ul>\n<p><strong>Konsistensi 4 minggu = profile views naik 10x. Guaranteed.</strong></p>\n</div>"
+      }
+    ]
+  },
+  {
+    "module_id": "4",
+    "title": "Deep Research & Company Intel",
+    "thesis": "Interview bukan ujian — interview adalah NEGOSIASI. Dan negosiasi dimenangkan oleh pihak yang punya INFORMASI lebih banyak. Modul ini mengajarkan cara riset perusahaan dan posisi secara mendalam sebelum interview.",
+    "sections": [
+      {
+        "id": "4.1",
+        "quiz": [
+          {
+            "options": [
+              "Strategic",
+              "Social",
+              "Systematic"
+            ],
+            "question": "Apa kepanjangan dari \"S\" dalam PESTEL?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Bintang 1 (paling negatif)",
+              "Bintang 3 (moderat)",
+              "Bintang 5 (paling positif)"
+            ],
+            "question": "Di Glassdoor, review bintang berapa yang dianggap paling jujur?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Risk factors",
+              "Letter to Shareholders",
+              "Financial statements"
+            ],
+            "question": "Bagian apa dari annual report yang sebaiknya dibaca pertama?",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Riset Perusahaan — Framework PESTEL Mini",
+        "content": "<h3>🔴 Kenapa 90% Kandidat Gagal di Tahap Riset</h3>\n<div class=\"concept-box\">\n<strong>FAKTA:</strong> Menurut survei LinkedIn, 47% interviewer menolak kandidat karena \"tidak tahu apa-apa tentang perusahaan.\" Bukan karena skill kurang — tapi karena TIDAK RISET.\n</div>\n\n<h4>Framework PESTEL Mini untuk Riset Perusahaan:</h4>\n<p>PESTEL adalah framework analisis makro yang bisa kamu adaptasi untuk riset perusahaan sebelum interview:</p>\n\n<div class=\"action-box\">\n<ul>\n<li><strong>P</strong>olitical — Regulasi apa yang mempengaruhi industri ini? (contoh: fintech → regulasi OJK)</li>\n<li><strong>E</strong>conomic — Bagaimana kondisi ekonomi mempengaruhi bisnis mereka? (contoh: startup → funding winter)</li>\n<li><strong>S</strong>ocial — Tren sosial apa yang relevan? (contoh: e-commerce → perubahan perilaku belanja online)</li>\n<li><strong>T</strong>echnological — Teknologi apa yang mereka gunakan/butuhkan?</li>\n<li><strong>E</strong>nvironmental — Apakah ada isu sustainability yang relevan?</li>\n<li><strong>L</strong>egal — Isu hukum/compliance yang perlu diketahui?</li>\n</ul>\n</div>\n\n<h4>Cara Baca Annual Report (10 Menit)</h4>\n<ol>\n<li><strong>Letter to Shareholders</strong> — Baca ini pertama. CEO biasanya menyebut prioritas dan tantangan utama</li>\n<li><strong>Revenue breakdown</strong> — Produk/layanan mana yang paling menghasilkan?</li>\n<li><strong>Risk factors</strong> — Apa yang perusahaan sendiri anggap sebagai ancaman?</li>\n<li><strong>Hiring plans</strong> — Apakah mereka sedang ekspansi atau efisiensi?</li>\n</ol>\n\n<h4>Glassdoor Intelligence</h4>\n<div class=\"warning-box\">\n<strong>Yang harus kamu cari di Glassdoor:</strong>\n<ul>\n<li>Rating keseluruhan (di bawah 3.0 = red flag serius)</li>\n<li>Review dari posisi yang sama/mirip dengan yang kamu lamar</li>\n<li>Pola keluhan: kalau 5+ review menyebut hal yang sama → itu FAKTA, bukan opini</li>\n<li>Interview reviews — pertanyaan apa yang sering muncul?</li>\n<li><strong>JANGAN baca hanya review negatif.</strong> Baca yang 3-star — itu paling jujur</li>\n</ul>\n</div>\n\n<h3>🔴 Red Flags Perusahaan</h3>\n<div class=\"warning-box\">\n<strong>Tanda-tanda perusahaan yang perlu diwaspadai:</strong>\n<ul>\n<li>\"Kami seperti keluarga di sini\" → sering berarti: tidak ada boundaries</li>\n<li>Turnover rate tinggi di posisi yang sama → ada masalah manajemen</li>\n<li>Job posting yang sama muncul terus-menerus → posisi tidak pernah terisi atau orang terus keluar</li>\n<li>Proses interview sangat cepat (1 hari langsung offer) → desperate atau ada yang disembunyikan</li>\n<li>Tidak bisa menjawab pertanyaan tentang career path → tidak ada growth plan</li>\n</ul>\n</div>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Untuk setiap perusahaan yang kamu lamar, isi minimal 3 dari 6 poin PESTEL. Ini akan menjadi amunisi saat interview.</p>\n</div>"
+      },
+      {
+        "id": "4.2",
+        "quiz": [
+          {
+            "options": [
+              "100% harus terpenuhi",
+              "60-70% sudah cukup untuk apply",
+              "30% saja cukup"
+            ],
+            "question": "Berapa persen dari required skills yang sebaiknya kamu punya sebelum apply?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Perusahaan yang sangat profesional",
+              "Tim understaffed dan deadline tidak realistis",
+              "Peluang karier yang bagus"
+            ],
+            "question": "\"Mampu bekerja di bawah tekanan\" dalam JD biasanya mengindikasikan...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Decode Job Description",
+        "content": "<h3>🔴 Job Description Adalah Peta Harta Karun</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> JD bukan hanya daftar persyaratan — JD adalah CERMIN masalah yang sedang dihadapi perusahaan. Setiap bullet point adalah sebuah PROBLEM yang mereka butuhkan solusinya.\n</div>\n\n<h4>Required vs Nice-to-Have — Cara Membedakan:</h4>\n<div class=\"action-box\">\n<p><strong>REQUIRED (wajib):</strong></p>\n<ul>\n<li>Muncul di 3 baris pertama deskripsi</li>\n<li>Menggunakan kata: \"must have\", \"required\", \"wajib\", \"minimal\"</li>\n<li>Biasanya terkait hard skill atau pengalaman minimum</li>\n</ul>\n<p><strong>NICE-TO-HAVE (bonus):</strong></p>\n<ul>\n<li>Muncul di bagian bawah atau dengan kata \"preferred\", \"diutamakan\", \"nilai plus\"</li>\n<li>Biasanya soft skill atau tools tambahan</li>\n<li><strong>PRO TIP:</strong> Kalau kamu punya 60-70% dari required → TETAP APPLY</li>\n</ul>\n</div>\n\n<h4>Hidden Keywords dalam JD:</h4>\n<p>Setiap JD menyimpan keyword yang digunakan ATS untuk filter. Cara menemukannya:</p>\n<ol>\n<li><strong>Catat semua NOUN + VERB</strong> yang muncul dalam JD</li>\n<li><strong>Hitung frekuensi</strong> — kata yang muncul 2x+ adalah keyword KRITIS</li>\n<li><strong>Cross-reference</strong> dengan 3-5 JD serupa dari perusahaan lain</li>\n<li><strong>Masukkan ke CV</strong> — bukan copy-paste, tapi REFRAME pengalamanmu</li>\n</ol>\n\n<h3>🔴 Red Flags dalam Job Description</h3>\n<div class=\"warning-box\">\n<ul>\n<li><strong>\"Mampu bekerja di bawah tekanan\"</strong> → Tim understaffed, deadline tidak realistis</li>\n<li><strong>\"Self-starter yang bisa bekerja tanpa supervisi\"</strong> → Tidak ada onboarding, sink or swim</li>\n<li><strong>\"Fleksibel dan bersedia lembur\"</strong> → Work-life balance buruk</li>\n<li><strong>Daftar requirement 15+ item</strong> → Mereka tidak tau apa yang mereka mau</li>\n<li><strong>Tidak menyebut range gaji</strong> → Bisa jadi gaji di bawah market rate</li>\n<li><strong>\"Gaji kompetitif\"</strong> tanpa angka → sering berarti TIDAK kompetitif</li>\n</ul>\n</div>\n\n<h4>Teknik \"JD Reverse Engineering\":</h4>\n<div class=\"action-box\">\n<strong>🎯 STEP BY STEP:</strong>\n<ol>\n<li>Copy-paste seluruh JD ke dokumen terpisah</li>\n<li>Highlight: HIJAU = yang kamu punya, MERAH = yang belum</li>\n<li>Untuk setiap item HIJAU: siapkan 1 contoh konkret</li>\n<li>Untuk setiap item MERAH: tentukan apakah bisa dipelajari dalam 2 minggu</li>\n<li>Kalau HIJAU ≥ 60% → kirim lamaran</li>\n</ol>\n</div>"
+      },
+      {
+        "id": "4.3",
+        "quiz": [
+          {
+            "options": [
+              "Karena interviewer juga melakukan hal yang sama terhadap kandidat",
+              "Karena LinkedIn adalah media sosial publik",
+              "Karena semua orang melakukannya"
+            ],
+            "question": "Kenapa riset LinkedIn interviewer dianggap profesional?",
+            "correctIndex": 0
+          },
+          {
+            "options": [
+              "Perusahaan sangat dinamis dan inovatif",
+              "Red flag — bisa jadi ada masalah retensi",
+              "Karyawan sering dipromosikan"
+            ],
+            "question": "Rata-rata tenure karyawan kurang dari 1 tahun di LinkedIn mengindikasikan...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "LinkedIn Intelligence — Stalking Profesional",
+        "content": "<h3>🔴 Riset Interviewer Bukan Creepy — Itu PROFESIONAL</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> Interviewer juga stalking kamu di LinkedIn sebelum interview. Kenapa kamu tidak melakukan hal yang sama? Ini bukan invasi privasi — ini persiapan profesional.\n</div>\n\n<h4>Cara Riset Interviewer di LinkedIn:</h4>\n<ol>\n<li><strong>Cari nama interviewer</strong> (biasanya ada di email undangan interview)</li>\n<li><strong>Perhatikan:</strong>\n<ul>\n<li>Background pendidikan mereka → common ground?</li>\n<li>Career path mereka → apa yang mereka value?</li>\n<li>Post/artikel yang mereka tulis → topik yang mereka passionate</li>\n<li>Mutual connections → bisa minta insight?</li>\n</ul>\n</li>\n<li><strong>GUNAKAN info ini secara halus:</strong>\n<ul>\n<li>\"Saya baca artikel Bapak/Ibu tentang X, dan itu sangat relevan dengan pengalaman saya di...\"</li>\n<li>JANGAN: \"Saya stalking LinkedIn Bapak ya hehe\" → instant red flag</li>\n</ul>\n</li>\n</ol>\n\n<h4>Culture Mapping dari LinkedIn:</h4>\n<div class=\"action-box\">\n<p>Cara membaca budaya perusahaan dari LinkedIn Company Page:</p>\n<ul>\n<li><strong>Lihat posting perusahaan:</strong> Tone formal/casual?</li>\n<li><strong>Lihat profil karyawan:</strong> Rata-rata tenure berapa lama? (&lt; 1 tahun = red flag)</li>\n<li><strong>Lihat foto/video:</strong> Apakah ada acara team building? Diversity representation?</li>\n<li><strong>Lihat komentar:</strong> Apakah karyawan aktif berkomentar positif? Atau sepi?</li>\n</ul>\n</div>\n\n<h3>🔴 Mutual Connections — Asset Tersembunyi</h3>\n<div class=\"warning-box\">\n<strong>Strategi menggunakan mutual connections:</strong>\n<ol>\n<li>Identifikasi siapa mutual connection kamu dengan orang di perusahaan target</li>\n<li>Kirim pesan personal (BUKAN template)</li>\n<li><strong>JANGAN langsung minta referral.</strong> Bangun percakapan dulu</li>\n<li>Informasi dari insider = 10x lebih valuable dari review Glassdoor</li>\n</ol>\n</div>\n\n<div class=\"action-box\">\n<strong>🎯 ACTION ITEM:</strong>\n<p>Untuk interview berikutnya, cari profil LinkedIn interviewer dan catat 3 hal yang bisa jadi bahan percakapan natural.</p>\n</div>"
+      },
+      {
+        "id": "4.4",
+        "quiz": [
+          {
+            "options": [
+              "\"Berapa gajinya?\"",
+              "\"Apa tantangan terbesar tim ini dalam 6 bulan ke depan?\"",
+              "\"Perusahaan ini bergerak di bidang apa?\""
+            ],
+            "question": "Pertanyaan mana yang paling strategis untuk ditanyakan di akhir interview?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Karena itu syarat wajib dari HR",
+              "Karena menunjukkan level pemahaman di atas rata-rata kandidat",
+              "Karena interviewer selalu menanyakan tentang kompetitor"
+            ],
+            "question": "Kenapa analisis kompetitor penting sebelum interview?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Daftar gaji yang diharapkan",
+              "3 fakta perusahaan, 3 insight kompetitor, 3 pertanyaan strategis",
+              "Catatan tentang outfit yang akan dipakai"
+            ],
+            "question": "Template persiapan interview minimal harus berisi...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Competitive Intelligence & Pertanyaan Strategis",
+        "content": "<h3>🔴 Analisis Kompetitor — Amunisi Interview</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> Kandidat yang bisa bicara tentang KOMPETITOR perusahaan menunjukkan level pemahaman yang di atas rata-rata. Ini membedakan kamu dari 95% kandidat lain.\n</div>\n\n<h4>Cara Analisis Kompetitor (15 Menit):</h4>\n<ol>\n<li><strong>Identifikasi 3 kompetitor utama</strong></li>\n<li><strong>Bandingkan:</strong> Produk/layanan, Target market, USP, Kelemahan</li>\n<li><strong>Cari berita terkini</strong> tentang kompetitor (3 bulan terakhir)</li>\n<li><strong>Formulasikan insight</strong></li>\n</ol>\n\n<h4>Value Alignment — Cara Menunjukkan \"Fit\":</h4>\n<div class=\"action-box\">\n<p><strong>Cari nilai-nilai perusahaan di:</strong></p>\n<ul>\n<li>Website → About Us / Our Values</li>\n<li>LinkedIn → About section</li>\n<li>Presentasi CEO (YouTube, conference talks)</li>\n</ul>\n<p><strong>Lalu:</strong> Siapkan 1 cerita personal yang MENUNJUKKAN (bukan menyebut) nilai tersebut.</p>\n</div>\n\n<h3>🔴 Pertanyaan Strategis untuk Interviewer</h3>\n<div class=\"concept-box\">\n<strong>RULE #1:</strong> \"Ada pertanyaan?\" di akhir interview BUKAN basa-basi. Ini adalah KESEMPATAN EMAS.\n</div>\n\n<div class=\"warning-box\">\n<strong>❌ Pertanyaan BURUK:</strong>\n<ul>\n<li>\"Perusahaan ini bergerak di bidang apa?\"</li>\n<li>\"Berapa gajinya?\"</li>\n<li>\"Apakah sering lembur?\"</li>\n</ul>\n\n<strong>✅ Pertanyaan STRATEGIS:</strong>\n<ul>\n<li>\"Apa tantangan terbesar yang dihadapi tim ini dalam 6 bulan ke depan?\"</li>\n<li>\"Bagaimana definisi sukses untuk posisi ini di 90 hari pertama?\"</li>\n<li>\"Saya baca bahwa [kompetitor] baru meluncurkan [X]. Bagaimana tim merespons hal ini?\"</li>\n<li>\"Apa yang membedakan top performer di posisi ini dengan yang average?\"</li>\n<li>\"Bagaimana culture tim ini berbeda dari tim lain di perusahaan?\"</li>\n</ul>\n</div>\n\n<div class=\"action-box\">\n<strong>🎯 TEMPLATE PERSIAPAN INTERVIEW:</strong>\n<ol>\n<li>3 fakta tentang perusahaan (dari PESTEL mini)</li>\n<li>3 insight tentang kompetitor</li>\n<li>3 pertanyaan strategis yang sudah disiapkan</li>\n<li>1 cerita yang align dengan nilai perusahaan</li>\n</ol>\n<p><strong>Siapkan ini untuk SETIAP interview. Tanpa exception.</strong></p>\n</div>"
+      }
+    ]
+  },
+  {
+    "module_id": "5",
+    "title": "Interview Simulator",
+    "thesis": "Interview bukan tes — interview adalah PERCAKAPAN STRATEGIS. Dan percakapan strategis bisa dilatih. Modul ini menggabungkan teori interview yang solid dengan simulator praktik langsung.",
+    "sections": [
+      {
+        "id": "5.1",
+        "quiz": [
+          {
+            "options": [
+              "Pengetahuan teknis kandidat",
+              "Past behavior sebagai prediktor future performance",
+              "Kecepatan menjawab soal"
+            ],
+            "question": "Behavioral interview menilai apa?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "30 menit pertama",
+              "5 menit pertama",
+              "Setelah interview selesai"
+            ],
+            "question": "Menurut riset, keputusan interviewer sering dibuat dalam...",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "Past → Present → Future",
+              "Present → Past → Future",
+              "Future → Past → Present"
+            ],
+            "question": "Template \"Tell Me About Yourself\" sebaiknya berisi urutan...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Anatomy of Interview — Apa yang Sebenarnya Dinilai",
+        "content": "<h3>🔴 Behavioral vs Technical Interview</h3>\n<div class=\"concept-box\">\n<strong>KONSEP:</strong> Ada 2 tipe utama interview, dan strateginya BERBEDA:\n<ul>\n<li><strong>Behavioral Interview:</strong> \"Ceritakan pengalaman kamu ketika...\" → menilai PAST BEHAVIOR sebagai prediktor future performance</li>\n<li><strong>Technical Interview:</strong> \"Bagaimana cara kamu...\" → menilai PENGETAHUAN dan KEMAMPUAN teknis</li>\n</ul>\n</div>\n\n<h4>Apa yang Sebenarnya Dinilai Interviewer:</h4>\n<div class=\"action-box\">\n<p>Interviewer BUKAN hanya mendengar JAWABAN kamu. Mereka menilai:</p>\n<ol>\n<li><strong>Struktur berpikir</strong></li>\n<li><strong>Self-awareness</strong></li>\n<li><strong>Communication skill</strong></li>\n<li><strong>Cultural fit</strong></li>\n<li><strong>Enthusiasm</strong></li>\n</ol>\n</div>\n\n<h4>Body Language Basics:</h4>\n<div class=\"warning-box\">\n<strong>Non-verbal communication = 55% dari kesan pertama (Albert Mehrabian)</strong>\n<ul>\n<li><strong>Eye contact:</strong> Tatap mata interviewer saat menjawab</li>\n<li><strong>Posture:</strong> Duduk tegak, slightly lean forward</li>\n<li><strong>Gesture:</strong> Gunakan tangan untuk menjelaskan — TAPI jangan berlebihan</li>\n<li><strong>Smile:</strong> Senyum natural saat menyapa</li>\n<li><strong>Nodding:</strong> Anggukan kecil saat interviewer berbicara</li>\n</ul>\n<p><strong>UNTUK INTERVIEW ONLINE:</strong></p>\n<ul>\n<li>Kamera sejajar mata</li>\n<li>Background bersih dan rapi</li>\n<li>Lighting dari depan</li>\n<li>Test audio/video 15 menit sebelumnya</li>\n</ul>\n</div>\n\n<h3>🔴 First 5 Minutes = 80% Keputusan</h3>\n<div class=\"concept-box\">\n<p>Riset menunjukkan interviewer sering membuat keputusan dalam <strong>5 menit pertama</strong>.</p>\n</div>\n\n<div class=\"action-box\">\n<strong>🎯 TEMPLATE \"Tell Me About Yourself\" (2 Menit):</strong>\n<ol>\n<li><strong>Present:</strong> \"Saat ini saya [posisi/status] di [perusahaan/kampus]\"</li>\n<li><strong>Past:</strong> \"Sebelumnya saya [pengalaman relevan]\"</li>\n<li><strong>Future:</strong> \"Dan sekarang saya tertarik [posisi ini] karena [alasan spesifik]\"</li>\n</ol>\n<p><strong>RULES:</strong> Maksimal 2 menit. Fokus pada yang RELEVAN.</p>\n</div>"
+      },
+      {
+        "id": "5.2",
+        "quiz": [
+          {
+            "options": [
+              "Situation → Task → Action → Result",
+              "Strength → Target → Achievement → Review",
+              "Summary → Timeline → Approach → Reflection"
+            ],
+            "question": "STAR method terdiri dari...",
+            "correctIndex": 0
+          },
+          {
+            "options": [
+              "30 detik",
+              "1-2 menit",
+              "5-10 menit"
+            ],
+            "question": "Berapa lama idealnya jawaban untuk satu pertanyaan interview?",
+            "correctIndex": 1
+          },
+          {
+            "options": [
+              "\"Kami\" untuk menunjukkan teamwork",
+              "\"Saya\" untuk menunjukkan kontribusi personal",
+              "\"Mereka\" untuk menunjukkan leadership"
+            ],
+            "question": "Dalam menjawab interview, kita harus menggunakan kata...",
+            "correctIndex": 1
+          }
+        ],
+        "title": "Framework Jawaban — STAR + CAR + SOAR",
+        "content": "<h3>🔴 STAR Method — Framework Paling Populer</h3>\n<div class=\"concept-box\">\n<strong>STAR = Situation → Task → Action → Result</strong>\n<p>Framework ini menjawab pertanyaan behavioral dengan STRUKTUR yang jelas.</p>\n</div>\n\n<h4>Breakdown:</h4>\n<ol>\n<li><strong>S</strong>ituation — Set the scene. Kapan? Di mana? Konteks apa?</li>\n<li><strong>T</strong>ask — Apa tanggung jawab/tugas kamu SPESIFIK?</li>\n<li><strong>A</strong>ction — Apa yang KAMU lakukan? (bukan tim — KAMU)</li>\n<li><strong>R</strong>esult — Apa HASILNYA? Kalau bisa, sebutkan ANGKA</li>\n</ol>\n\n<h3>🟡 CAR Method — Versi Ringkas STAR</h3>\n<div class=\"concept-box\">\n<strong>CAR = Challenge → Action → Result</strong>\n</div>\n\n<h4>Contoh CAR:</h4>\n<div class=\"action-box\">\n<p><strong>C:</strong> \"Proyek website kampus harus selesai dalam 2 minggu, tapi tim hanya 3 orang.\"</p>\n<p><strong>A:</strong> \"Saya membagi tugas berdasarkan keahlian dan membuat daily check-in 15 menit.\"</p>\n<p><strong>R:</strong> \"Website selesai tepat waktu dan digunakan oleh 500+ mahasiswa.\"</p>\n</div>\n\n<h3>🟡 SOAR Method — Untuk Highlight Pencapaian</h3>\n<div class=\"concept-box\">\n<strong>SOAR = Situation → Obstacle → Action → Result</strong>\n<p>Mirip STAR tapi lebih menekankan OBSTACLE.</p>\n</div>\n\n<h3>🔴 Common Mistakes dalam Menjawab Interview</h3>\n<div class=\"warning-box\">\n<strong>Kesalahan yang SERING dilakukan:</strong>\n<ol>\n<li><strong>Terlalu panjang</strong> — Jawaban ideal: 1-2 menit per pertanyaan</li>\n<li><strong>Terlalu umum</strong> — Berikan CONTOH SPESIFIK</li>\n<li><strong>Menjawab \"kami\" bukan \"saya\"</strong></li>\n<li><strong>Tidak ada hasil</strong> — SELALU tutup dengan RESULT</li>\n<li><strong>Curhat</strong> — Keep it professional</li>\n<li><strong>Menjelek-jelekkan perusahaan lama</strong> — NEVER do this</li>\n</ol>\n</div>\n\n<h4>Practice Structure:</h4>\n<div class=\"action-box\">\n<strong>🎯 LATIHAN SEBELUM INTERVIEW:</strong>\n<ol>\n<li>Siapkan 5 cerita STAR dari pengalamanmu</li>\n<li>Setiap cerita harus bisa menjawab MULTIPLE pertanyaan</li>\n<li>Latihan bicara OUT LOUD — record dan dengarkan ulang</li>\n<li>Minta feedback dari teman atau keluarga</li>\n<li>Target: setiap cerita bisa disampaikan dalam 90 detik</li>\n</ol>\n</div>\n\n<div class=\"concept-box\">\n<strong>SETELAH MEMBACA SECTION INI:</strong> Kamu akan masuk ke <strong>Interview Simulator</strong> — di mana kamu akan berlatih menjawab pertanyaan interview secara langsung dan mendapat feedback real-time. Siapkan dirimu! 🎯\n</div>"
+      }
+    ]
+  }
+]

@@ -63,24 +63,16 @@ const ModuleReader: React.FC = () => {
           return;
         }
 
-        const res = await fetch(
-          `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/get-module-content?module_id=${id}`,
-          {
-            headers: {
-              Authorization: `Bearer ${session.access_token}`,
-              apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
-            },
-          }
-        );
+        const { data, error } = await supabase.functions.invoke('get-module-content', {
+          body: { module_id: id }
+        });
 
-        if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          setError(errData.error || 'Gagal memuat modul');
+        if (error || !data) {
+          setError(error?.message || 'Gagal memuat modul');
           setLoading(false);
           return;
         }
 
-        const data = await res.json();
         setModuleData(data);
       } catch {
         setError('Gagal memuat modul');
@@ -97,9 +89,8 @@ const ModuleReader: React.FC = () => {
   // Count words in current section
   const wordCount = section ? section.content.replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length : 200;
 
-  const { scrollPercent, timeSpent, minTime, isSpeedScrolling, isReadingComplete } = useReadingTracker({
+  const { scrollPercent, timeSpent, minTime, isSpeedScrolling, isReadingComplete, containerRef } = useReadingTracker({
     wordCount,
-    containerRef: contentRef,
     isAdmin,
   });
 
@@ -239,7 +230,10 @@ const ModuleReader: React.FC = () => {
 
             {/* Content Area */}
             <div
-              ref={contentRef}
+              ref={(node) => {
+                contentRef.current = node;
+                containerRef(node);
+              }}
               className="border-4 border-foreground bg-card p-6 shadow-neo max-h-[60vh] overflow-y-auto module-content"
               dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(section.content) }}
             />

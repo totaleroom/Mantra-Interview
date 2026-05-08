@@ -10,17 +10,17 @@ interface ReadingState {
 
 interface UseReadingTrackerOptions {
   wordCount: number;
-  containerRef: React.RefObject<HTMLDivElement | null>;
   isAdmin?: boolean;
 }
 
-export function useReadingTracker({ wordCount, containerRef, isAdmin = false }: UseReadingTrackerOptions): ReadingState {
+export function useReadingTracker({ wordCount, isAdmin = false }: UseReadingTrackerOptions) {
   const [scrollPercent, setScrollPercent] = useState(0);
   const [timeSpent, setTimeSpent] = useState(0);
   const [isSpeedScrolling, setIsSpeedScrolling] = useState(false);
   const scrollSpeedsRef = useRef<number[]>([]);
   const lastScrollRef = useRef<{ pos: number; time: number } | null>(null);
   const isVisibleRef = useRef(true);
+  const [container, setContainer] = useState<HTMLDivElement | null>(null);
 
   // Min time = wordCount / 3 seconds (180 wpm)
   const minTime = Math.max(30, Math.ceil(wordCount / 3));
@@ -46,7 +46,7 @@ export function useReadingTracker({ wordCount, containerRef, isAdmin = false }: 
 
   // Scroll tracking
   const handleScroll = useCallback(() => {
-    const el = containerRef.current;
+    const el = container;
     if (!el) return;
 
     const scrollTop = el.scrollTop;
@@ -72,18 +72,19 @@ export function useReadingTracker({ wordCount, containerRef, isAdmin = false }: 
       }
     }
     lastScrollRef.current = { pos: scrollTop, time: now };
-  }, [containerRef]);
+  }, [container]);
 
   useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
-    el.addEventListener('scroll', handleScroll);
-    return () => el.removeEventListener('scroll', handleScroll);
-  }, [handleScroll, containerRef]);
+    if (!container) return;
+    container.addEventListener('scroll', handleScroll);
+    // Initial check in case content is small
+    setTimeout(handleScroll, 100);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [handleScroll, container]);
 
   const isReadingComplete = isAdmin || (scrollPercent >= 90 && timeSpent >= minTime && !isSpeedScrolling);
 
-  return { scrollPercent, timeSpent, minTime, isSpeedScrolling, isReadingComplete };
+  return { scrollPercent, timeSpent, minTime, isSpeedScrolling, isReadingComplete, containerRef: setContainer };
 }
 
 interface ReadingIndicatorProps {

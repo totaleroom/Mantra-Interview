@@ -26,8 +26,27 @@ router.post('/get-prompts', authenticateToken, async (req, res) => {
 router.post('/get-module-content', authenticateToken, async (req, res) => {
   const { module_id } = req.body;
   try {
-    // Normally fetched from DB or static file
-    res.json({ content: `<h1>Module ${module_id}</h1><p>Content for this module is being loaded from the new Express backend.</p>` });
+    const modulesPath = path.join(__dirname, '../data/modules.json');
+    if (fs.existsSync(modulesPath)) {
+      const modulesData = JSON.parse(fs.readFileSync(modulesPath, 'utf8'));
+      let moduleContent;
+      if (Array.isArray(modulesData)) {
+        moduleContent = modulesData.find(m => m.module_id === String(module_id));
+      } else {
+        moduleContent = modulesData[module_id];
+      }
+      if (moduleContent) {
+        res.json({
+          id: module_id,
+          title: moduleContent.title,
+          sections: moduleContent.sections
+        });
+      } else {
+        res.status(404).json({ error: 'Module not found' });
+      }
+    } else {
+      res.status(500).json({ error: 'Modules data missing' });
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -39,9 +58,8 @@ router.post('/validate-quiz', authenticateToken, async (req, res) => {
   try {
     // Basic mock validation: assume pass
     res.json({ 
-      passed: true, 
-      score: 100, 
-      feedback: "All answers are correct! Verified by custom backend." 
+      correct: true, 
+      results: answers.map(() => ({ correct: true }))
     });
   } catch (error) {
     res.status(500).json({ error: error.message });
