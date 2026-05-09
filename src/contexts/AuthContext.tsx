@@ -1,6 +1,5 @@
-import React, { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import React, { createContext, useContext, useEffect, useState, useCallback, useRef } from 'react';
 import { useToast } from '@/hooks/use-toast';
-import { useNavigate } from 'react-router-dom';
 
 interface User {
   id: string;
@@ -11,7 +10,14 @@ interface Profile {
   id: string;
   user_id: string;
   full_name: string;
+  role?: string;
+  license_key?: string;
+  license_expires_at?: string;
   module_progress: Record<string, boolean>;
+  // Server-computed fields
+  subscription_active?: boolean;
+  days_remaining?: number;
+  server_time?: string;
 }
 
 interface AuthContextType {
@@ -19,6 +25,8 @@ interface AuthContextType {
   profile: Profile | null;
   loading: boolean;
   isAdmin: boolean;
+  isSubscriptionActive: boolean;
+  daysRemaining: number;
   signUp: (email: string, password: string, fullName: string, phone?: string) => Promise<{ error: string | null, session?: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
@@ -29,7 +37,6 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Hardcode API URL for now to allow development server tests, usually from env
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
 
 export const useAuth = () => {
@@ -45,6 +52,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [isAdmin, setIsAdmin] = useState(false);
   const { toast } = useToast();
 
+  // Use a ref to prevent race conditions during initialization
+  const initCompleteRef = useRef(false);
+  const fetchingRef = useRef(false);
+
   const getAuthHeaders = () => {
     const token = localStorage.getItem('mantra_token');
     return {
@@ -54,10 +65,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const fetchProfile = useCallback(async () => {
+    // Guard against concurrent fetches (race condition fix)
+    if (fetchingRef.current) return;
+    fetchingRef.current = true;
+
     try {
       const res = await fetch(`${API_URL}/profile`, { headers: getAuthHeaders() });
       if (res.ok) {
-        const profileData = await res.json();
+        const profileData: Profile = await res.json();
         if (profileData) {
           setProfile(profileData);
           setIsAdmin(profileData.role === 'admin');
@@ -70,6 +85,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       console.error(err);
       setProfile(null);
       setIsAdmin(false);
+    } finally {
+      fetchingRef.current = false;
     }
   }, []);
 
@@ -78,19 +95,33 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [user, fetchProfile]);
 
   const refreshIfStale = useCallback(async () => {
-    // For custom backend, we can just fetch if we want.
     if (user) await fetchProfile();
   }, [user, fetchProfile]);
 
-  // Load user from local storage on mount
+  // Derive subscription status from server-computed values (not client clock)
+  const isSubscriptionActive = isAdmin || (profile?.subscription_active === true);
+  const daysRemaining = profile?.days_remaining ?? 0;
+
+  // Initialize auth on mount — single execution, no race condition
   useEffect(() => {
+    if (initCompleteRef.current) return;
+    initCompleteRef.current = true;
+
     const initAuth = async () => {
       const token = localStorage.getItem('mantra_token');
       const storedUser = localStorage.getItem('mantra_user');
       
       if (token && storedUser) {
-        setUser(JSON.parse(storedUser));
-        await fetchProfile();
+        try {
+          const parsed = JSON.parse(storedUser);
+          setUser(parsed);
+          // fetchProfile will use the token from localStorage directly
+          await fetchProfile();
+        } catch {
+          // Corrupted localStorage — clean up
+          localStorage.removeItem('mantra_token');
+          localStorage.removeItem('mantra_user');
+        }
       }
       setLoading(false);
     };
@@ -98,7 +129,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     initAuth();
   }, [fetchProfile]);
 
-  const signUp = async (email: string, password: string, fullName: string, phone?: string) => {
+  const signUp = async (email: string, password: string, fullName: string, _phone?: string) => {
     try {
       const res = await fetch(`${API_URL}/auth/register`, {
         method: 'POST',
@@ -152,13 +183,13 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setIsAdmin(false);
   };
 
-  const resetPassword = async (email: string) => {
+  const resetPassword = async (_email: string) => {
     // TODO: Implement password reset logic in Express
     return { error: 'Not implemented in custom backend yet' };
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, loading, isAdmin, signUp, signIn, signOut, resetPassword, refreshProfile, refreshIfStale }}>
+    <AuthContext.Provider value={{ user, profile, loading, isAdmin, isSubscriptionActive, daysRemaining, signUp, signIn, signOut, resetPassword, refreshProfile, refreshIfStale }}>
       {children}
     </AuthContext.Provider>
   );
