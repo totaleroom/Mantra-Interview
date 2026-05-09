@@ -39,8 +39,21 @@ router.post('/analyze-cv', authenticateToken, async (req, res) => {
     }
 
     const rawResponse = await generateAIResponse(prompt);
-    const cleanedJsonString = rawResponse.replace(/```json/g, '').replace(/```/g, '').trim();
-    const result = JSON.parse(cleanedJsonString);
+    
+    let result;
+    try {
+      const cleanedJsonString = rawResponse.replace(/```json/g, '').replace(/```/g, '').trim();
+      result = JSON.parse(cleanedJsonString);
+    } catch (parseError) {
+      console.warn("AI returned invalid JSON, attempting fallback parsing or returning raw text.");
+      result = { 
+        rawText: rawResponse, 
+        error: "Failed to parse AI response as JSON",
+        score: 0,
+        tips: ["Sistem AI memberikan format tidak terduga, silakan coba lagi."],
+        missingKeywords: []
+      };
+    }
 
     res.json(result);
   } catch (error) {

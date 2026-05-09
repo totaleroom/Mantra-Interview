@@ -51,63 +51,101 @@ export const supabase = {
     }
   },
   from: (table: string) => {
-    // Quick in-memory / localStorage DB for cv_data to support drafts without a real DB table
-    const getLocalDB = () => JSON.parse(localStorage.getItem('mock_db_' + table) || '[]');
-    const saveLocalDB = (data: any) => localStorage.setItem('mock_db_' + table, JSON.stringify(data));
-    
-    let currentData = getLocalDB();
-    let isCountOnly = false;
-    
     const queryBuilder = {
       select: (fields?: string, options?: any) => {
-        if (options?.head) isCountOnly = true;
         return queryBuilder;
       },
       eq: (column: string, value: any) => {
-        currentData = currentData.filter((row: any) => row[column] === value);
+        (queryBuilder as any)._filters = (queryBuilder as any)._filters || {};
+        (queryBuilder as any)._filters[column] = value;
         return queryBuilder;
       },
       order: (column: string, options?: any) => {
-        currentData.sort((a: any, b: any) => {
-          if (a[column] < b[column]) return options?.ascending ? -1 : 1;
-          if (a[column] > b[column]) return options?.ascending ? 1 : -1;
-          return 0;
-        });
-        return { data: isCountOnly ? null : currentData, count: isCountOnly ? currentData.length : null, error: null };
-      },
-      single: () => {
-        return { data: currentData[0] || null, error: currentData[0] ? null : { message: 'Row not found' } };
-      },
-      insert: (payload: any) => {
-        const id = crypto.randomUUID();
-        const newRow = { ...payload, id, created_at: new Date().toISOString(), updated_at: new Date().toISOString() };
-        const db = getLocalDB();
-        db.push(newRow);
-        saveLocalDB(db);
-        currentData = [newRow];
         return queryBuilder;
       },
+      single: async () => {
+        try {
+          let url = '';
+          if (table === 'profiles') url = `${API_URL}/profile`;
+          else if (table === 'cv_data') url = `${API_URL}/cv`;
+          else throw new Error(`Table ${table} not supported in single()`);
+
+          const res = await fetch(url, { headers: getAuthHeaders() });
+          const data = await res.json();
+          
+          // If it's cv_data and we have filters, find the one
+          if (table === 'cv_data' && (queryBuilder as any)._filters?.id) {
+             const item = data.find((d: any) => d.id === (queryBuilder as any)._filters.id);
+             return { data: item || null, error: item ? null : { message: 'Not found' } };
+          }
+
+          return { data: Array.isArray(data) ? data[0] : data, error: null };
+        } catch (error: any) {
+          return { data: null, error };
+        }
+      },
+      insert: async (payload: any) => {
+        try {
+          const res = await fetch(`${API_URL}/cv`, {
+            method: 'POST',
+            headers: getAuthHeaders(),
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          return { data: [data], error: null };
+        } catch (error: any) {
+          return { data: null, error };
+        }
+      },
       update: (payload: any) => {
-        let db = getLocalDB();
         return {
-          eq: (column: string, value: any) => {
-            db = db.map((row: any) => row[column] === value ? { ...row, ...payload, updated_at: new Date().toISOString() } : row);
-            saveLocalDB(db);
-            return { error: null };
+          eq: async (column: string, value: any) => {
+            try {
+              let url = '';
+              if (table === 'profiles') url = `${API_URL}/profile`;
+              else if (table === 'cv_data') url = `${API_URL}/cv/${value}`;
+              
+              const res = await fetch(url, {
+                method: 'PATCH',
+                headers: getAuthHeaders(),
+                body: JSON.stringify(payload)
+              });
+              const data = await res.json();
+              return { data, error: null };
+            } catch (error: any) {
+              return { data: null, error };
+            }
           }
         };
       },
       delete: () => {
         return {
-          eq: (column: string, value: any) => {
-            let db = getLocalDB();
-            db = db.filter((row: any) => row[column] !== value);
-            saveLocalDB(db);
-            return { error: null };
+          eq: async (column: string, value: any) => {
+            try {
+              const res = await fetch(`${API_URL}/cv/${value}`, {
+                method: 'DELETE',
+                headers: getAuthHeaders()
+              });
+              return { error: null };
+            } catch (error: any) {
+              return { error };
+            }
           }
         };
       },
-      then: (resolve: any) => resolve({ data: isCountOnly ? null : currentData, count: isCountOnly ? currentData.length : null, error: null })
+      then: async (resolve: any) => {
+        try {
+          let url = '';
+          if (table === 'profiles') url = `${API_URL}/profile`;
+          else if (table === 'cv_data') url = `${API_URL}/cv`;
+          
+          const res = await fetch(url, { headers: getAuthHeaders() });
+          const data = await res.json();
+          resolve({ data: Array.isArray(data) ? data : [data], error: null });
+        } catch (error: any) {
+          resolve({ data: null, error });
+        }
+      }
     };
     
     return queryBuilder as any;

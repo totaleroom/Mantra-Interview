@@ -20,20 +20,46 @@ router.get('/', authenticateToken, async (req, res) => {
   }
 });
 
-// Update module progress
-router.post('/progress', authenticateToken, async (req, res) => {
-  const { module_progress } = req.body; // e.g., { "1": true, "2": true }
-
+// Update profile / progress
+router.patch('/', authenticateToken, async (req, res) => {
+  const { full_name, module_progress, role, license_key, license_expires_at } = req.body;
   try {
-    const profileResult = await db.query(
-      'UPDATE profiles SET module_progress = $1 WHERE user_id = $2 RETURNING *',
-      [module_progress, req.user.id]
+    const updates = [];
+    const values = [];
+    let idx = 1;
+
+    if (full_name !== undefined) {
+      updates.push(`full_name = $${idx++}`);
+      values.push(full_name);
+    }
+    if (module_progress !== undefined) {
+      updates.push(`module_progress = $${idx++}`);
+      values.push(module_progress);
+    }
+    if (role !== undefined && req.user.role === 'admin') {
+      updates.push(`role = $${idx++}`);
+      values.push(role);
+    }
+    if (license_key !== undefined) {
+      updates.push(`license_key = $${idx++}`);
+      values.push(license_key);
+    }
+    if (license_expires_at !== undefined) {
+      updates.push(`license_expires_at = $${idx++}`);
+      values.push(license_expires_at);
+    }
+
+    if (updates.length === 0) return res.status(400).json({ error: 'No fields to update' });
+
+    values.push(req.user.id);
+    const result = await db.query(
+      `UPDATE profiles SET ${updates.join(', ')}, updated_at = NOW() WHERE user_id = $${idx} RETURNING *`,
+      values
     );
 
-    res.json(profileResult.rows[0]);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Terjadi kesalahan pada server' });
+    res.json(result.rows[0]);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 

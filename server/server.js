@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
+const cvRoutes = require('./routes/cv');
 const aiRoutes = require('./routes/ai');
 const moduleRoutes = require('./routes/modules');
 
@@ -15,6 +16,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
+app.use('/api/cv', cvRoutes);
 app.use('/api/ai', aiRoutes);
 app.use('/api/modules', moduleRoutes);
 
