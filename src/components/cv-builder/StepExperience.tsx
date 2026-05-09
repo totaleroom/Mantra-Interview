@@ -62,9 +62,9 @@ const StepExperience: React.FC<Props> = ({ data, onChange, targetPosition }) => 
       if (result?.enhanced) {
         setAiOptimizeResult(prev => ({ ...prev, [id]: { original: exp.description, enhanced: result.enhanced } }));
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error('AI Optimize error:', err);
-      toast.error(err?.message || 'Gagal mengoptimasi, coba lagi.');
+      toast.error(err instanceof Error ? err.message : 'Gagal mengoptimasi, coba lagi.');
     } finally {
       setAiLoading(prev => ({ ...prev, [id]: false }));
     }

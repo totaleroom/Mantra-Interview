@@ -203,8 +203,9 @@ const StepReview: React.FC<Props> = ({ data, cvId, onCvDataChange }) => {
       } else {
         throw new Error(result?.error || 'Gagal menganalisis CV');
       }
-    } catch (e: any) {
-      toast({ title: 'Gagal analisis', description: e.message, variant: 'destructive' });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : 'Terjadi kesalahan';
+      toast({ title: 'Gagal analisis', description: message, variant: 'destructive' });
     } finally {
       setAnalyzing(false);
       setAiCooldown(true);
@@ -400,8 +401,9 @@ const StepReview: React.FC<Props> = ({ data, cvId, onCvDataChange }) => {
       URL.revokeObjectURL(url);
 
       toast({ title: 'DOCX berhasil didownload! 📄' });
-    } catch (e: any) {
-      toast({ title: 'Gagal generate DOCX', description: e.message, variant: 'destructive' });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : 'Terjadi kesalahan';
+      toast({ title: 'Gagal generate DOCX', description: message, variant: 'destructive' });
     } finally {
       setDownloadingDocx(false);
     }
@@ -428,8 +430,9 @@ const StepReview: React.FC<Props> = ({ data, cvId, onCvDataChange }) => {
       } else {
         throw new Error(result?.error || 'Gagal scan JD');
       }
-    } catch (e: any) {
-      toast({ title: 'Gagal scan JD', description: e.message, variant: 'destructive' });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : 'Terjadi kesalahan';
+      toast({ title: 'Gagal scan JD', description: message, variant: 'destructive' });
     } finally {
       setScanning(false);
       setJdCooldown(true);

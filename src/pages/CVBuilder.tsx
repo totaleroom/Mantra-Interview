@@ -165,8 +165,9 @@ const CVBuilder: React.FC = () => {
         setDrafts(prev => [{ id: data.id, cv_name: null, target_position: cvData.target_position, updated_at: new Date().toISOString() }, ...prev]);
       }
       toast({ title: 'CV berhasil disimpan! 💾' });
-    } catch (e: any) {
-      toast({ title: 'Gagal menyimpan', description: e.message, variant: 'destructive' });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : 'Terjadi kesalahan';
+      toast({ title: 'Gagal menyimpan', description: message, variant: 'destructive' });
     } finally {
       setSaving(false);
     }

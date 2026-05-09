@@ -11,6 +11,15 @@ interface Props {
   cvId?: string | null;
 }
 
+interface RewriteExperience {
+  description: string;
+}
+
+interface RewriteResult {
+  summary?: string;
+  experiences?: RewriteExperience[];
+}
+
 const labelMap: Record<string, string> = {
   ats_compatibility: 'ATS Compatibility',
   keyword_optimization: 'Keyword',
@@ -26,7 +35,7 @@ const labelMap: Record<string, string> = {
 
 const ScoreCard: React.FC<Props> = ({ analysis, cvData, cvId }) => {
   const [rewriting, setRewriting] = useState(false);
-  const [rewriteResult, setRewriteResult] = useState<any>(null);
+  const [rewriteResult, setRewriteResult] = useState<RewriteResult | null>(null);
   const { toast } = useToast();
 
   const chartData = Object.entries(analysis.scores).map(([key, value]) => ({
@@ -56,8 +65,9 @@ const ScoreCard: React.FC<Props> = ({ analysis, cvData, cvId }) => {
       } else {
         throw new Error(result?.error || 'Gagal rewrite');
       }
-    } catch (e: any) {
-      toast({ title: 'Gagal rewrite', description: e.message, variant: 'destructive' });
+    } catch (e) {
+      const message = e instanceof Error ? e.message : 'Terjadi kesalahan';
+      toast({ title: 'Gagal rewrite', description: message, variant: 'destructive' });
     } finally {
       setRewriting(false);
     }
@@ -104,7 +114,7 @@ const ScoreCard: React.FC<Props> = ({ analysis, cvData, cvId }) => {
               <p className="font-body text-xs">{rewriteResult.summary}</p>
             </div>
           )}
-          {rewriteResult.experiences?.map((exp: any, i: number) => (
+          {rewriteResult.experiences?.map((exp: RewriteExperience, i: number) => (
             <div key={i} className="border-2 border-foreground/20 p-3 bg-background">
               <p className="font-display text-xs uppercase text-neoPink mb-1">Pengalaman: Rewrite</p>
               <p className="font-body text-xs whitespace-pre-line">{exp.description}</p>

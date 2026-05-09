@@ -250,7 +250,7 @@ const FreeCVChecker = () => {
       if (data?.insights && Array.isArray(data.insights)) {
         setAiInsights(data.insights);
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error('AI insight error:', err);
       // Silently fail — blurred fallback will show
     } finally {

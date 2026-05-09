@@ -19,7 +19,7 @@ interface AuthContextType {
   profile: Profile | null;
   loading: boolean;
   isAdmin: boolean;
-  signUp: (email: string, password: string, fullName: string, phone?: string) => Promise<{ error: string | null, session?: any | null }>;
+  signUp: (email: string, password: string, fullName: string, phone?: string) => Promise<{ error: string | null, session?: string | null }>;
   signIn: (email: string, password: string) => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   resetPassword: (email: string) => Promise<{ error: string | null }>;
@@ -116,8 +116,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await fetchProfile();
       
       return { error: null, session: data.token };
-    } catch (error: any) {
-      return { error: error.message };
+    } catch (error) {
+      return { error: error instanceof Error ? error.message : 'Terjadi kesalahan' };
     }
   };
 
@@ -139,8 +139,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       await fetchProfile();
       
       return { error: null };
-    } catch (error: any) {
-      return { error: error.message };
+    } catch (error) {
+      return { error: error instanceof Error ? error.message : 'Terjadi kesalahan' };
     }
   };
 

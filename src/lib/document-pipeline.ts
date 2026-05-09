@@ -49,7 +49,7 @@ async function parsePDF(file: File): Promise<string> {
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
     const content = await page.getTextContent();
-    pages.push(content.items.map((item: any) => item.str).join(' '));
+    pages.push(content.items.map((item: { str: string }) => item.str).join(' '));
   }
   
   return pages.join('\n\n');
@@ -172,11 +172,11 @@ export function useDocumentPipeline() {
 
       return result;
 
-    } catch (error: any) {
+    } catch (error) {
       console.error('Pipeline Error:', error);
       toast({
         title: "Processing Failed",
-        description: error.message || "Failed to process document",
+        description: error instanceof Error ? error.message : "Failed to process document",
         variant: "destructive"
       });
       return null;

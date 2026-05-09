@@ -45,9 +45,9 @@ const StepSummary: React.FC<Props> = ({ summary, targetPosition, yearsExperience
         onChange('summary', result.summary);
         toast.success('Summary berhasil di-generate AI!');
       }
-    } catch (err: any) {
+    } catch (err) {
       console.error('AI Summary error:', err);
-      toast.error(err?.message || 'Gagal generate summary, coba lagi.');
+      toast.error(err instanceof Error ? err.message : 'Gagal generate summary, coba lagi.');
     } finally {
       setAiLoading(false);
     }

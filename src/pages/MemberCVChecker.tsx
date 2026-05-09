@@ -136,7 +136,19 @@ const FileUploadArea: React.FC<{
 };
 
 /* ── JD Analysis Result ── */
-const JDAnalysisResult: React.FC<{ jd: any }> = ({ jd }) => (
+interface JDSuggestion {
+  keyword: string;
+  suggestion: string;
+}
+
+interface JDAnalysis {
+  match_score: number;
+  matched_keywords: string[];
+  missing_keywords: string[];
+  suggestions: JDSuggestion[];
+}
+
+const JDAnalysisResult: React.FC<{ jd: JDAnalysis }> = ({ jd }) => (
   <div className="border-4 border-foreground p-4 bg-card shadow-neo space-y-4">
     <div className="flex items-center gap-2">
       <Search size={18} className="text-neoViolet" />
@@ -169,7 +181,7 @@ const JDAnalysisResult: React.FC<{ jd: any }> = ({ jd }) => (
     {jd.suggestions?.length > 0 && (
       <div className="space-y-2">
         <p className="font-display text-xs uppercase">💡 Saran Penambahan</p>
-        {jd.suggestions.map((s: any, i: number) => (
+        {jd.suggestions.map((s: JDSuggestion, i: number) => (
           <div key={i} className="border-2 border-foreground/20 p-3 bg-background">
             <p className="font-display text-xs text-neoPink">{s.keyword}</p>
             <p className="font-body text-xs text-muted-foreground">{s.suggestion}</p>
@@ -224,9 +236,10 @@ const MemberCVChecker: React.FC = () => {
       } else {
         throw new Error(data?.error || 'Gagal analisis');
       }
-    } catch (e: any) {
+    } catch (e) {
+      const message = e instanceof Error ? e.message : 'Terjadi kesalahan';
       console.error('AI analysis error:', e);
-      toast({ title: 'Gagal analisis AI', description: e.message, variant: 'destructive' });
+      toast({ title: 'Gagal analisis AI', description: message, variant: 'destructive' });
     } finally {
       setAiLoading(false);
     }

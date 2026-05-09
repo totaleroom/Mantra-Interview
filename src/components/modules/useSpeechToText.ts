@@ -1,5 +1,32 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 
+// Web Speech API type declarations (not all browsers ship these)
+interface SpeechRecognitionResult {
+  isFinal: boolean;
+  [index: number]: { transcript: string };
+}
+
+interface SpeechRecognitionEvent {
+  results: SpeechRecognitionResult[];
+}
+
+interface SpeechRecognitionErrorEvent {
+  error: string;
+}
+
+interface SpeechRecognitionInstance {
+  lang: string;
+  continuous: boolean;
+  interimResults: boolean;
+  maxAlternatives: number;
+  onresult: ((event: SpeechRecognitionEvent) => void) | null;
+  onend: (() => void) | null;
+  onerror: ((event: SpeechRecognitionErrorEvent) => void) | null;
+  start: () => void;
+  stop: () => void;
+  abort: () => void;
+}
+
 interface UseSpeechToTextReturn {
   isListening: boolean;
   transcript: string;
@@ -14,7 +41,7 @@ export function useSpeechToText(lang: string = 'id-ID'): UseSpeechToTextReturn {
   const [isListening, setIsListening] = useState(false);
   const [transcript, setTranscript] = useState('');
   const [interimTranscript, setInterimTranscript] = useState('');
-  const recognitionRef = useRef<any>(null);
+  const recognitionRef = useRef<SpeechRecognitionInstance | null>(null);
   const shouldContinueRef = useRef(false);
   const langRef = useRef(lang);
   // restartRef holds the latest startNewSession fn — avoids stale closure in onend/onerror
@@ -41,14 +68,15 @@ export function useSpeechToText(lang: string = 'id-ID'): UseSpeechToTextReturn {
   const startNewSession = useCallback(() => {
     if (!isSupported) return;
 
-    const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
-    const recognition = new SpeechRecognition();
+    const SpeechRecognitionConstructor = (window as unknown as Record<string, new () => SpeechRecognitionInstance>).webkitSpeechRecognition 
+      || (window as unknown as Record<string, new () => SpeechRecognitionInstance>).SpeechRecognition;
+    const recognition = new SpeechRecognitionConstructor();
     recognition.lang = langRef.current;
     recognition.continuous = false;
     recognition.interimResults = true;
     recognition.maxAlternatives = 1;
 
-    recognition.onresult = (event: any) => {
+    recognition.onresult = (event: SpeechRecognitionEvent) => {
       let final = '';
       let interim = '';
       for (let i = 0; i < event.results.length; i++) {
@@ -73,7 +101,7 @@ export function useSpeechToText(lang: string = 'id-ID'): UseSpeechToTextReturn {
       }
     };
 
-    recognition.onerror = (event: any) => {
+    recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       setInterimTranscript('');
       if (shouldContinueRef.current && event.error !== 'not-allowed' && event.error !== 'service-not-allowed') {
         setTimeout(() => {

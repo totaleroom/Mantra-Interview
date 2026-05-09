@@ -1,5 +1,5 @@
 const express = require('express');
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const { GoogleGenerativeAI, SchemaType } = require('@google/generative-ai');
 const authenticateToken = require('../middleware/authMiddleware');
 
 const router = express.Router();
@@ -7,14 +7,71 @@ const router = express.Router();
 // Initialize Gemini SDK. The API key must be set in the .env file.
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'dummy_key');
 
-// Helper to handle AI requests
-async function generateAIResponse(prompt) {
+// ── Schema definitions for structured output ──
+
+const cvAnalysisSchema = {
+  type: SchemaType.OBJECT,
+  properties: {
+    score: { type: SchemaType.NUMBER, description: "ATS compatibility score from 0 to 100" },
+    missingKeywords: { 
+      type: SchemaType.ARRAY, 
+      items: { type: SchemaType.STRING },
+      description: "Keywords from the job description missing in the CV" 
+    },
+    tips: { 
+      type: SchemaType.ARRAY, 
+      items: { type: SchemaType.STRING },
+      description: "3 actionable improvement tips" 
+    },
+  },
+  required: ["score", "missingKeywords", "tips"],
+};
+
+const enhanceBulletSchema = {
+  type: SchemaType.OBJECT,
+  properties: {
+    enhanced: { type: SchemaType.STRING, description: "The rewritten, improved bullet point text" },
+  },
+  required: ["enhanced"],
+};
+
+const freeCvCheckSchema = {
+  type: SchemaType.OBJECT,
+  properties: {
+    insights: { 
+      type: SchemaType.ARRAY, 
+      items: { type: SchemaType.STRING },
+      description: "Exactly 3 actionable tips to improve the CV" 
+    },
+  },
+  required: ["insights"],
+};
+
+// Helper: generate structured JSON directly from Gemini
+async function generateStructuredResponse(prompt, responseSchema) {
   if (!process.env.GEMINI_API_KEY) {
     throw new Error('GEMINI_API_KEY is missing from environment variables');
   }
-  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+
+  const model = genAI.getGenerativeModel({
+    model: "gemini-2.5-flash",
+    generationConfig: {
+      responseMimeType: "application/json",
+      responseSchema,
+    },
+  });
+
   const result = await model.generateContent(prompt);
-  return result.response.text();
+  const text = result.response.text();
+
+  // With responseMimeType: "application/json", the output should always be valid JSON.
+  // But we still guard against edge cases.
+  try {
+    return JSON.parse(text);
+  } catch (parseError) {
+    console.warn("Structured output parsing failed despite schema, raw:", text);
+    return null;
+  }
 }
 
 // 1. Analyze CV (Protected Route for Members)
@@ -23,41 +80,34 @@ router.post('/analyze-cv', authenticateToken, async (req, res) => {
   
   try {
     let prompt = '';
+    let schema;
     
     if (mode === 'enhance-bullet') {
       prompt = `You are an expert resume writer. Enhance the following resume experience bullet points to be more impactful and metric-driven for a ${target_position || 'general'} role.
-      Original Text: ${text}
-      Format the response exactly as JSON with key: "enhanced" (string containing the new text).`;
+      Original Text: ${text}`;
+      schema = enhanceBulletSchema;
     } else {
-      // General full CV analysis
       prompt = `Analyze this CV against the following job description (if provided). 
       Provide an ATS score out of 100, missing keywords, and 3 actionable improvement tips.
-      Format the response as JSON with keys: "score" (number), "missingKeywords" (array of strings), "tips" (array of strings).
       
       Job Description: ${jobDescription || 'N/A'}
       CV Text: ${resumeText || text}`;
+      schema = cvAnalysisSchema;
     }
 
-    const rawResponse = await generateAIResponse(prompt);
-    
-    let result;
-    try {
-      const cleanedJsonString = rawResponse.replace(/```json/g, '').replace(/```/g, '').trim();
-      result = JSON.parse(cleanedJsonString);
-    } catch (parseError) {
-      console.warn("AI returned invalid JSON, attempting fallback parsing or returning raw text.");
-      result = { 
-        rawText: rawResponse, 
-        error: "Failed to parse AI response as JSON",
+    const result = await generateStructuredResponse(prompt, schema);
+
+    if (result === null) {
+      return res.json({ 
         score: 0,
         tips: ["Sistem AI memberikan format tidak terduga, silakan coba lagi."],
         missingKeywords: []
-      };
+      });
     }
 
     res.json(result);
   } catch (error) {
-    console.error("AI Error:", error);
+    console.error("AI Error:", error.message);
     res.status(500).json({ error: error.message });
   }
 });
@@ -69,17 +119,18 @@ router.post('/free-cv-check', async (req, res) => {
   try {
     const prompt = `You are an expert ATS (Applicant Tracking System) analyzer. 
     Analyze the following CV. Give exactly 3 actionable tips (insights) to improve it.
-    Format the response as JSON with key: "insights" (array of strings).
     
     CV Text: ${resumeText}`;
 
-    const rawResponse = await generateAIResponse(prompt);
-    const cleanedJsonString = rawResponse.replace(/```json/g, '').replace(/```/g, '').trim();
-    const result = JSON.parse(cleanedJsonString);
+    const result = await generateStructuredResponse(prompt, freeCvCheckSchema);
+
+    if (result === null) {
+      return res.json({ insights: ["Terjadi kesalahan saat menganalisis CV. Silakan coba lagi."] });
+    }
 
     res.json(result);
   } catch (error) {
-    console.error("AI Error:", error);
+    console.error("AI Error:", error.message);
     res.status(500).json({ error: error.message });
   }
 });

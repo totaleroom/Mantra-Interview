@@ -71,8 +71,9 @@ const Dashboard: React.FC = () => {
       
       toast({ title: `Modul ${moduleId} selesai! 🎉` });
       await refreshProfile();
-    } catch (error: any) {
-      toast({ title: 'Gagal update progress', description: error.message, variant: 'destructive' });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Terjadi kesalahan';
+      toast({ title: 'Gagal update progress', description: message, variant: 'destructive' });
     }
   };
 
