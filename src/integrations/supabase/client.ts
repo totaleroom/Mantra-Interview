@@ -122,18 +122,52 @@ export const supabase = {
           return { data: null, error: { message: error instanceof Error ? error.message : String(error) } };
         }
       },
-      insert: async (payload: Record<string, unknown>) => {
-        try {
-          const res = await fetch(`${API_URL}/cv`, {
-            method: 'POST',
-            headers: getAuthHeaders(),
-            body: JSON.stringify(payload)
-          });
-          const data = await res.json();
-          return { data: [data], error: null };
-        } catch (error) {
-          return { data: null, error: error instanceof Error ? error : new Error(String(error)) };
-        }
+      insert: (payload: Record<string, unknown> | Record<string, unknown>[]) => {
+        const executeInsert = async () => {
+          try {
+            const res = await fetch(`${API_URL}/cv`, {
+              method: 'POST',
+              headers: getAuthHeaders(),
+              body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Failed to insert');
+            return { data: Array.isArray(data) ? data : [data], error: null };
+          } catch (error) {
+            return { data: null, error: error instanceof Error ? error : new Error(String(error)) };
+          }
+        };
+
+        const resultObj = {
+          select: (_fields?: string) => {
+            return {
+              single: async (): Promise<QueryResult> => {
+                const res = await executeInsert();
+                if (res.error) return { data: null, error: { message: res.error.message } };
+                if (res.data && res.data.length > 0) {
+                  return { data: res.data[0], error: null };
+                }
+                return { data: null, error: null };
+              },
+              then: (resolve: (val: QueryResult) => void, reject?: (reason: any) => void) => {
+                executeInsert().then(res => resolve({ data: res.data, error: res.error ? { message: res.error.message } : null })).catch(reject);
+              }
+            };
+          },
+          single: async (): Promise<QueryResult> => {
+            const res = await executeInsert();
+            if (res.error) return { data: null, error: { message: res.error.message } };
+            if (res.data && res.data.length > 0) {
+              return { data: res.data[0], error: null };
+            }
+            return { data: null, error: null };
+          },
+          then: (resolve: (val: QueryResult) => void, reject?: (reason: any) => void) => {
+            executeInsert().then(res => resolve({ data: res.data, error: res.error ? { message: res.error.message } : null })).catch(reject);
+          }
+        };
+        
+        return resultObj;
       },
       update: (payload: Record<string, unknown>) => {
         return {

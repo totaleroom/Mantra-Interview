@@ -95,6 +95,64 @@ const validators = {
   freeCvCheck: validateInsights,
 };
 
+// ── OpenRouter Fallback (BYOK & Small Model Persona) ──
+
+async function generateOpenRouterFallback(prompt, schema, validatorKey) {
+  if (!process.env.OPENROUTER_API_KEY) {
+    throw new Error('OPENROUTER_API_KEY is missing from environment variables');
+  }
+
+  // Prompt Layer: Force smaller models into strict JSON behavior
+  const systemPrompt = `You are a highly capable ATS and Resume Analysis AI expert.
+CRITICAL INSTRUCTION: You MUST return ONLY a valid JSON object. 
+DO NOT wrap the JSON in markdown blocks like \`\`\`json. DO NOT add any conversational text or explanations.
+Your JSON must strictly follow this exact schema structure:
+${JSON.stringify(schema, null, 2)}`;
+
+  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${process.env.OPENROUTER_API_KEY}`,
+      "HTTP-Referer": "http://localhost:5173", // Required by OpenRouter
+      "X-Title": "MantraSkill", // Required by OpenRouter
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      model: "google/gemini-2.5-flash:free", // You can change to meta-llama/llama-3.1-8b-instruct:free
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: prompt }
+      ],
+      response_format: { type: "json_object" } // Supported by OpenRouter for many models
+    })
+  });
+
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new AIServiceError(`OpenRouter Fallback Failed: ${res.statusText}`, new Error(errText));
+  }
+
+  const data = await res.json();
+  let text = data.choices[0]?.message?.content || "";
+
+  // Strip markdown formatting if the model ignored instructions
+  text = text.replace(/```json\s*/g, '').replace(/```\s*/g, '').trim();
+
+  let parsed;
+  try {
+    parsed = JSON.parse(text);
+  } catch (e) {
+    throw new AIParseError(text);
+  }
+
+  const validate = validators[validatorKey];
+  if (validate && !validate(parsed)) {
+    throw new AIParseError(JSON.stringify(parsed));
+  }
+
+  return parsed;
+}
+
 // ── Retry-enabled structured response generator ──
 
 async function generateStructuredResponse(prompt, responseSchema, validatorKey) {
@@ -139,12 +197,24 @@ async function generateStructuredResponse(prompt, responseSchema, validatorKey) 
     } catch (error) {
       lastError = error;
 
-      // Don't retry on config/auth errors
+      // Don't retry on config/auth errors from Gemini
       if (error.message?.includes('API_KEY') || error.message?.includes('permission')) {
         throw error;
       }
 
-      // Retry on AI service errors
+      // Fallback Strategy: If Quota Exceeded (429) or Server Overload (503/502), try OpenRouter
+      if (process.env.OPENROUTER_API_KEY && (error.message?.includes('429') || error.message?.includes('Quota') || error.message?.includes('503'))) {
+        console.warn(`[Fallback] Gemini limit reached (${error.message}). Switching to OpenRouter...`);
+        try {
+          return await generateOpenRouterFallback(prompt, responseSchema, validatorKey);
+        } catch (fallbackError) {
+          console.error('[Fallback] OpenRouter also failed:', fallbackError.message);
+          lastError = fallbackError;
+          throw new AIServiceError(`Both Gemini and OpenRouter fallback failed.`, fallbackError);
+        }
+      }
+
+      // Retry on transient AI service errors
       if (attempt < MAX_RETRIES) {
         console.warn(`AI attempt ${attempt + 1} failed: ${error.message}. Retrying in ${RETRY_DELAY_MS}ms...`);
         await new Promise(r => setTimeout(r, RETRY_DELAY_MS));

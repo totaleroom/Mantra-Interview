@@ -78,17 +78,21 @@ router.patch('/', authenticateToken, async (req, res) => {
       updates.push(`module_progress = $${idx++}`);
       values.push(module_progress);
     }
-    if (role !== undefined && req.user.role === 'admin') {
-      updates.push(`role = $${idx++}`);
-      values.push(role);
-    }
-    if (license_key !== undefined) {
-      updates.push(`license_key = $${idx++}`);
-      values.push(license_key);
-    }
-    if (license_expires_at !== undefined) {
-      updates.push(`license_expires_at = $${idx++}`);
-      values.push(license_expires_at);
+    
+    // Sensitive fields restricted to admins
+    if (req.user.role === 'admin') {
+      if (role !== undefined) {
+        updates.push(`role = $${idx++}`);
+        values.push(role);
+      }
+      if (license_key !== undefined) {
+        updates.push(`license_key = $${idx++}`);
+        values.push(license_key);
+      }
+      if (license_expires_at !== undefined) {
+        updates.push(`license_expires_at = $${idx++}`);
+        values.push(license_expires_at);
+      }
     }
 
     if (updates.length === 0) return res.status(400).json({ error: 'No fields to update' });
